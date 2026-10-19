@@ -14,6 +14,13 @@ export default async function ({ site, inv, dims }) {
     return `<a class="tile" href="collections.html?c=${id}" data-reveal style="--d:${n * 80}ms"><div class="media" data-placeholder>${picture(img, alt, dims[img], { sizes: '(min-width: 40rem) 30vw, 100vw' })}</div><h3>${esc(cat.name)}</h3><span class="tile__go">View rentals →</span></a>`;
   }).join('');
 
+  // Mobile slide: dots follow the scroll position and jump to a card when tapped.
+  const grid = document.getElementById('featured'), cdots = document.getElementById('coll-dots');
+  cdots.innerHTML = FEATURED.map((_, n) => `<button type="button" data-c="${n}" aria-label="Show ${esc(byCategory(inv, FEATURED[n][0]).name)}" aria-current="${n === 0}"></button>`).join('');
+  const cIdx = () => Math.round(grid.scrollLeft / (grid.firstElementChild.getBoundingClientRect().width + 16));
+  grid.addEventListener('scroll', () => [...cdots.children].forEach((d, n) => d.setAttribute('aria-current', n === Math.min(cIdx(), FEATURED.length - 1))), { passive: true });
+  cdots.addEventListener('click', (e) => { const b = e.target.closest('[data-c]'); if (b) grid.children[b.dataset.c].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' }); });
+
   // Signature setups: a slide carousel (native scroll-snap, so touch swipe works), with arrows and a counter.
   const { items } = await loadSetups();
   const track = document.getElementById('setups');

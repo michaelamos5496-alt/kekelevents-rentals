@@ -25,6 +25,7 @@ export function reveal(root = document) {
     start: 'top 92%', once: true,
     onEnter: (batch) => gsap.to(batch, { opacity: 1, y: 0, duration: 1.1, stagger: 0.09, overwrite: true, clearProps: 'transform' }),
   });
+  buttonsIn(root);
   return true;
 }
 
@@ -46,6 +47,9 @@ export function heroIntro() {
   tl.from('.hero__statement .w > span', { yPercent: 110, duration: 1.1, stagger: 0.08 }, 0.1)
     .to(label, { opacity: 1, y: 0, duration: 0.9 }, 0)
     .to([sub, actions], { opacity: 1, y: 0, duration: 0.9, stagger: 0.12 }, 0.7);
+  const heroBtns = [...hero.querySelectorAll('.btn')];
+  gsap.set(heroBtns, { clipPath: 'inset(0 100% 0 0 round 999px)' });
+  tl.to(heroBtns, { clipPath: 'inset(0 0% 0 0 round 0px)', duration: 1, ease: 'power4.out', clearProps: 'clipPath' }, 1.0);
   if (media) {
     tl.fromTo(media, { clipPath: 'inset(0 0 0 100%)' }, { clipPath: 'inset(0 0 0 0%)', duration: 1.4, ease: 'power4.inOut' }, 0.1)
       .fromTo(pic, { scale: 1.25 }, { scale: 1.08, duration: 1.8 }, 0.1);
@@ -96,4 +100,73 @@ export function menuIn() {
 export function quoteIn(fig) {
   if (!hasGsap() || !fig) return;
   gsap.fromTo(fig.querySelectorAll('blockquote, figcaption > *'), { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.9, stagger: 0.1, overwrite: true });
+}
+
+/* ---------------------------------------------------------------------------------------------
+   Buttons: fill sweep, square-to-pill shape morph, magnetic pull and press feedback (hover and
+   pointer only), plus a clip-path wipe as buttons scroll into view. All delegated, so buttons
+   rendered later (cards, drawer, form states) animate too.
+   --------------------------------------------------------------------------------------------- */
+const FINE = matchMedia('(hover: hover) and (pointer: fine)').matches;
+const SHAPED = '.btn, .slider__btn';
+const cssVar = (el, name) => getComputedStyle(el).getPropertyValue(name).trim();
+
+function prep(b) {
+  if (b._fx) return;
+  b._fx = true; b.classList.add('fx');
+  const f = document.createElement('span'); f.className = 'btn__fill'; f.setAttribute('aria-hidden', 'true');
+  b.prepend(f); gsap.set(f, { scaleX: 0, transformOrigin: 'left center' }); b._fill = f;
+  b._qx = gsap.quickTo(b, 'x', { duration: 0.6, ease: 'power3' }); b._qy = gsap.quickTo(b, 'y', { duration: 0.6, ease: 'power3' });
+}
+
+export function buttons() {
+  if (!hasGsap() || !FINE) return;
+  setup();
+  const round = (b) => (b.classList.contains('slider__btn') ? '50%' : '999px');
+
+  document.addEventListener('pointerover', (e) => {
+    const b = e.target.closest(SHAPED);
+    if (b && !b.disabled && !b.contains(e.relatedTarget)) {
+      prep(b); gsap.killTweensOf([b._fill, b]);
+      gsap.set(b._fill, { transformOrigin: 'left center' });
+      gsap.to(b._fill, { scaleX: 1, duration: 0.55, ease: 'power3.out' });
+      gsap.to(b, { color: cssVar(b, '--fill-text'), borderRadius: round(b), duration: 0.55, ease: 'power3.out' });
+    }
+    const t = e.target.closest('.add, .link, .arrow-link');
+    if (t && !t.contains(e.relatedTarget)) gsap.to(t, { x: 5, duration: 0.4, overwrite: 'auto' });
+  });
+
+  document.addEventListener('pointerout', (e) => {
+    const b = e.target.closest(SHAPED);
+    if (b && b._fx && !b.contains(e.relatedTarget)) {
+      gsap.killTweensOf([b._fill, b]);
+      gsap.set(b._fill, { transformOrigin: 'right center' });
+      gsap.to(b._fill, { scaleX: 0, duration: 0.55, ease: 'power3.out' });
+      b._qx(0); b._qy(0);
+      gsap.to(b, { color: cssVar(b, '--base-text'), borderRadius: 0, scale: 1, duration: 0.55, ease: 'power3.out', onComplete: () => gsap.set(b, { clearProps: 'color,borderRadius,scale' }) });
+    }
+    const t = e.target.closest('.add, .link, .arrow-link');
+    if (t && !t.contains(e.relatedTarget)) gsap.to(t, { x: 0, duration: 0.4, overwrite: 'auto' });
+  });
+
+  document.addEventListener('pointermove', (e) => {
+    const b = e.target.closest('.btn'); if (!b || !b._fx) return;
+    const r = b.getBoundingClientRect(), clamp = (v) => Math.max(-8, Math.min(8, v));
+    b._qx(clamp((e.clientX - (r.left + r.width / 2)) * 0.18)); b._qy(clamp((e.clientY - (r.top + r.height / 2)) * 0.25));
+  });
+  document.addEventListener('pointerdown', (e) => { const b = e.target.closest(SHAPED); if (b && !b.disabled) gsap.to(b, { scale: 0.96, duration: 0.15, ease: 'power2.out' }); });
+  document.addEventListener('pointerup', (e) => { const b = e.target.closest(SHAPED); if (b) gsap.to(b, { scale: 1, duration: 0.5, ease: 'back.out(3)' }); });
+  document.addEventListener('click', (e) => { const a = e.target.closest('.add'); if (a) gsap.fromTo(a, { scale: 1.12 }, { scale: 1, duration: 0.6, ease: 'back.out(3)' }); });
+}
+
+/** Buttons wipe in from the left, their corners easing from pill to square, as they scroll into view. */
+export function buttonsIn(root = document) {
+  if (!hasGsap()) return;
+  setup();
+  const els = [...root.querySelectorAll('main .btn:not([data-bi]):not(.hero .btn), footer .btn:not([data-bi])')];
+  if (!els.length) return;
+  els.forEach((b) => (b.dataset.bi = '1'));
+  const from = 'inset(0 100% 0 0 round 999px)', to = 'inset(0 0% 0 0 round 0px)';
+  gsap.set(els, { clipPath: from });
+  ScrollTrigger.batch(els, { start: 'top 94%', once: true, onEnter: (batch) => gsap.to(batch, { clipPath: to, duration: 1, ease: 'power4.out', stagger: 0.1, delay: 0.2, clearProps: 'clipPath' }) });
 }

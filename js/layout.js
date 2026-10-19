@@ -1,7 +1,7 @@
 // Site chrome: header, menu, footer, enquiry drawer, WhatsApp button. Injected so it lives in one place.
 import { loadSite, loadInventory, esc, picture, loadImages, reveal } from './util.js';
 import { enquiry, summary } from './enquiry.js';
-import { pop, menuIn } from './motion.js';
+import { pop, menuIn, buttons } from './motion.js';
 
 const NAV = [['index.html', 'Home'], ['collections.html', 'Rentals'], ['services.html', 'Styling'], ['portfolio.html', 'Portfolio'], ['about.html', 'About'], ['enquire.html', 'Enquire']];
 
@@ -104,6 +104,8 @@ export async function initLayout() {
   });
   drawer.addEventListener('close', () => opener?.focus());
   enquiry.subscribe(renderDrawer); renderDrawer();
+
+  buttons(); // GSAP hover, magnetic and press effects for every button
 
   // Page transitions and reveal
   document.documentElement.classList.add('js');
