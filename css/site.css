@@ -76,7 +76,7 @@ main { display: block; min-height: 60vh; }
 /* ---- 4. Header & menu ---- */
 .site-header { position: fixed; inset: 0 0 auto; z-index: 100; height: var(--header-h); color: var(--charcoal); transition: background-color 0.5s var(--ease), color 0.5s var(--ease), border-color 0.5s var(--ease); border-bottom: 1px solid transparent; }
 .site-header__bar { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
-.site-header.is-solid { background: var(--ivory); border-bottom-color: var(--hairline); }
+.site-header.is-solid { background: var(--ivory); border-bottom-color: var(--hairline); }  /* replaced by the glass block at the end of the Motion section */
 .wordmark { display: inline-flex; flex-direction: column; line-height: 1; }
 .wordmark__name { font-size: 1.5rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; margin-right: -0.3em; }
 .wordmark__sub { margin-top: 0.3rem; font-size: 0.52rem; letter-spacing: 0.55em; text-transform: uppercase; font-weight: 500; opacity: 0.7; }
@@ -102,7 +102,7 @@ main { display: block; min-height: 60vh; }
 .menu__foot { display: grid; gap: 0.35rem; }
 @media (min-width: 62rem) { .nav { display: flex; } .menu-toggle, .menu { display: none; } }
 body.menu-open { overflow: hidden; }
-body.menu-open .site-header { color: var(--charcoal); background: var(--ivory); }
+body.menu-open .site-header { color: var(--charcoal); }
 
 /* Blue wayfinding: the same blue for every list of links and controls that says where you are. */
 .nav a:hover, .nav a[aria-current="page"] { color: var(--blue); }
@@ -300,6 +300,12 @@ html.hide-placeholders .ph-note { display: none; }
 @media (min-width: 62rem) { .footer__brand { grid-column: span 3; } .footer__col { grid-column: span 2; } .footer__col:last-of-type { grid-column: span 3; } }
 .footer__legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 2rem; padding-top: 1.5rem; border-top: 1px solid rgb(255 255 255 / 0.18); font-size: 0.75rem; color: rgb(255 255 255 / 0.6); }
 
+.btn--clear { min-height: 2.6rem; padding: 0.6rem 1.3rem; --fill: #9b2c2c; --fill-text: #fff; --base-text: #9b2c2c; border-color: #9b2c2c; color: #9b2c2c; } .btn--clear:hover { background: #9b2c2c; color: #fff; }
+.link--clear { justify-self: center; color: var(--stone); border-bottom-color: var(--hairline); font-size: 0.7rem; } .link--clear:hover { color: #9b2c2c; border-color: #9b2c2c; }
+/* Rental dates */
+.dates { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1rem; padding: 0.5rem 0; } .dates .field { margin-bottom: 0.6rem; } .dates .field input { font-size: 0.9rem; padding: 0.5rem 0; }
+.dates__days { grid-column: 1 / -1; margin: 0 0 0.5rem; font-size: 0.85rem; color: var(--stone); } .dates__days strong { color: var(--blue); font-weight: 600; }
+.sum-row__r { text-align: right; max-width: 60%; }
 /* Cart, prices and quantity */
 .sum-row { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--hairline); font-size: 0.9rem; }
 .sum-row--muted { color: var(--stone); font-size: 0.85rem; } .sum-row--total { border-bottom: 0; font-size: 1.05rem; padding-top: 1rem; } .sum-row--total strong { font-size: 1.35rem; font-weight: 600; }
@@ -372,6 +378,39 @@ html.hide-placeholders .ph-note { display: none; }
 .stub { padding-block: calc(var(--header-h) + 6rem) var(--section); }
 .stub h1 { margin: 1.25rem 0 1.5rem; } .stub .lede { max-width: 30ch; color: var(--stone); }
 .stub__note { margin-top: 2.5rem; padding: 1.25rem 1.5rem; border: 1px dashed var(--stone); max-width: 40rem; color: var(--stone); font-size: var(--fs-small); }
+
+/* ---- Apple-style glass: frosted, translucent surfaces with a bright edge and a soft shadow ---- */
+:root {
+  --glass: rgb(255 255 255 / 0.58);
+  --glass-strong: rgb(255 255 255 / 0.72);
+  --glass-edge: rgb(255 255 255 / 0.65);
+  --glass-line: rgb(20 20 20 / 0.09);
+  --glass-blur: blur(24px) saturate(180%);
+  --glass-shadow: 0 1px 0 rgb(255 255 255 / 0.7) inset, 0 24px 60px rgb(20 20 20 / 0.16);
+}
+.site-header.is-solid { background: var(--glass); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); border-bottom-color: var(--glass-line); box-shadow: 0 1px 0 rgb(255 255 255 / 0.6) inset; }
+body.menu-open .site-header { background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; border-bottom-color: transparent; }
+.menu { background: var(--glass-strong); -webkit-backdrop-filter: blur(34px) saturate(190%); backdrop-filter: blur(34px) saturate(190%); }
+.menu a { text-shadow: 0 1px 0 rgb(255 255 255 / 0.6); }
+/* Cart drawer: a floating frosted sheet with rounded corners */
+.drawer { inset: 12px 12px 12px auto; width: min(29rem, calc(100vw - 24px)); max-width: none; height: calc(100dvh - 24px); border: 1px solid var(--glass-edge); border-radius: 26px; background: var(--glass); -webkit-backdrop-filter: blur(30px) saturate(190%); backdrop-filter: blur(30px) saturate(190%); box-shadow: var(--glass-shadow); overflow: hidden; }
+.drawer::backdrop { -webkit-backdrop-filter: blur(0); backdrop-filter: blur(0); transition: background-color 0.6s var(--ease), backdrop-filter 0.6s var(--ease), overlay 0.6s allow-discrete, display 0.6s allow-discrete; }
+.drawer[open]::backdrop { background: rgb(20 20 20 / 0.22); -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px); }
+@starting-style { .drawer[open]::backdrop { backdrop-filter: blur(0); } }
+.drawer__head, .drawer__foot { border-color: var(--glass-line); } .drawer-item { border-bottom-color: var(--glass-line); }
+.drawer .qty { background: rgb(255 255 255 / 0.55); border-color: var(--glass-line); border-radius: 999px; overflow: hidden; }
+.drawer .media { border-radius: 12px; }
+.drawer__foot { background: rgb(255 255 255 / 0.35); }
+.drawer .dates .field input { background: rgb(255 255 255 / 0.6); border: 1px solid var(--glass-line); border-radius: 12px; padding: 0.55rem 0.7rem; }
+/* Cart page and enquiry panels */
+.cart__summary, .enq__panel { background: var(--glass); border: 1px solid var(--glass-edge); border-radius: 22px; box-shadow: var(--glass-shadow); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); }
+.cart__summary .dates .field input { background: rgb(255 255 255 / 0.6); border: 1px solid var(--glass-line); border-radius: 12px; padding: 0.55rem 0.7rem; }
+.cart__summary .qty, .enq__panel .qty { background: rgb(255 255 255 / 0.55); border-radius: 999px; overflow: hidden; }
+.cart__summary .sum-row, .enq__panel .sum-row { border-bottom-color: var(--glass-line); }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-header.is-solid, .menu, .drawer, .cart__summary, .enq__panel { background: var(--ivory); }
+}
+@media (max-width: 40rem) { .drawer { inset: 8px 8px 8px auto; width: calc(100vw - 16px); height: calc(100dvh - 16px); border-radius: 22px; } }
 
 /* ---- 11. Motion ---- */
 /* Button effects (GSAP adds .fx and a fill span on first hover). Vars set the fill colour, the text colour while filled, and the resting look. */

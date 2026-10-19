@@ -1,6 +1,8 @@
 // Site chrome: header, menu, footer, enquiry drawer, WhatsApp button. Injected so it lives in one place.
 import { loadSite, loadInventory, esc, picture, loadImages, reveal } from './util.js';
 import { enquiry, summary, totals, money, daysLabel } from './enquiry.js';
+import { datesMarkup, bindDates } from './dates.js';
+import { clearMarkup, bindClear } from './clear.js';
 import { pop, menuIn, buttons } from './motion.js';
 
 const NAV = [['index.html', 'Home'], ['collections.html', 'Rentals'], ['services.html', 'Styling'], ['portfolio.html', 'Portfolio'], ['about.html', 'About'], ['enquire.html', 'Enquire']];
@@ -84,15 +86,16 @@ export async function initLayout() {
         <a class="media" href="item.html?i=${esc(it.slug)}">${picture(it.image, it.alt, dims[it.image], { sizes: '72px' })}</a>
         <div><h3>${esc(it.name)}</h3><small>${money(unit)} per day</small><div class="qty" role="group" aria-label="Quantity for ${esc(it.name)}"><button type="button" data-dec aria-label="Decrease">−</button><output>${qty}</output><button type="button" data-inc aria-label="Increase"${qty >= enquiry.max(it.slug) ? ' disabled' : ''}>+</button></div></div>
         <div class="drawer-item__side"><strong>${money(line)}</strong><button class="drawer-item__remove" type="button" data-remove aria-label="Remove ${esc(it.name)}">Remove</button></div></div>`).join('');
-    foot.innerHTML = `<div class="sum-row"><span id="days-l">Rental days</span><div class="qty" role="group" aria-labelledby="days-l"><button type="button" data-days-dec aria-label="Fewer days">−</button><output>${t.days}</output><button type="button" data-days-inc aria-label="More days">+</button></div></div>
+    foot.innerHTML = `${datesMarkup('dr')}
       <div class="sum-row"><span>Subtotal · ${daysLabel(t.days)}</span><strong>${money(t.subtotal)}</strong></div>
       <div class="sum-row sum-row--muted"><span>Delivery</span><span>${esc(site.cart.deliveryNote)}</span></div>
       <a class="btn btn--solid" href="enquire.html">Checkout</a>
       <a class="btn" href="cart.html">View cart</a>
+      ${clearMarkup('link link--clear')}
       ${site.cart.ratesPlaceholder ? '<span class="ph-note">Placeholder rates</span>' : ''}
       <p>${esc(site.cart.paymentNote)}</p>`;
   }
-  foot.addEventListener('click', (e) => { if (e.target.closest('[data-days-inc]')) enquiry.setDays(enquiry.days() + 1); if (e.target.closest('[data-days-dec]')) enquiry.setDays(enquiry.days() - 1); });
+  bindDates(foot); bindClear(foot);
   body.addEventListener('click', (e) => {
     const row = e.target.closest('.drawer-item'); if (!row) return;
     const slug = row.dataset.slug, cur = enquiry.all().find((x) => x.slug === slug);

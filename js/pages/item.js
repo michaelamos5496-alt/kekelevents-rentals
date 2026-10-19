@@ -33,7 +33,7 @@ export default function ({ inv, dims }) {
           <p class="buybox__total" id="q-total" aria-live="polite"></p>
           <button class="btn btn--solid" type="button" id="add-cart">Add to cart</button>
           <button class="btn" type="button" data-open-enquiry>View cart</button></div>
-        <p class="detail__note-small">Priced per day. Choose the number of rental days in your cart. Items in your cart are not reserved until we confirm availability.</p>
+        <p class="detail__note-small">Priced per day. Choose your start and return dates in the cart and the days are calculated for you. Items in your cart are not reserved until we confirm availability.</p>
         ${it.placeholder ? '<span class="ph-note">Placeholder details</span>' : ''}
       </div>
     </div>

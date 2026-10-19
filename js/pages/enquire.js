@@ -1,6 +1,6 @@
 // Enquiry page: the cart summary, the form, and delivery (form endpoint if configured, otherwise WhatsApp).
 import { esc, picture, reveal } from '../util.js';
-import { enquiry, summary, totals, money, daysLabel } from '../enquiry.js';
+import { enquiry, summary, totals, money, daysLabel, periodLabel } from '../enquiry.js';
 import { whatsappUrl } from '../layout.js';
 
 export default function ({ site, inv, dims }) {
@@ -11,7 +11,8 @@ export default function ({ site, inv, dims }) {
   // Select options come from data/site.json so they can be edited without touching code.
   $('f-type').innerHTML = '<option value="">Choose</option>' + (cfg.eventTypes || []).map((t) => `<option>${esc(t)}</option>`).join('');
   $('f-budget').innerHTML = '<option value="">Prefer not to say</option>' + (cfg.budgetRanges || []).map((t) => `<option>${esc(t)}</option>`).join('');
-  $('f-date').min = new Date().toISOString().slice(0, 10);
+  $('f-date').min = enquiry.today();
+  if (enquiry.hasDates()) $('f-date').value = enquiry.dates().start; // the event date follows the rental start date
 
   $('enq-insta').innerHTML = `Or follow <a href="https://instagram.com/${esc(site.instagram)}" rel="noopener">@${esc(site.instagram)}</a> on Instagram.`;
   $('enq-area').textContent = site.serviceArea;
@@ -27,7 +28,7 @@ export default function ({ site, inv, dims }) {
           <a class="media" href="item.html?i=${esc(it.slug)}" tabindex="-1" aria-hidden="true">${picture(it.image, '', dims[it.image], { sizes: '56px' })}</a>
           <div><h3>${esc(it.name)}</h3><small class="muted">${money(unit)} per day</small><div class="qty" role="group" aria-label="Quantity for ${esc(it.name)}"><button type="button" data-dec aria-label="Decrease">−</button><output>${qty}</output><button type="button" data-inc aria-label="Increase"${qty >= enquiry.max(it.slug) ? ' disabled' : ''}>+</button></div></div>
           <div class="drawer-item__side"><strong>${money(line)}</strong><button class="drawer-item__remove" type="button" data-remove aria-label="Remove ${esc(it.name)}">Remove</button></div></div>`).join('')
-        + `<div class="sum-row"><span>Rental period</span><span>${daysLabel(t.days)}</span></div>
+        + `<div class="sum-row"><span>Rental period</span><span class="sum-row__r">${esc(periodLabel())}</span></div>
         <div class="sum-row sum-row--total"><span>Estimated total</span><strong>${money(t.subtotal)}</strong></div>
         <a class="link" href="cart.html">Edit cart and rental days</a>
         ${site.cart.ratesPlaceholder ? '<span class="ph-note">Placeholder rates</span>' : ''}`;
