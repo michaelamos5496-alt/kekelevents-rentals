@@ -1,0 +1,317 @@
+{
+ "_note": "PLACEHOLDER inventory: names, quantities, dimensions and photographs are placeholders until the real inventory is entered. Product photographs are shown on white. Add an item by copying an entry; images are Pexels ids in assets/images/raw/ (run scripts/make-images.py).",
+ "categories": [
+  {
+   "id": "seating",
+   "name": "Seating",
+   "blurb": "Chairs for ceremonies, dinners and receptions."
+  },
+  {
+   "id": "tablescape",
+   "name": "Tablescape",
+   "blurb": "Tables, linen, flatware and plates, laid with care."
+  },
+  {
+   "id": "glassware",
+   "name": "Glassware",
+   "blurb": "Glass that catches candlelight."
+  },
+  {
+   "id": "decor",
+   "name": "Décor",
+   "blurb": "Brass, stone and glass: the details that finish a room."
+  },
+  {
+   "id": "lounge",
+   "name": "Lounge",
+   "blurb": "Soft seating for conversation after dinner."
+  },
+  {
+   "id": "lighting",
+   "name": "Lighting",
+   "blurb": "Warm, low light for evenings."
+  }
+ ],
+ "items": [
+  {
+   "slug": "bentwood-chair-walnut",
+   "name": "Bentwood Chair, Walnut",
+   "category": "seating",
+   "note": "A café classic for dinners and receptions.",
+   "quantity": 150,
+   "material": "Bentwood, walnut stain",
+   "dimensions": "W 41 × D 45 × H 88 cm",
+   "image": "7193706",
+   "alt": "A walnut bentwood chair on a white floor",
+   "gallery": [
+    "7193706-detail1",
+    "7193706-detail2"
+   ],
+   "mood": [
+    "classic",
+    "warm"
+   ],
+   "placeholder": true
+  },
+  {
+   "slug": "studio-chair-green",
+   "name": "Studio Chair, Green",
+   "category": "seating",
+   "note": "Slim timber frame with a forest-green seat.",
+   "quantity": 80,
+   "material": "Timber, upholstered seat",
+   "dimensions": "W 44 × D 46 × H 82 cm",
+   "image": "14391920",
+   "alt": "A timber chair with a green seat and back",
+   "gallery": [
+    "14391920-detail1",
+    "14391920-detail2"
+   ],
+   "mood": [
+    "modern",
+    "warm"
+   ],
+   "placeholder": true
+  },
+  {
+   "slug": "club-armchair-leather",
+   "name": "Club Armchair, Leather",
+   "category": "lounge",
+   "note": "Deep tan leather for lounge corners.",
+   "quantity": 12,
+   "material": "Leather, timber legs",
+   "dimensions": "W 78 × D 80 × H 76 cm",
+   "image": "11112734",
+   "alt": "A brown leather club armchair with studded detail",
+   "gallery": [
+    "11112734-detail1",
+    "11112734-detail2"
+   ],
+   "mood": [
+    "classic",
+    "warm"
+   ],
+   "placeholder": true
+  },
+  {
+   "slug": "reclaimed-bench",
+   "name": "Reclaimed Timber Bench",
+   "category": "lounge",
+   "note": "Weathered timber with painted legs.",
+   "quantity": 20,
+   "material": "Reclaimed timber",
+   "dimensions": "W 120 × D 30 × H 45 cm",
+   "image": "11112743",
+   "alt": "A low reclaimed timber bench with blue-painted legs",
+   "gallery": [
+    "11112743-detail1",
+    "11112743-detail2"
+   ],
+   "mood": [
+    "modern",
+    "warm"
+   ],
+   "placeholder": true
+  },
+  {
+   "slug": "crystal-wine-glass-pair",
+   "name": "Crystal Wine Glass",
+   "category": "glassware",
+   "note": "Thin-rimmed crystal for the long table.",
+   "quantity": 400,
+   "material": "Crystal",
+   "dimensions": "Ø 8.5 × H 22 cm",
+   "image": "4110400",
+   "alt": "Two clear crystal wine glasses on white",
+   "gallery": [
+    "4110400-detail1",
+    "4110400-detail2"
+   ],
+   "mood": [
+    "classic",
+    "minimal"
+   ],
+   "placeholder": true
+  },
+  {
+   "slug": "red-wine-glass",
+   "name": "Red Wine Glass",
+   "category": "glassware",
+   "note": "A generous bowl for reds.",
+   "quantity": 400,
+   "material": "Glass",
+   "dimensions": "Ø 10 × H 23 cm",
+   "image": "7597560",
+   "alt": "A red wine glass on a white ground",
+   "gallery": [
+    "7597560-detail1",
+    "7597560-detail2"
+   ],
+   "mood": [
+    "classic",
+    "minimal"
+   ],
+   "placeholder": true
+  },
+  {
+   "slug": "porcelain-dinner-plate",
+   "name": "Porcelain Dinner Plate",
+   "category": "tablescape",
+   "note": "White porcelain, rolled edge.",
+   "quantity": 500,
+   "material": "Porcelain",
+   "dimensions": "Ø 27 cm",
+   "image": "291767",
+   "alt": "White porcelain plates, bowl and cutlery on a white table",
+   "gallery": [
+    "291767-detail1",
+    "291767-detail2"
+   ],
+   "mood": [
+    "minimal",
+    "classic"
+   ],
+   "placeholder": true
+  },
+  {
+   "slug": "gold-flatware",
+   "name": "Gold Flatware",
+   "category": "tablescape",
+   "note": "Brushed gold forks, knives and spoons.",
+   "quantity": 500,
+   "material": "Stainless steel, gold finish",
+   "dimensions": "Dinner fork L 20 cm",
+   "image": "7335989",
+   "alt": "Gold forks resting on a white plate",
+   "gallery": [
+    "7335989-detail1",
+    "7335989-detail2"
+   ],
+   "mood": [
+    "classic",
+    "warm"
+   ],
+   "placeholder": true
+  },
+  {
+   "slug": "stoneware-bowls",
+   "name": "Stoneware Bowl Stack",
+   "category": "tablescape",
+   "note": "Matte stoneware for starters and sharing.",
+   "quantity": 200,
+   "material": "Stoneware",
+   "dimensions": "Ø 16 cm",
+   "image": "7191403",
+   "alt": "A stack of white stoneware bowls",
+   "gallery": [
+    "7191403-detail1",
+    "7191403-detail2"
+   ],
+   "mood": [
+    "minimal",
+    "modern"
+   ],
+   "placeholder": true
+  },
+  {
+   "slug": "round-glass-table",
+   "name": "Round Glass-top Table",
+   "category": "tablescape",
+   "note": "A light cocktail table on timber legs.",
+   "quantity": 25,
+   "material": "Glass, timber",
+   "dimensions": "Ø 70 × H 72 cm",
+   "image": "9774369",
+   "alt": "A round glass-top table with timber legs",
+   "gallery": [
+    "9774369-detail1",
+    "9774369-detail2"
+   ],
+   "mood": [
+    "modern",
+    "minimal"
+   ],
+   "placeholder": true
+  },
+  {
+   "slug": "brass-candelabra",
+   "name": "Brass Candelabra",
+   "category": "decor",
+   "note": "Three arms, aged brass.",
+   "quantity": 16,
+   "material": "Brass",
+   "dimensions": "W 42 × H 50 cm",
+   "image": "19457029",
+   "alt": "An aged brass candelabra with three tall candles",
+   "gallery": [
+    "19457029-detail1",
+    "19457029-detail2"
+   ],
+   "mood": [
+    "classic",
+    "warm"
+   ],
+   "placeholder": true
+  },
+  {
+   "slug": "ceramic-vase-set",
+   "name": "Ceramic Vase Set",
+   "category": "decor",
+   "note": "Soft white vases in mixed heights.",
+   "quantity": 30,
+   "material": "Ceramic",
+   "dimensions": "H 12–26 cm",
+   "image": "5040767",
+   "alt": "White ceramic vases and jugs on a white ground",
+   "gallery": [
+    "5040767-detail1",
+    "5040767-detail2"
+   ],
+   "mood": [
+    "minimal",
+    "modern"
+   ],
+   "placeholder": true
+  },
+  {
+   "slug": "ribbed-vases",
+   "name": "Ribbed Vase Pair",
+   "category": "decor",
+   "note": "Tall ribbed vases in matte white.",
+   "quantity": 24,
+   "material": "Ceramic",
+   "dimensions": "H 28 and 36 cm",
+   "image": "8217492",
+   "alt": "Two ribbed matte white vases with a pillar candle",
+   "gallery": [
+    "8217492-detail1",
+    "8217492-detail2"
+   ],
+   "mood": [
+    "minimal",
+    "modern"
+   ],
+   "placeholder": true
+  },
+  {
+   "slug": "arc-floor-lamp",
+   "name": "Arc Floor Lamp",
+   "category": "lighting",
+   "note": "A sweeping arm that lights a corner.",
+   "quantity": 10,
+   "material": "Steel, painted",
+   "dimensions": "H 200 × reach 160 cm",
+   "image": "112811",
+   "alt": "A black arc floor lamp against a white wall",
+   "gallery": [
+    "112811-detail1",
+    "112811-detail2"
+   ],
+   "mood": [
+    "modern",
+    "minimal"
+   ],
+   "placeholder": true
+  }
+ ]
+}

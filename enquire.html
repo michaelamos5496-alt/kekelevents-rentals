@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enquire · Kekel Rentals</title>
+<meta name="description" content="Begin your enquiry with Kekel Rentals.">
+<meta name="theme-color" content="#F7F4EF">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kekel Rentals">
+<meta property="og:title" content="Enquire · Kekel Rentals">
+<meta property="og:description" content="Begin your enquiry with Kekel Rentals.">
+<meta property="og:url" content="https://kekelrentals.example/enquire.html">
+<meta property="og:image" content="https://kekelrentals.example/assets/images/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preload" href="assets/fonts/CormorantGaramond-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/Manrope-normal-300-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body data-page="enquire">
+<main id="main">
+<header class="wrap page-head"><span class="label" data-reveal>Enquire</span><h1 data-reveal style="--d:100ms">Begin your enquiry</h1><p class="lede" data-reveal style="--d:180ms">Tell us about the occasion. We confirm availability and rates, then send your quote.</p></header>
+<div class="wrap"><div class="enq" id="enq">
+  <form class="enq__form" id="enq-form" novalidate>
+    <p class="form-note" id="enq-error" role="alert" hidden></p>
+    <fieldset><legend class="label">About you</legend>
+      <div class="field"><label for="f-name">Full name</label><input id="f-name" name="name" autocomplete="name" required></div>
+      <div class="field-row">
+        <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="f-phone">Phone or WhatsApp</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+      </div>
+    </fieldset>
+    <fieldset><legend class="label">The occasion</legend>
+      <div class="field-row">
+        <div class="field"><label for="f-type">Event type</label><select id="f-type" name="type" required></select></div>
+        <div class="field"><label for="f-date">Event date</label><input id="f-date" name="date" type="date" required></div>
+      </div>
+      <div class="field"><label for="f-venue">Venue or location</label><input id="f-venue" name="venue" autocomplete="off"></div>
+      <div class="field-row">
+        <div class="field"><label for="f-guests">Guest count</label><input id="f-guests" name="guests" type="number" min="1" max="10000" inputmode="numeric"></div>
+        <div class="field"><label for="f-budget">Budget range</label><select id="f-budget" name="budget"></select></div>
+      </div>
+    </fieldset>
+    <fieldset><legend class="label">Anything else</legend>
+      <div class="field"><label for="f-msg">Your message</label><textarea id="f-msg" name="message" rows="5"></textarea></div>
+    </fieldset>
+    <div class="visually-hidden" aria-hidden="true"><label>Leave this empty<input name="website" tabindex="-1" autocomplete="off"></label></div>
+    <button class="btn btn--solid enq__submit" type="submit" id="enq-submit">Send enquiry</button>
+    <p class="muted enq__fine">No payment is taken online. We use your details only to reply to this enquiry.</p>
+  </form>
+  <aside class="enq__side" aria-label="Your selection and contact">
+    <div class="enq__panel">
+      <h2 class="enq__h">Your cart</h2>
+      <div id="enq-cart" aria-live="polite"></div>
+    </div>
+    <div class="enq__panel enq__contact">
+      <h2 class="enq__h">Prefer to message?</h2>
+      <a class="btn" id="enq-wa" href="#" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      <p id="enq-insta"></p>
+      <p class="muted" id="enq-area"></p>
+    </div>
+  </aside>
+  <div class="enq__done" id="enq-done" hidden tabindex="-1"></div>
+</div></div>
+</main>
+<noscript><p style="padding:6rem 1.5rem 2rem">Please enable JavaScript to browse the collections. Or write to us on Instagram: @kekelrentals.</p></noscript>
+<script defer src="assets/vendor/gsap.min.js"></script>
+<script defer src="assets/vendor/ScrollTrigger.min.js"></script>
+<script type="module" src="js/site.js"></script>
+</body>
+</html>

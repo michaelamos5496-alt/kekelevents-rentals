@@ -1,0 +1,6 @@
+/* Self-hosted (SIL Open Font License): Cormorant Garamond, Manrope. */
+@font-face { font-family: "Cormorant Garamond"; font-style: italic; font-weight: 400; font-display: swap; src: url("../assets/fonts/CormorantGaramond-italic-400.woff2") format("woff2"); }
+@font-face { font-family: "Cormorant Garamond"; font-style: italic; font-weight: 500; font-display: swap; src: url("../assets/fonts/CormorantGaramond-italic-500.woff2") format("woff2"); }
+@font-face { font-family: "Cormorant Garamond"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/fonts/CormorantGaramond-normal-400.woff2") format("woff2"); }
+@font-face { font-family: "Cormorant Garamond"; font-style: normal; font-weight: 500; font-display: swap; src: url("../assets/fonts/CormorantGaramond-normal-500.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-style: normal; font-weight: 300 600; font-display: swap; src: url("../assets/fonts/Manrope-normal-300-600.woff2") format("woff2"); }

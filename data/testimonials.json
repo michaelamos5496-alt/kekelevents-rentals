@@ -1,0 +1,23 @@
+{
+ "_note": "PLACEHOLDER testimonials. Replace each entry with a real client's words, with their permission, then remove \"placeholder\": true. Do not publish invented testimonials.",
+ "items": [
+  {
+   "quote": "A short, sincere line from a real client about how the setting felt on the day goes here.",
+   "author": "Client name",
+   "event": "Wedding · Accra",
+   "placeholder": true
+  },
+  {
+   "quote": "A line about the delivery, the set-up and the team being calm and on time goes here.",
+   "author": "Client name",
+   "event": "Private dinner · Accra",
+   "placeholder": true
+  },
+  {
+   "quote": "A line about the details, the pieces and how well everything worked together goes here.",
+   "author": "Client name",
+   "event": "Corporate event · Accra",
+   "placeholder": true
+  }
+ ]
+}

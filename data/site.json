@@ -1,0 +1,35 @@
+{
+ "_note": "Edit this file to change site-wide text. Anything marked PLACEHOLDER must be replaced before launch.",
+ "name": "Kekel Rentals",
+ "descriptor": "Event production & décor rentals",
+ "city": "Accra, Ghana",
+ "statement": "Considered settings for occasions worth remembering.",
+ "serviceArea": "Based in Accra, travelling across Ghana and beyond.",
+ "instagram": "kekelrentals",
+ "whatsapp": {
+  "_note": "PLACEHOLDER: add the real number in international format with no plus or spaces, e.g. 233XXXXXXXXX. Until then the button opens WhatsApp with the message ready and lets the visitor pick a contact.",
+  "number": "",
+  "message": "Hello Kekel Rentals, I would like to enquire about an event."
+ },
+ "showPlaceholderTags": true,
+ "enquiry": {
+  "_note": "PLACEHOLDER: to receive enquiries by email set 'endpoint' to a form service URL that accepts a JSON POST (for example a Formspree form). While it is empty, submitting opens WhatsApp with the full enquiry ready to send.",
+  "endpoint": "",
+  "budgetRanges": [
+   "Under GH₵10,000",
+   "GH₵10,000 – 25,000",
+   "GH₵25,000 – 60,000",
+   "GH₵60,000 – 120,000",
+   "Above GH₵120,000",
+   "Not sure yet"
+  ],
+  "eventTypes": [
+   "Wedding",
+   "Traditional ceremony or engagement",
+   "Private dinner",
+   "Corporate event",
+   "Birthday or celebration",
+   "Other"
+  ]
+ }
+}

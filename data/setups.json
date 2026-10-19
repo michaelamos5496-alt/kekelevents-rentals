@@ -1,0 +1,41 @@
+{
+ "_note": "PLACEHOLDER setups: replace with real events and photography.",
+ "items": [
+  {
+   "title": "The Long Table",
+   "type": "Private dinner",
+   "location": "Accra",
+   "image": "26975888",
+   "alt": "A long dinner table set on a lawn at dusk beneath trees",
+   "blurb": "One table, one evening, no centrepiece taller than a glass. Timber, linen and candlelight did the rest.",
+   "placeholder": true
+  },
+  {
+   "title": "Ceremony on the Lawn",
+   "type": "Wedding",
+   "location": "Accra",
+   "image": "35985252",
+   "alt": "Rows of white chairs facing a floral arch across a lawn",
+   "blurb": "An aisle of white blooms, a quiet frame and chairs that disappeared into the grass.",
+   "placeholder": true
+  },
+  {
+   "title": "White & Gold Reception",
+   "type": "Reception",
+   "location": "Accra",
+   "image": "11450795",
+   "alt": "White and gold chairs beneath ceilings of draped fabric",
+   "blurb": "Draped ceilings, gilded chairs and ivory linen, kept calm by restraint.",
+   "placeholder": true
+  },
+  {
+   "title": "Candlelit Supper",
+   "type": "Corporate dinner",
+   "location": "Accra",
+   "image": "30742026",
+   "alt": "A long table with a draped runner lit by many candles",
+   "blurb": "A long table lit only by candles, for a launch that needed warmth more than spectacle.",
+   "placeholder": true
+  }
+ ]
+}
