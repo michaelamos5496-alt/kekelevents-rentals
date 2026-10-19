@@ -1,6 +1,6 @@
 // Site chrome: header, menu, footer, enquiry drawer, WhatsApp button. Injected so it lives in one place.
 import { loadSite, loadInventory, esc, picture, loadImages, reveal } from './util.js';
-import { enquiry, summary } from './enquiry.js';
+import { enquiry, summary, totals, money, daysLabel } from './enquiry.js';
 import { pop, menuIn, buttons } from './motion.js';
 
 const NAV = [['index.html', 'Home'], ['collections.html', 'Rentals'], ['services.html', 'Styling'], ['portfolio.html', 'Portfolio'], ['about.html', 'About'], ['enquire.html', 'Enquire']];
@@ -12,6 +12,7 @@ export function whatsappUrl(site, text) {
 
 export async function initLayout() {
   const [site, inv, dims] = await Promise.all([loadSite(), loadInventory(), loadImages()]);
+  enquiry.setLimits(Object.fromEntries(inv.items.map((i) => [i.slug, i.quantity])));
   const page = location.pathname.split('/').pop() || 'index.html';
   const mode = document.body.dataset.header, over = mode === 'over', tint = mode === 'tint'; // 'over': white text on a photo; 'tint': transparent on a grey hero
   if (!site.showPlaceholderTags) document.documentElement.classList.add('hide-placeholders');
@@ -44,7 +45,7 @@ export async function initLayout() {
         <div class="footer__col"><h2>Follow us</h2><ul><li><a href="https://instagram.com/${esc(site.instagram)}" rel="noopener">Instagram</a></li><li>${esc(site.city)}</li></ul></div>
         <div class="footer__col"><h2>Enquire</h2><ul><li>${esc(site.serviceArea)}</li></ul><a class="btn" href="enquire.html">Begin your enquiry</a></div>
       </div>
-      <div class="footer__legal"><span>© ${new Date().getFullYear()} ${esc(site.name)}. All rights reserved.</span><span>Rental rates shared on request.</span></div>
+      <div class="footer__legal"><span>© ${new Date().getFullYear()} ${esc(site.name)}. All rights reserved.</span><span>Rates are per day and confirmed in your quote.</span></div>
     </div></footer>
     <dialog class="drawer" id="drawer" aria-labelledby="drawer-title"><div class="drawer__inner">
       <div class="drawer__head"><h2 id="drawer-title">Your cart</h2><button class="drawer__close" type="button" data-close-enquiry aria-label="Close">×</button></div>
@@ -74,21 +75,24 @@ export async function initLayout() {
     counts.forEach((c) => { c.textContent = list.length; if (grew) pop(c); });
     links.forEach((l) => l.setAttribute('data-count', list.length));
     if (!list.length) {
-      body.innerHTML = '<div class="drawer__empty"><p class="lede">Your cart is empty.</p><p>Add pieces from the rentals and they will wait here, ready to send as a quote request.</p></div>';
+      body.innerHTML = '<div class="drawer__empty"><p class="lede">Your cart is empty.</p><p>Add pieces from the rentals and they will wait here until you check out.</p></div>';
       foot.innerHTML = '<a class="btn" href="collections.html">Browse rentals</a>';
       return;
     }
-    body.innerHTML = list.map((i) => {
-      const it = inv.items.find((x) => x.slug === i.slug); if (!it) return '';
-      return `<div class="drawer-item" data-slug="${esc(i.slug)}">
+    const t = totals(list, inv);
+    body.innerHTML = t.lines.map(({ item: it, qty, unit, line }) => `<div class="drawer-item" data-slug="${esc(it.slug)}">
         <a class="media" href="item.html?i=${esc(it.slug)}">${picture(it.image, it.alt, dims[it.image], { sizes: '72px' })}</a>
-        <div><h3>${esc(it.name)}</h3><div class="qty" role="group" aria-label="Quantity for ${esc(it.name)}"><button type="button" data-dec aria-label="Decrease">−</button><output>${i.qty}</output><button type="button" data-inc aria-label="Increase">+</button></div></div>
-        <button class="drawer-item__remove" type="button" data-remove aria-label="Remove ${esc(it.name)}">Remove</button></div>`;
-    }).join('');
-    foot.innerHTML = `<a class="btn btn--solid" href="enquire.html">Request a quote</a>
-      <a class="btn" href="${esc(whatsappUrl(site, `${site.whatsapp.message}\n\n${summary(list, inv)}`))}" target="_blank" rel="noopener">Send on WhatsApp</a>
-      <p>No payment is taken online. We confirm availability and rates, then send your quote.</p>`;
+        <div><h3>${esc(it.name)}</h3><small>${money(unit)} per day</small><div class="qty" role="group" aria-label="Quantity for ${esc(it.name)}"><button type="button" data-dec aria-label="Decrease">−</button><output>${qty}</output><button type="button" data-inc aria-label="Increase"${qty >= enquiry.max(it.slug) ? ' disabled' : ''}>+</button></div></div>
+        <div class="drawer-item__side"><strong>${money(line)}</strong><button class="drawer-item__remove" type="button" data-remove aria-label="Remove ${esc(it.name)}">Remove</button></div></div>`).join('');
+    foot.innerHTML = `<div class="sum-row"><span id="days-l">Rental days</span><div class="qty" role="group" aria-labelledby="days-l"><button type="button" data-days-dec aria-label="Fewer days">−</button><output>${t.days}</output><button type="button" data-days-inc aria-label="More days">+</button></div></div>
+      <div class="sum-row"><span>Subtotal · ${daysLabel(t.days)}</span><strong>${money(t.subtotal)}</strong></div>
+      <div class="sum-row sum-row--muted"><span>Delivery</span><span>${esc(site.cart.deliveryNote)}</span></div>
+      <a class="btn btn--solid" href="enquire.html">Checkout</a>
+      <a class="btn" href="cart.html">View cart</a>
+      ${site.cart.ratesPlaceholder ? '<span class="ph-note">Placeholder rates</span>' : ''}
+      <p>${esc(site.cart.paymentNote)}</p>`;
   }
+  foot.addEventListener('click', (e) => { if (e.target.closest('[data-days-inc]')) enquiry.setDays(enquiry.days() + 1); if (e.target.closest('[data-days-dec]')) enquiry.setDays(enquiry.days() - 1); });
   body.addEventListener('click', (e) => {
     const row = e.target.closest('.drawer-item'); if (!row) return;
     const slug = row.dataset.slug, cur = enquiry.all().find((x) => x.slug === slug);

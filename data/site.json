@@ -31,5 +31,11 @@
    "Birthday or celebration",
    "Other"
   ]
+ },
+ "cart": {
+  "_note": "Cart copy. Set ratesPlaceholder to false once real rates are in data/inventory.json.",
+  "ratesPlaceholder": true,
+  "deliveryNote": "Calculated in your quote",
+  "paymentNote": "No payment is taken online. We confirm availability and delivery, then send your final quote."
  }
 }

@@ -300,6 +300,35 @@ html.hide-placeholders .ph-note { display: none; }
 @media (min-width: 62rem) { .footer__brand { grid-column: span 3; } .footer__col { grid-column: span 2; } .footer__col:last-of-type { grid-column: span 3; } }
 .footer__legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 2rem; padding-top: 1.5rem; border-top: 1px solid rgb(255 255 255 / 0.18); font-size: 0.75rem; color: rgb(255 255 255 / 0.6); }
 
+/* Cart, prices and quantity */
+.sum-row { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--hairline); font-size: 0.9rem; }
+.sum-row--muted { color: var(--stone); font-size: 0.85rem; } .sum-row--total { border-bottom: 0; font-size: 1.05rem; padding-top: 1rem; } .sum-row--total strong { font-size: 1.35rem; font-weight: 600; }
+.drawer-item__side { display: grid; justify-items: end; gap: 0.35rem; text-align: right; } .drawer-item__side strong { font-size: 0.95rem; font-weight: 600; }
+.drawer-item small, .enq-item small { display: block; font-size: 0.78rem; margin-top: 0.15rem; }
+.drawer__foot .sum-row { padding: 0.45rem 0; border-bottom: 0; }
+.qty button:disabled { opacity: 0.35; cursor: not-allowed; }
+.card__price { font-weight: 600; color: var(--charcoal); font-size: 1rem; } .card__qty { line-height: 1.4; }
+.detail__price { font-size: 1.6rem; font-weight: 500; letter-spacing: -0.02em; margin: 0 0 1.5rem; } .detail__price span { font-size: 0.9rem; color: var(--stone); font-weight: 400; letter-spacing: 0; }
+.buybox { display: grid; gap: 0.9rem; margin-bottom: 1.25rem; } .buybox .qty { justify-self: start; } .qty--lg button { width: 2.75rem; height: 2.75rem; font-size: 1.25rem; } .qty--lg output { min-width: 3rem; font-size: 1rem; }
+.buybox__total { margin: 0; font-size: 0.9rem; color: var(--stone); }
+.cart { display: grid; grid-template-columns: 1fr; gap: 3rem; padding-bottom: var(--section); }
+@media (min-width: 62rem) { .cart:has(.cart__summary) { grid-template-columns: 8fr 4fr; gap: clamp(3rem, 5vw, 6rem); align-items: start; } .cart__summary { position: sticky; top: calc(var(--header-h) + 2rem); } }
+.cart__head { display: none; }
+@media (min-width: 48rem) { .cart__head { display: grid; grid-template-columns: 1fr 7rem 8.5rem 7rem; gap: 1rem; padding-bottom: 0.9rem; border-bottom: 1px solid var(--charcoal); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); } .cart__head span:not(:first-child) { text-align: right; } .cart__head span:nth-child(3) { text-align: center; } }
+.cart-line { display: grid; grid-template-columns: 5.5rem 1fr; gap: 0.75rem 1rem; padding-block: 1.25rem; border-bottom: 1px solid var(--hairline); align-items: center; }
+.cart-line__media { aspect-ratio: 5 / 6; grid-row: span 2; }
+.cart-line__info h2 { font-size: 1.1rem; font-weight: 500; letter-spacing: -0.01em; margin: 0.2rem 0 0.4rem; } .cart-line__info h2 a:hover { color: var(--blue); }
+.cart-line__remove { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); text-decoration: underline; text-underline-offset: 0.3em; padding: 0.35rem 0; } .cart-line__remove:hover { color: var(--blue); }
+.cart-line .qty { justify-self: start; margin: 0; } .cart-line__price, .cart-line__total { font-size: 0.9rem; }
+.cart-line__total small { display: block; color: var(--stone); font-size: 0.75rem; }
+.cart-line__price::before, .cart-line__total::before { content: attr(data-label) " "; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); display: block; }
+@media (min-width: 48rem) {
+  .cart-line { grid-template-columns: 5.5rem 1fr 7rem 8.5rem 7rem; } .cart-line__media { grid-row: auto; }
+  .cart-line .qty { justify-self: center; } .cart-line__price, .cart-line__total { text-align: right; } .cart-line__price::before, .cart-line__total::before { display: none; }
+}
+.cart__foot { display: flex; justify-content: space-between; padding-top: 1.25rem; }
+.cart__summary { border: 1px solid var(--hairline); padding: 1.5rem; } .cart__checkout { width: 100%; margin: 1.25rem 0 1rem; } .cart__fine { font-size: 0.8rem; margin: 0.75rem 0 0; }
+
 /* About page */
 .about-intro { display: grid; grid-template-columns: 1fr; gap: 2.5rem; padding-bottom: var(--section); align-items: center; }
 .about-intro__figure { aspect-ratio: 4 / 5; }

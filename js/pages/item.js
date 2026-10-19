@@ -1,5 +1,5 @@
 import { esc, picture, byCategory, reveal } from '../util.js';
-import { enquiry } from '../enquiry.js';
+import { enquiry, money, daysLabel } from '../enquiry.js';
 import { card, bindAdd } from './shared.js';
 
 export default function ({ inv, dims }) {
@@ -26,9 +26,14 @@ export default function ({ inv, dims }) {
         <span class="label label--accent">${esc(cat.name)}</span>
         <h1>${esc(it.name)}</h1>
         <p class="detail__note">${esc(it.note)}</p>
+        <p class="detail__price">${money(it.price)} <span>per day</span></p>
         <dl class="specs"><div><dt>Material</dt><dd>${esc(it.material)}</dd></div><div><dt>Dimensions</dt><dd>${esc(it.dimensions)}</dd></div><div><dt>To hire</dt><dd>${it.quantity}</dd></div></dl>
-        <div class="detail__actions"><button class="btn btn--solid" type="button" data-add="${esc(it.slug)}" data-long="1" aria-pressed="${enquiry.has(it.slug)}">${enquiry.has(it.slug) ? 'Added to cart' : 'Add to cart'}</button><button class="btn" type="button" data-open-enquiry>View cart</button></div>
-        <p class="detail__note-small">Rental rates are shared on request. Items in your cart are not reserved until we confirm availability.</p>
+        <div class="buybox"><span class="label" id="qty-l">Quantity</span>
+          <div class="qty qty--lg" role="group" aria-labelledby="qty-l"><button type="button" id="q-dec" aria-label="Decrease quantity">−</button><output id="q-out" aria-live="polite">1</output><button type="button" id="q-inc" aria-label="Increase quantity">+</button></div>
+          <p class="buybox__total" id="q-total" aria-live="polite"></p>
+          <button class="btn btn--solid" type="button" id="add-cart">Add to cart</button>
+          <button class="btn" type="button" data-open-enquiry>View cart</button></div>
+        <p class="detail__note-small">Priced per day. Choose the number of rental days in your cart. Items in your cart are not reserved until we confirm availability.</p>
         ${it.placeholder ? '<span class="ph-note">Placeholder details</span>' : ''}
       </div>
     </div>
@@ -45,5 +50,19 @@ export default function ({ inv, dims }) {
     cur.replaceWith(next);
     root.querySelectorAll('.gallery__thumb').forEach((b) => b.setAttribute('aria-current', b === t));
   });
+  // Quantity and add-to-cart: shows the current cart quantity if the piece is already in it.
+  const out = document.getElementById('q-out'), tot = document.getElementById('q-total'), addBtn = document.getElementById('add-cart');
+  let qty = enquiry.all().find((x) => x.slug === it.slug)?.qty || 1;
+  const paintBuy = () => {
+    const inCart = enquiry.all().find((x) => x.slug === it.slug);
+    out.textContent = qty;
+    document.getElementById('q-dec').disabled = qty <= 1; document.getElementById('q-inc').disabled = qty >= it.quantity;
+    tot.textContent = `${money(it.price * qty)} per day · ${money(it.price * qty * enquiry.days())} for ${daysLabel(enquiry.days())}`;
+    addBtn.textContent = !inCart ? 'Add to cart' : inCart.qty === qty ? 'In your cart' : 'Update cart';
+  };
+  document.getElementById('q-dec').addEventListener('click', () => { qty = Math.max(1, qty - 1); paintBuy(); });
+  document.getElementById('q-inc').addEventListener('click', () => { qty = Math.min(it.quantity, qty + 1); paintBuy(); });
+  addBtn.addEventListener('click', () => { enquiry.add(it.slug, qty); paintBuy(); });
+  enquiry.subscribe(paintBuy); paintBuy();
   bindAdd(root); reveal(root);
 }

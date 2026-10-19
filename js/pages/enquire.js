@@ -1,6 +1,6 @@
 // Enquiry page: the cart summary, the form, and delivery (form endpoint if configured, otherwise WhatsApp).
 import { esc, picture, reveal } from '../util.js';
-import { enquiry, summary } from '../enquiry.js';
+import { enquiry, summary, totals, money, daysLabel } from '../enquiry.js';
 import { whatsappUrl } from '../layout.js';
 
 export default function ({ site, inv, dims }) {
@@ -22,13 +22,15 @@ export default function ({ site, inv, dims }) {
     if (!list.length) {
       cartBox.innerHTML = '<p class="enq__empty">Nothing in your cart yet. <a href="collections.html">Browse the rentals</a> to add pieces, or simply tell us what you need below.</p>';
     } else {
-      cartBox.innerHTML = list.map((i) => {
-        const it = inv.items.find((x) => x.slug === i.slug); if (!it) return '';
-        return `<div class="enq-item" data-slug="${esc(i.slug)}">
+      const t = totals(list, inv);
+      cartBox.innerHTML = t.lines.map(({ item: it, qty, unit, line }) => `<div class="enq-item" data-slug="${esc(it.slug)}">
           <a class="media" href="item.html?i=${esc(it.slug)}" tabindex="-1" aria-hidden="true">${picture(it.image, '', dims[it.image], { sizes: '56px' })}</a>
-          <div><h3>${esc(it.name)}</h3><div class="qty" role="group" aria-label="Quantity for ${esc(it.name)}"><button type="button" data-dec aria-label="Decrease">−</button><output>${i.qty}</output><button type="button" data-inc aria-label="Increase">+</button></div></div>
-          <button class="drawer-item__remove" type="button" data-remove aria-label="Remove ${esc(it.name)}">Remove</button></div>`;
-      }).join('');
+          <div><h3>${esc(it.name)}</h3><small class="muted">${money(unit)} per day</small><div class="qty" role="group" aria-label="Quantity for ${esc(it.name)}"><button type="button" data-dec aria-label="Decrease">−</button><output>${qty}</output><button type="button" data-inc aria-label="Increase"${qty >= enquiry.max(it.slug) ? ' disabled' : ''}>+</button></div></div>
+          <div class="drawer-item__side"><strong>${money(line)}</strong><button class="drawer-item__remove" type="button" data-remove aria-label="Remove ${esc(it.name)}">Remove</button></div></div>`).join('')
+        + `<div class="sum-row"><span>Rental period</span><span>${daysLabel(t.days)}</span></div>
+        <div class="sum-row sum-row--total"><span>Estimated total</span><strong>${money(t.subtotal)}</strong></div>
+        <a class="link" href="cart.html">Edit cart and rental days</a>
+        ${site.cart.ratesPlaceholder ? '<span class="ph-note">Placeholder rates</span>' : ''}`;
     }
     $('enq-wa').href = whatsappUrl(site, buildMessage(readForm()));
   }
@@ -89,7 +91,7 @@ export default function ({ site, inv, dims }) {
     let via = 'whatsapp';
     try {
       if (cfg.endpoint) {
-        const res = await fetch(cfg.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ ...d, website: undefined, pieces: enquiry.all().map((i) => ({ ...i, name: inv.items.find((x) => x.slug === i.slug)?.name })), summary: message }) });
+        const res = await fetch(cfg.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ ...d, website: undefined, days: enquiry.days(), estimatedTotal: totals(enquiry.all(), inv).subtotal, pieces: enquiry.all().map((i) => ({ ...i, name: inv.items.find((x) => x.slug === i.slug)?.name })), summary: message }) });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         via = 'form';
       }

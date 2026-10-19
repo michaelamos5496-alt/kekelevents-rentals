@@ -51,7 +51,8 @@
     "classic",
     "warm"
    ],
-   "placeholder": true
+   "placeholder": true,
+   "price": 28
   },
   {
    "slug": "studio-chair-green",
@@ -71,7 +72,8 @@
     "modern",
     "warm"
    ],
-   "placeholder": true
+   "placeholder": true,
+   "price": 30
   },
   {
    "slug": "club-armchair-leather",
@@ -91,7 +93,8 @@
     "classic",
     "warm"
    ],
-   "placeholder": true
+   "placeholder": true,
+   "price": 180
   },
   {
    "slug": "reclaimed-bench",
@@ -111,7 +114,8 @@
     "modern",
     "warm"
    ],
-   "placeholder": true
+   "placeholder": true,
+   "price": 120
   },
   {
    "slug": "crystal-wine-glass-pair",
@@ -131,7 +135,8 @@
     "classic",
     "minimal"
    ],
-   "placeholder": true
+   "placeholder": true,
+   "price": 6
   },
   {
    "slug": "red-wine-glass",
@@ -151,7 +156,8 @@
     "classic",
     "minimal"
    ],
-   "placeholder": true
+   "placeholder": true,
+   "price": 6
   },
   {
    "slug": "porcelain-dinner-plate",
@@ -171,7 +177,8 @@
     "minimal",
     "classic"
    ],
-   "placeholder": true
+   "placeholder": true,
+   "price": 8
   },
   {
    "slug": "gold-flatware",
@@ -191,7 +198,8 @@
     "classic",
     "warm"
    ],
-   "placeholder": true
+   "placeholder": true,
+   "price": 10
   },
   {
    "slug": "stoneware-bowls",
@@ -211,7 +219,8 @@
     "minimal",
     "modern"
    ],
-   "placeholder": true
+   "placeholder": true,
+   "price": 6
   },
   {
    "slug": "round-glass-table",
@@ -231,7 +240,8 @@
     "modern",
     "minimal"
    ],
-   "placeholder": true
+   "placeholder": true,
+   "price": 150
   },
   {
    "slug": "brass-candelabra",
@@ -251,7 +261,8 @@
     "classic",
     "warm"
    ],
-   "placeholder": true
+   "placeholder": true,
+   "price": 95
   },
   {
    "slug": "ceramic-vase-set",
@@ -271,7 +282,8 @@
     "minimal",
     "modern"
    ],
-   "placeholder": true
+   "placeholder": true,
+   "price": 70
   },
   {
    "slug": "ribbed-vases",
@@ -291,7 +303,8 @@
     "minimal",
     "modern"
    ],
-   "placeholder": true
+   "placeholder": true,
+   "price": 85
   },
   {
    "slug": "arc-floor-lamp",
@@ -311,7 +324,9 @@
     "modern",
     "minimal"
    ],
-   "placeholder": true
+   "placeholder": true,
+   "price": 140
   }
- ]
+ ],
+ "_pricing": "PLACEHOLDER rates in GH₵ per piece, per day. They exist so the cart can be built and tested. Replace every 'price' with the real daily rate before launch."
 }
