@@ -107,7 +107,6 @@ export function quoteIn(fig) {
    pointer only), plus a clip-path wipe as buttons scroll into view. All delegated, so buttons
    rendered later (cards, drawer, form states) animate too.
    --------------------------------------------------------------------------------------------- */
-const FINE = matchMedia('(hover: hover) and (pointer: fine)').matches;
 const SHAPED = '.btn, .slider__btn';
 const cssVar = (el, name) => getComputedStyle(el).getPropertyValue(name).trim();
 
@@ -120,42 +119,60 @@ function prep(b) {
 }
 
 export function buttons() {
-  if (!hasGsap() || !FINE) return;
+  if (!hasGsap()) return;
   setup();
   const round = (b) => (b.classList.contains('slider__btn') ? '50%' : '999px');
+  const enter = (b, d = 0.55) => {
+    prep(b); gsap.killTweensOf([b._fill, b]);
+    gsap.set(b._fill, { transformOrigin: 'left center' });
+    gsap.to(b._fill, { scaleX: 1, duration: d, ease: 'power3.out' });
+    gsap.to(b, { color: cssVar(b, '--fill-text'), borderRadius: round(b), duration: d, ease: 'power3.out' });
+  };
+  const leave = (b, d = 0.55) => {
+    if (!b._fx) return;
+    gsap.killTweensOf([b._fill, b]);
+    gsap.set(b._fill, { transformOrigin: 'right center' });
+    gsap.to(b._fill, { scaleX: 0, duration: d, ease: 'power3.out' });
+    b._qx(0); b._qy(0);
+    gsap.to(b, { color: cssVar(b, '--base-text'), borderRadius: 0, scale: 1, duration: d, ease: 'power3.out', onComplete: () => gsap.set(b, { clearProps: 'color,borderRadius,scale' }) });
+  };
+  const nudge = (t, x) => gsap.to(t, { x, duration: 0.4, overwrite: 'auto' });
+  const live = (e) => { const b = e.target.closest(SHAPED); return b && !b.disabled ? b : null; };
 
+  // Mouse: hover. Touch and pen: the same effect plays on press and settles shortly after release,
+  // because phones have no hover.
   document.addEventListener('pointerover', (e) => {
-    const b = e.target.closest(SHAPED);
-    if (b && !b.disabled && !b.contains(e.relatedTarget)) {
-      prep(b); gsap.killTweensOf([b._fill, b]);
-      gsap.set(b._fill, { transformOrigin: 'left center' });
-      gsap.to(b._fill, { scaleX: 1, duration: 0.55, ease: 'power3.out' });
-      gsap.to(b, { color: cssVar(b, '--fill-text'), borderRadius: round(b), duration: 0.55, ease: 'power3.out' });
-    }
-    const t = e.target.closest('.add, .link, .arrow-link');
-    if (t && !t.contains(e.relatedTarget)) gsap.to(t, { x: 5, duration: 0.4, overwrite: 'auto' });
+    if (e.pointerType !== 'mouse') return;
+    const b = live(e); if (b && !b.contains(e.relatedTarget)) enter(b);
+    const t = e.target.closest('.add, .link, .arrow-link'); if (t && !t.contains(e.relatedTarget)) nudge(t, 5);
   });
-
   document.addEventListener('pointerout', (e) => {
-    const b = e.target.closest(SHAPED);
-    if (b && b._fx && !b.contains(e.relatedTarget)) {
-      gsap.killTweensOf([b._fill, b]);
-      gsap.set(b._fill, { transformOrigin: 'right center' });
-      gsap.to(b._fill, { scaleX: 0, duration: 0.55, ease: 'power3.out' });
-      b._qx(0); b._qy(0);
-      gsap.to(b, { color: cssVar(b, '--base-text'), borderRadius: 0, scale: 1, duration: 0.55, ease: 'power3.out', onComplete: () => gsap.set(b, { clearProps: 'color,borderRadius,scale' }) });
-    }
-    const t = e.target.closest('.add, .link, .arrow-link');
-    if (t && !t.contains(e.relatedTarget)) gsap.to(t, { x: 0, duration: 0.4, overwrite: 'auto' });
+    if (e.pointerType !== 'mouse') return;
+    const b = e.target.closest(SHAPED); if (b && !b.contains(e.relatedTarget)) leave(b);
+    const t = e.target.closest('.add, .link, .arrow-link'); if (t && !t.contains(e.relatedTarget)) nudge(t, 0);
   });
-
   document.addEventListener('pointermove', (e) => {
+    if (e.pointerType !== 'mouse') return;
     const b = e.target.closest('.btn'); if (!b || !b._fx) return;
     const r = b.getBoundingClientRect(), clamp = (v) => Math.max(-8, Math.min(8, v));
     b._qx(clamp((e.clientX - (r.left + r.width / 2)) * 0.18)); b._qy(clamp((e.clientY - (r.top + r.height / 2)) * 0.25));
   });
-  document.addEventListener('pointerdown', (e) => { const b = e.target.closest(SHAPED); if (b && !b.disabled) gsap.to(b, { scale: 0.96, duration: 0.15, ease: 'power2.out' }); });
-  document.addEventListener('pointerup', (e) => { const b = e.target.closest(SHAPED); if (b) gsap.to(b, { scale: 1, duration: 0.5, ease: 'back.out(3)' }); });
+
+  let pressed;
+  document.addEventListener('pointerdown', (e) => {
+    const b = live(e); if (!b) return;
+    gsap.to(b, { scale: 0.96, duration: 0.15, ease: 'power2.out', overwrite: 'auto' });
+    if (e.pointerType !== 'mouse') { pressed = b; enter(b, 0.3); gsap.to(b, { scale: 0.96, duration: 0.15 }); }
+    const t = e.target.closest('.add, .link, .arrow-link'); if (t && e.pointerType !== 'mouse') nudge(t, 5);
+  });
+  const release = (e) => {
+    const b = e.target.closest(SHAPED);
+    if (b && e.pointerType === 'mouse') gsap.to(b, { scale: 1, duration: 0.5, ease: 'back.out(3)' });
+    if (e.pointerType !== 'mouse' && pressed) { const p = pressed; pressed = null; gsap.to(p, { scale: 1, duration: 0.5, ease: 'back.out(3)' }); gsap.delayedCall(e.type === 'pointerup' ? 0.45 : 0, () => leave(p, 0.6)); }
+    const t = e.target.closest('.add, .link, .arrow-link'); if (t && e.pointerType !== 'mouse') gsap.delayedCall(0.35, () => nudge(t, 0));
+  };
+  document.addEventListener('pointerup', release);
+  document.addEventListener('pointercancel', release); // fires when a touch turns into a scroll
   document.addEventListener('click', (e) => { const a = e.target.closest('.add'); if (a) gsap.fromTo(a, { scale: 1.12 }, { scale: 1, duration: 0.6, ease: 'back.out(3)' }); });
 }
 

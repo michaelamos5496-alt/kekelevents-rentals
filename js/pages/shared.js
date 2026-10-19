@@ -5,7 +5,7 @@ import { enquiry } from '../enquiry.js';
 export function card(it, cat, dims, delay = 0) {
   const on = enquiry.has(it.slug);
   return `<article class="card" data-reveal style="--d:${delay}ms" data-slug="${esc(it.slug)}">
-    <a class="card__image media r-45" href="item.html?i=${esc(it.slug)}" tabindex="-1" aria-hidden="true" ${it.placeholder ? 'data-placeholder' : ''}>${picture(it.image, '', dims[it.image], { sizes: '(min-width: 62rem) 30vw, 48vw' })}${it.gallery?.[0] ? `<span class="card__alt" aria-hidden="true">${picture(it.gallery[0], '', dims[it.gallery[0]], { sizes: '(min-width: 62rem) 30vw, 48vw' })}</span>` : ''}</a>
+    <a class="card__image media r-45" href="item.html?i=${esc(it.slug)}" tabindex="-1" aria-hidden="true" ${it.placeholder ? 'data-placeholder' : ''}>${picture(it.image, '', dims[it.image], { sizes: '(min-width: 75rem) 23vw, (min-width: 48rem) 31vw, 48vw' })}${it.gallery?.[0] ? `<span class="card__alt" aria-hidden="true">${picture(it.gallery[0], '', dims[it.gallery[0]], { sizes: '(min-width: 75rem) 23vw, (min-width: 48rem) 31vw, 48vw' })}</span>` : ''}</a>
     <div class="card__body">
       <span class="card__cat">${esc(cat?.name || '')}</span>
       <h3><a href="item.html?i=${esc(it.slug)}">${esc(it.name)}</a></h3>

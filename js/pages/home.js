@@ -32,7 +32,10 @@ export default async function ({ site, inv, dims }) {
   const count = document.getElementById('slide-count'), idx = () => Math.round(track.scrollLeft / track.clientWidth);
   let shown = 0;
   const go = (i) => track.scrollTo({ left: ((i + items.length) % items.length) * track.clientWidth, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
-  const paint = () => { const i = idx(); count.textContent = `0${i + 1} / 0${items.length}`; if (i !== shown) { shown = i; slideIn(track.children[i]); } };
+  const sdots = document.getElementById('slide-dots');
+  sdots.innerHTML = items.map((_, n) => `<button type="button" data-s="${n}" aria-label="Show setup ${n + 1}" aria-current="${n === 0}"></button>`).join('');
+  sdots.addEventListener('click', (e) => { const b = e.target.closest('[data-s]'); if (b) go(Number(b.dataset.s)); });
+  const paint = () => { const i = idx(); count.textContent = `0${i + 1} / 0${items.length}`; [...sdots.children].forEach((d, n) => d.setAttribute('aria-current', n === i)); if (i !== shown) { shown = i; slideIn(track.children[i]); } };
   track.addEventListener('scroll', paint, { passive: true });
   document.getElementById('slide-prev').addEventListener('click', () => go(idx() - 1));
   document.getElementById('slide-next').addEventListener('click', () => go(idx() + 1));
