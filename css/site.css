@@ -465,6 +465,35 @@ body.menu-open .site-header { background: transparent; -webkit-backdrop-filter: 
 }
 @media (max-width: 40rem) { .drawer { inset: 8px 8px 8px auto; width: calc(100vw - 16px); height: calc(100dvh - 16px); border-radius: 22px; } }
 
+/* ---- Screen-fit sections ----
+   Every main section is at least one screen tall (below the fixed header), its content centred, and the page
+   snaps gently from section to section. "proximity" keeps snapping soft so tall sections never trap the visitor. */
+html { scroll-snap-type: y proximity; scroll-padding-top: var(--header-h); }
+main section.section, main section.about, main section.about-intro, main .about-wide, main section.brands + section.collection {
+  min-height: calc(100svh - var(--header-h)); min-height: calc(100dvh - var(--header-h));
+  scroll-snap-align: start;
+}
+main section.section { display: flex; flex-direction: column; justify-content: center; }
+main section.about-intro { align-content: center; }
+@media (min-width: 40rem) { .collection__dots { display: none; } }
+main section.section { padding-block: clamp(2.5rem, 7vh, 5rem); } /* vh-based, so a section keeps its content inside one screen */
+.section-head { margin-bottom: clamp(1.25rem, 4vh, 3rem); }
+@media (min-width: 62rem) {
+  main section.about-intro .about-intro__figure { aspect-ratio: auto; height: min(68dvh, 40rem); }
+  .service { padding-block: clamp(1rem, 3vh, 2.25rem); }
+  .tile .media { aspect-ratio: 16 / 10; }
+}
+main section.about { display: grid; align-content: stretch; }
+@media (min-width: 62rem) { main section.about .about__figure .media { height: 100%; min-height: 0; } }
+main section.about .about__figure { min-height: 16rem; }
+main section.about-intro { padding-block: 2rem; }
+main .about-wide { height: calc(100dvh - var(--header-h)); min-height: 18rem; }
+.hero { scroll-snap-align: start; scroll-margin-top: 0; }
+@media (min-width: 62rem) { .hero { height: calc(100dvh - 6.75rem); min-height: 34rem; } }
+.brands { scroll-snap-align: end; }
+.site-footer { scroll-snap-align: end; }
+@media (prefers-reduced-motion: reduce) { html { scroll-snap-type: none; } }
+
 /* ---- 11. Motion ---- */
 /* Button effects (GSAP adds .fx and a fill span on first hover). Vars set the fill colour, the text colour while filled, and the resting look. */
 .btn, .slider__btn { --fill: var(--blue); --fill-text: #fff; --base-text: var(--blue); --base-bg: transparent; }
