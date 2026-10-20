@@ -1,5 +1,5 @@
 import { esc, picture, loadSetups, loadJSON, byCategory, reveal } from '../util.js';
-import { heroIntro, parallax, settleImages, slideIn, quoteIn } from '../motion.js';
+import { heroIntro, parallax, settleImages, slideIn, quoteIn, marquee } from '../motion.js';
 
 const FEATURED = [
   ['lounge', 'ref-chair', 'A pale upholstered armchair with a timber frame'],
@@ -13,6 +13,13 @@ export default async function ({ site, inv, dims }) {
     const cat = byCategory(inv, id);
     return `<a class="tile" href="collections.html?c=${id}" data-reveal style="--d:${n * 80}ms"><div class="media" data-placeholder>${picture(img, alt, dims[img], { sizes: '(min-width: 40rem) 30vw, 100vw' })}</div><h3>${esc(cat.name)}</h3><span class="tile__go">View rentals →</span></a>`;
   }).join('');
+
+  // Brands strip under the hero: a slow, endless slide. The list is repeated so the loop has no seam.
+  const brandData = await loadJSON('data/brands.json');
+  const brandTrack = document.getElementById('brands-track'), cell = (b) => `<li class="brand">${b.logo ? `<img src="${esc(b.logo)}" alt="${esc(b.name)}" height="32" loading="lazy">` : `<span>${esc(b.name)}</span>`}</li>`;
+  brandTrack.innerHTML = brandData.items.map(cell).join('') + brandData.items.map((b) => cell(b).replace('<li class="brand">', '<li class="brand" aria-hidden="true">')).join('');
+  if (brandData.placeholder) document.getElementById('brands-ph').hidden = false;
+  marquee(document.getElementById('brands'), brandTrack);
 
   // Mobile slide: dots follow the scroll position and jump to a card when tapped.
   const grid = document.getElementById('featured'), cdots = document.getElementById('coll-dots');

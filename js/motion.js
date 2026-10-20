@@ -176,6 +176,19 @@ export function buttons() {
   document.addEventListener('click', (e) => { const a = e.target.closest('.add'); if (a) gsap.fromTo(a, { scale: 1.12 }, { scale: 1, duration: 0.6, ease: 'back.out(3)' }); });
 }
 
+/** Endless horizontal slide for the brands strip. Pauses on hover and focus; static (scrollable) when motion is reduced. */
+export function marquee(box, track) {
+  if (!box || !track) return;
+  if (!hasGsap()) { if (!reduced) track.classList.add('is-css'); return; }
+  setup();
+  // The track holds the list twice, so sliding it by half its width loops seamlessly.
+  const tween = gsap.to(track, { xPercent: -50, duration: 38, ease: 'none', repeat: -1 });
+  box.addEventListener('mouseenter', () => gsap.to(tween, { timeScale: 0, duration: 0.6 }));
+  box.addEventListener('mouseleave', () => gsap.to(tween, { timeScale: 1, duration: 0.6 }));
+  box.addEventListener('focusin', () => gsap.to(tween, { timeScale: 0, duration: 0.4 }));
+  box.addEventListener('focusout', () => gsap.to(tween, { timeScale: 1, duration: 0.6 }));
+}
+
 /** Buttons wipe in from the left, their corners easing from pill to square, as they scroll into view. */
 export function buttonsIn(root = document) {
   if (!hasGsap()) return;

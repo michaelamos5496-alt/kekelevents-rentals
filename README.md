@@ -7,7 +7,7 @@ Static HTML5 / CSS3 / vanilla JS (ES modules). No build step.
 
 ## Structure
 - `index.html`, `collections.html` (filterable, `?c=seating`), `item.html?i=<slug>`: built.
-- `cart.html`: built (line items, quantity limits, rental days, totals). `enquire.html`: built (form + cart summary + WhatsApp). `about.html`: built (copy is placeholder). `portfolio.html` and `project.html?p=<slug>`: built from `data/projects.json` (placeholder projects). `services.html`: marked stub, next phase.
+- `cart.html`: built (line items, quantity limits, rental days, totals). `enquire.html`: built (form + cart summary + WhatsApp). `about.html`: built (copy is placeholder). `portfolio.html` and `project.html?p=<slug>`: built from `data/projects.json` (placeholder projects). `services.html` (Styling): built, copy is placeholder.
 - `data/inventory.json` (items + categories), `data/setups.json`, `data/site.json` (name, copy, WhatsApp, placeholder tags).
 - `js/enquiry.js`: the enquiry list (localStorage, no prices, no personal data; a request for a quote, not a reservation).
 

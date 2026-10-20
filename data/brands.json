@@ -1,0 +1,14 @@
+{
+ "_note": "PLACEHOLDER brands. No client list has been supplied, so these are generic placeholders and are tagged on the page. Replace each entry with a real client (and, ideally, add \"logo\": \"assets/brands/name.svg\" with permission to use it), then set \"placeholder\" to false. Do not publish brands that have not worked with the studio.",
+ "placeholder": true,
+ "items": [
+  { "name": "Brand name 01" },
+  { "name": "Brand name 02" },
+  { "name": "Brand name 03" },
+  { "name": "Brand name 04" },
+  { "name": "Brand name 05" },
+  { "name": "Brand name 06" },
+  { "name": "Brand name 07" },
+  { "name": "Brand name 08" }
+ ]
+}
