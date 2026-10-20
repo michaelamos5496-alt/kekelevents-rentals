@@ -7,4 +7,10 @@
   <url><loc>https://kekelrentals.example/about.html</loc></url>
   <url><loc>https://kekelrentals.example/enquire.html</loc></url>
   <url><loc>https://kekelrentals.example/cart.html</loc></url>
+  <url><loc>https://kekelrentals.example/project.html?p=the-long-table</loc></url>
+  <url><loc>https://kekelrentals.example/project.html?p=ceremony-on-the-lawn</loc></url>
+  <url><loc>https://kekelrentals.example/project.html?p=white-and-gold-reception</loc></url>
+  <url><loc>https://kekelrentals.example/project.html?p=candlelit-supper</loc></url>
+  <url><loc>https://kekelrentals.example/project.html?p=dinner-by-the-water</loc></url>
+  <url><loc>https://kekelrentals.example/project.html?p=evening-terrace</loc></url>
 </urlset>

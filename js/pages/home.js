@@ -27,7 +27,7 @@ export default async function ({ site, inv, dims }) {
   track.innerHTML = items.map((s, n) => `
     <article class="slide" role="group" aria-roledescription="slide" aria-label="${n + 1} of ${items.length}">
       <div class="slide__figure media" ${s.placeholder ? 'data-placeholder' : ''}>${picture(s.image, s.alt, dims[s.image], { sizes: '(min-width: 62rem) 58vw, 100vw' })}</div>
-      <div class="slide__text"><span class="setup__num">0${n + 1}</span><span class="label" style="display:block;margin-top:.5rem">${esc(s.type)} · ${esc(s.location)}</span><h3>${esc(s.title)}</h3><p>${esc(s.blurb)}</p><a class="arrow-link" href="portfolio.html">View the portfolio →</a></div>
+      <div class="slide__text"><span class="setup__num">0${n + 1}</span><span class="label" style="display:block;margin-top:.5rem">${esc(s.type)} · ${esc(s.location)}</span><h3>${esc(s.title)}</h3><p>${esc(s.blurb)}</p><a class="arrow-link" href="project.html?p=${esc(s.slug)}">View this project →</a></div>
     </article>`).join('');
   const count = document.getElementById('slide-count'), idx = () => Math.round(track.scrollLeft / track.clientWidth);
   let shown = 0;

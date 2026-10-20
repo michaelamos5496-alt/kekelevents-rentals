@@ -8,7 +8,8 @@
    "image": "26975888",
    "alt": "A long dinner table set on a lawn at dusk beneath trees",
    "blurb": "One table, one evening, no centrepiece taller than a glass. Timber, linen and candlelight did the rest.",
-   "placeholder": true
+   "placeholder": true,
+   "slug": "the-long-table"
   },
   {
    "title": "Ceremony on the Lawn",
@@ -17,7 +18,8 @@
    "image": "35985252",
    "alt": "Rows of white chairs facing a floral arch across a lawn",
    "blurb": "An aisle of white blooms, a quiet frame and chairs that disappeared into the grass.",
-   "placeholder": true
+   "placeholder": true,
+   "slug": "ceremony-on-the-lawn"
   },
   {
    "title": "White & Gold Reception",
@@ -26,7 +28,8 @@
    "image": "11450795",
    "alt": "White and gold chairs beneath ceilings of draped fabric",
    "blurb": "Draped ceilings, gilded chairs and ivory linen, kept calm by restraint.",
-   "placeholder": true
+   "placeholder": true,
+   "slug": "white-and-gold-reception"
   },
   {
    "title": "Candlelit Supper",
@@ -35,7 +38,8 @@
    "image": "30742026",
    "alt": "A long table with a draped runner lit by many candles",
    "blurb": "A long table lit only by candles, for a launch that needed warmth more than spectacle.",
-   "placeholder": true
+   "placeholder": true,
+   "slug": "candlelit-supper"
   }
  ]
 }

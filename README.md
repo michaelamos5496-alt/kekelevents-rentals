@@ -7,7 +7,7 @@ Static HTML5 / CSS3 / vanilla JS (ES modules). No build step.
 
 ## Structure
 - `index.html`, `collections.html` (filterable, `?c=seating`), `item.html?i=<slug>`: built.
-- `cart.html`: built (line items, quantity limits, rental days, totals). `enquire.html`: built (form + cart summary + WhatsApp). `about.html`: built (copy is placeholder). `services.html`, `portfolio.html`: marked stubs, next phase.
+- `cart.html`: built (line items, quantity limits, rental days, totals). `enquire.html`: built (form + cart summary + WhatsApp). `about.html`: built (copy is placeholder). `portfolio.html` and `project.html?p=<slug>`: built from `data/projects.json` (placeholder projects). `services.html`: marked stub, next phase.
 - `data/inventory.json` (items + categories), `data/setups.json`, `data/site.json` (name, copy, WhatsApp, placeholder tags).
 - `js/enquiry.js`: the enquiry list (localStorage, no prices, no personal data; a request for a quote, not a reservation).
 
@@ -17,6 +17,7 @@ Drop a JPEG in `assets/images/raw/<id>.jpg`, run `python3 scripts/make-images.py
 ## Placeholder checklist
 - All photographs are Pexels stock (ids = file names in `assets/images/raw/`), tagged "Placeholder" on screen. Replace with real photography.
 - Whole inventory (names, quantities, dimensions) is placeholder. Testimonial and intro copy are placeholder.
+- Portfolio: `data/projects.json` is PLACEHOLDER (stock photos, generic text, no client names or years). Replace each project with a real event.
 - Rates: every `price` in `data/inventory.json` is a PLACEHOLDER daily rate in GH₵ per piece. Replace them, then set `cart.ratesPlaceholder` to false in `data/site.json` to hide the tags. Delivery is not priced; the cart says it is calculated in the quote.
 - Enquiry delivery: `data/site.json` → `enquiry.endpoint` (a form service URL that accepts a JSON POST, e.g. a Formspree form). While empty, submitting opens WhatsApp with the full enquiry pre-filled. Budget ranges and event types are in the same block.
 - WhatsApp number: `data/site.json` → `whatsapp.number` (e.g. 233XXXXXXXXX). Empty for now.
