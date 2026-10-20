@@ -47,7 +47,7 @@ export async function initLayout() {
         <div class="footer__col"><h2>Follow us</h2><ul><li><a href="https://instagram.com/${esc(site.instagram)}" rel="noopener">Instagram</a></li><li>${esc(site.city)}</li></ul></div>
         <div class="footer__col"><h2>Enquire</h2><ul><li>${esc(site.serviceArea)}</li></ul><a class="btn" href="enquire.html">Begin your enquiry</a></div>
       </div>
-      <div class="footer__legal"><span>© ${new Date().getFullYear()} ${esc(site.name)}. All rights reserved.</span><span>Rates are per day and confirmed in your quote.</span></div>
+      <div class="footer__legal"><span>© ${new Date().getFullYear()} ${esc(site.name)}. All rights reserved.</span><span>Designed and Developed by <a class="credit" href="https://theimagedept.vercel.app/index.html" target="_blank" rel="noopener">TheImagedept</a></span></div>
     </div></footer>
     <dialog class="drawer" id="drawer" aria-labelledby="drawer-title"><div class="drawer__inner">
       <div class="drawer__head"><h2 id="drawer-title">Your cart</h2><button class="drawer__close" type="button" data-close-enquiry aria-label="Close">×</button></div>

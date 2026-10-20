@@ -298,6 +298,7 @@ html.hide-placeholders .ph-note { display: none; }
 .footer__col .btn { margin-top: 1rem; min-height: 2.6rem; padding: 0.7rem 1.4rem; background: var(--blue); border-color: var(--blue); color: #fff; } .footer__col .btn:hover { background: #fff; color: var(--blue); border-color: #fff; }
 .site-footer :focus-visible { outline-color: #fff; }
 @media (min-width: 62rem) { .footer__brand { grid-column: span 3; } .footer__col { grid-column: span 2; } .footer__col:last-of-type { grid-column: span 3; } }
+.credit { color: #fff; text-decoration: underline; text-underline-offset: 0.3em; text-decoration-color: rgb(255 255 255 / 0.4); transition: text-decoration-color 0.3s; } .credit:hover { text-decoration-color: #fff; }
 .footer__legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 2rem; padding-top: 1.5rem; border-top: 1px solid rgb(255 255 255 / 0.18); font-size: 0.75rem; color: rgb(255 255 255 / 0.6); }
 
 .btn--clear { min-height: 2.6rem; padding: 0.6rem 1.3rem; --fill: #9b2c2c; --fill-text: #fff; --base-text: #9b2c2c; border-color: #9b2c2c; color: #9b2c2c; } .btn--clear:hover { background: #9b2c2c; color: #fff; }
