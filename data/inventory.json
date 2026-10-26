@@ -203,6 +203,139 @@
     "warm"
    ],
    "price": 150
+  },
+  {
+   "slug": "rustic-cocktail-chair",
+   "name": "Rustic Cocktail Chair",
+   "category": "seating",
+   "note": "A tall cane-back bar stool on an oak-finish frame, with a cream linen seat and footrest.",
+   "quantity": 100,
+   "material": "Oak-finish wood frame, natural cane back, cream linen seat",
+   "dimensions": "On request",
+   "image": "rustic-cocktail",
+   "alt": "A front view of a tall cane-back bar stool with a cream seat on an oak-finish frame, on white",
+   "gallery": [
+    "rustic-cocktail-detail1"
+   ],
+   "mood": [
+    "classic",
+    "warm"
+   ],
+   "price": 50
+  },
+  {
+   "slug": "rustic-cocktail-table",
+   "name": "Rustic Cocktail Table",
+   "category": "tablescape",
+   "note": "A round solid oak tabletop on a cross-leg pedestal base, for standing receptions.",
+   "quantity": 100,
+   "material": "Solid oak",
+   "dimensions": "On request",
+   "image": "rustic-cocktail-table",
+   "alt": "A round solid oak cocktail table on a cross-leg pedestal base, on white",
+   "gallery": [
+    "rustic-cocktail-table-detail1"
+   ],
+   "mood": [
+    "classic",
+    "warm"
+   ],
+   "price": 250
+  },
+  {
+   "slug": "white-louis-chair",
+   "name": "White Louis Chair",
+   "category": "seating",
+   "note": "A carved oval back and fluted cabriole legs in a glossy white finish, with a cream seat.",
+   "quantity": 100,
+   "material": "Glossy white-finish carved wood frame, cream upholstered back and seat",
+   "dimensions": "On request",
+   "image": "white-louis",
+   "alt": "A front view of a glossy white Louis chair with a carved oval back and cream seat, on white",
+   "gallery": [
+    "white-louis-detail1"
+   ],
+   "mood": [
+    "classic",
+    "elegant"
+   ],
+   "price": 30
+  },
+  {
+   "slug": "black-louis-chair",
+   "name": "Black Padded Louis Chair",
+   "category": "seating",
+   "note": "A carved oval back and fluted cabriole legs in a glossy black finish, with a black padded seat.",
+   "quantity": 100,
+   "material": "Glossy black-finish carved wood frame, black padded upholstered back and seat",
+   "dimensions": "On request",
+   "image": "black-louis",
+   "alt": "A front view of a glossy black Louis chair with a carved oval back and black padded seat, on white",
+   "gallery": [
+    "black-louis-detail1"
+   ],
+   "mood": [
+    "classic",
+    "elegant"
+   ],
+   "price": 30
+  },
+  {
+   "slug": "dark-cross-back-chair",
+   "name": "Dark Brown Rustic Cross Back Chair",
+   "category": "seating",
+   "note": "A bentwood cross back in a dark walnut finish, with a padded tan seat.",
+   "quantity": 100,
+   "material": "Dark walnut-finish bentwood frame, tan padded seat",
+   "dimensions": "On request",
+   "image": "dark-cross-back",
+   "alt": "A front view of a dark walnut bentwood cross-back chair with a tan padded seat, on white",
+   "gallery": [
+    "dark-cross-back-detail1"
+   ],
+   "mood": [
+    "rustic",
+    "warm"
+   ],
+   "price": 15
+  },
+  {
+   "slug": "white-fingers-chair",
+   "name": "White on White Fingers Chair",
+   "category": "seating",
+   "note": "A scalloped shell back in white upholstery, on slender white metal legs.",
+   "quantity": 100,
+   "material": "White upholstered scalloped back and seat, white-finish metal legs",
+   "dimensions": "On request",
+   "image": "white-fingers",
+   "alt": "A front view of a white scalloped shell-back chair on slender white metal legs, on white",
+   "gallery": [
+    "white-fingers-detail1"
+   ],
+   "mood": [
+    "modern",
+    "elegant"
+   ],
+   "price": 60
+  },
+  {
+   "slug": "ivory-scallop-chair",
+   "name": "Fingers Chair Gold and White",
+   "category": "seating",
+   "note": "A channeled bouclé shell back on slender gold metal legs.",
+   "quantity": 100,
+   "material": "Ivory bouclé upholstered scalloped back and seat, gold-finish metal legs",
+   "dimensions": "On request",
+   "image": "ivory-scallop",
+   "alt": "A front view of an ivory bouclé scalloped shell-back accent chair on slender gold metal legs, on white",
+   "gallery": [
+    "ivory-scallop-detail1"
+   ],
+   "mood": [
+    "modern",
+    "elegant"
+   ],
+   "price": 60
   }
  ]
 }
