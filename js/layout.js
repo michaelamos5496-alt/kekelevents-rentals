@@ -78,9 +78,11 @@ export async function initLayout() {
   // Enquiry drawer
   const drawer = document.getElementById('drawer'), body = document.getElementById('drawer-body'), foot = document.getElementById('drawer-foot');
   const counts = document.querySelectorAll('[data-enquiry-count]'), links = document.querySelectorAll('[data-open-enquiry]');
+  let drawerPainted = false;
   function renderDrawer() {
     const list = enquiry.all();
-    const grew = list.length > Number(counts[0]?.textContent || 0);
+    const grew = drawerPainted && list.length > Number(counts[0]?.textContent || 0);
+    drawerPainted = true;
     counts.forEach((c) => { c.textContent = list.length; if (grew) pop(c); });
     links.forEach((l) => l.setAttribute('data-count', list.length));
     if (!list.length) {
@@ -91,7 +93,7 @@ export async function initLayout() {
     const t = totals(list, inv);
     body.innerHTML = t.lines.map(({ item: it, qty, unit, line }) => `<div class="drawer-item" data-slug="${esc(it.slug)}">
         <a class="media" href="item.html?i=${esc(it.slug)}">${picture(it.image, it.alt, dims[it.image], { sizes: '72px' })}</a>
-        <div><h3>${esc(it.name)}</h3><small>${money(unit)} per day</small><div class="qty" role="group" aria-label="Quantity for ${esc(it.name)}"><button type="button" data-dec aria-label="Decrease">−</button><output>${qty}</output><button type="button" data-inc aria-label="Increase"${qty >= enquiry.max(it.slug) ? ' disabled' : ''}>+</button></div></div>
+        <div><h3>${esc(it.name)}</h3><small>${money(unit)} per day</small><div class="qty" role="group" aria-label="Quantity for ${esc(it.name)}"><button type="button" data-dec aria-label="Decrease"${qty <= 1 ? ' disabled' : ''}>−</button><output>${qty}</output><button type="button" data-inc aria-label="Increase"${qty >= enquiry.max(it.slug) ? ' disabled' : ''}>+</button></div></div>
         <div class="drawer-item__side"><strong>${money(line)}</strong><button class="drawer-item__remove" type="button" data-remove aria-label="Remove ${esc(it.name)}">Remove</button></div></div>`).join('');
     foot.innerHTML = `${datesMarkup('dr')}
       <div class="sum-row"><span>Subtotal · ${daysLabel(t.days)}</span><strong>${money(t.subtotal)}</strong></div>
@@ -110,28 +112,26 @@ export async function initLayout() {
     else if (e.target.closest('[data-inc]')) enquiry.setQty(slug, cur.qty + 1);
     else if (e.target.closest('[data-dec]')) enquiry.setQty(slug, cur.qty - 1);
   });
-  let opener;
-  document.addEventListener('click', (e) => {
-    if (e.target.closest('[data-open-enquiry]')) { opener = e.target.closest('[data-open-enquiry]'); drawer.showModal(); }
-    if (e.target.closest('[data-close-enquiry]')) drawer.close();
-    if (e.target === drawer) drawer.close(); // click on backdrop
-  });
-  drawer.addEventListener('close', () => opener?.focus());
-  enquiry.subscribe(renderDrawer); renderDrawer();
-
   // Product modal: any link to a piece opens it as a popup instead of navigating, on every page.
   const productModal = document.getElementById('product-modal'), productBody = document.getElementById('product-modal-body');
   let productOpener, productUnsub;
   function openProduct(slug) {
     const it = inv.items.find((x) => x.slug === slug);
     if (!it) return;
+    if (drawer.open) drawer.close(); // only one popup at a time
     productUnsub?.();
     productBody.innerHTML = buildCard(it, byCategory(inv, it.category), dims);
     productUnsub = bindCard(productBody, it, dims);
     productModal.showModal();
     reveal(productBody);
   }
+
+  let opener;
   document.addEventListener('click', (e) => {
+    if (e.target.closest('[data-open-enquiry]')) { opener = e.target.closest('[data-open-enquiry]'); if (productModal.open) productModal.close(); drawer.showModal(); }
+    if (e.target.closest('[data-close-enquiry]')) drawer.close();
+    if (e.target === drawer) drawer.close(); // click on backdrop
+
     const a = e.target.closest('a[href^="item.html?i="]');
     if (a && e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey && a.target !== '_blank') {
       e.preventDefault();
@@ -141,7 +141,9 @@ export async function initLayout() {
     if (e.target.closest('[data-close-product]')) productModal.close();
     if (e.target === productModal) productModal.close(); // click on backdrop
   });
+  drawer.addEventListener('close', () => opener?.focus());
   productModal.addEventListener('close', () => { productUnsub?.(); productUnsub = null; productOpener?.focus(); });
+  enquiry.subscribe(renderDrawer); renderDrawer();
 
   buttons(); // GSAP hover, magnetic and press effects for every button
 
