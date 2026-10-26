@@ -120,7 +120,7 @@ export async function initLayout() {
     if (drawer.open) drawer.close(); // only one popup at a time
     productUnsub?.();
     productBody.innerHTML = buildCard(it, byCategory(inv, it.category), dims);
-    productUnsub = bindCard(productBody, it, dims);
+    productUnsub = bindCard(productBody, it, dims, { onAdd: () => { productModal.close(); drawer.showModal(); } });
     productModal.showModal();
     reveal(productBody);
   }

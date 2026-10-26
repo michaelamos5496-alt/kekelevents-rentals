@@ -32,8 +32,10 @@ export function buildCard(it, cat, dims) {
     </div>`;
 }
 
-/** Wires up thumbnail swapping and the quantity/add-to-cart controls, scoped to `root` so the same markup works standalone or inside a modal. */
-export function bindCard(root, it, dims) {
+/** Wires up thumbnail swapping and the quantity/add-to-cart controls, scoped to `root` so the same markup works standalone or inside a modal.
+ * `onAdd`, when given, runs right after adding (the modal uses it to swap straight to the cart drawer, since a visitor can't reach
+ * anything outside an open <dialog> — the header cart icon is inert while the product popup is up, so "View cart" would be the only way out otherwise). */
+export function bindCard(root, it, dims, { onAdd } = {}) {
   const shots = [it.image, ...(it.gallery || []).filter((g) => g !== it.image)];
 
   // Switch the large photograph by rewriting the existing <picture> in place.
@@ -60,7 +62,7 @@ export function bindCard(root, it, dims) {
   };
   dec.addEventListener('click', () => { qty = Math.max(1, qty - 1); paintBuy(); });
   inc.addEventListener('click', () => { qty = Math.min(it.quantity, qty + 1); paintBuy(); });
-  addBtn.addEventListener('click', () => { enquiry.add(it.slug, qty); paintBuy(); });
+  addBtn.addEventListener('click', () => { enquiry.add(it.slug, qty); paintBuy(); onAdd?.(); });
   const unsubBuy = enquiry.subscribe(paintBuy); paintBuy();
   const unsubAdd = bindAdd(root);
   return () => { unsubBuy(); unsubAdd(); };
