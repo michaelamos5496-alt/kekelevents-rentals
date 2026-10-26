@@ -276,11 +276,18 @@ html.hide-placeholders .ph-note { display: none; }
 .pdp__price span { margin-left: 0.4rem; font-size: var(--fs-small); font-weight: 400; color: var(--stone); }
 .pdp__buy { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-bottom: 1rem; }
 .pdp__actions { display: flex; gap: 0.75rem; }
-.pdp .pdp__actions .btn { border-radius: 999px; padding-inline: 1.9rem; }
-.pdp .pdp__actions .btn--solid { background: var(--charcoal); border-color: var(--charcoal); }
-.pdp .pdp__actions .btn--solid:hover { background: transparent; color: var(--charcoal); }
+.pdp__actions .btn { border-radius: 999px; padding-inline: 1.9rem; }
+.pdp__actions .btn--solid { background: var(--charcoal); border-color: var(--charcoal); }
+.pdp__actions .btn--solid:hover { background: transparent; color: var(--charcoal); }
 .pdp__total { font-size: var(--fs-small); color: var(--stone); margin-bottom: 0.5rem; }
 .pdp__fine { font-size: var(--fs-small); color: var(--stone); }
+
+/* Product modal: a piece opens as a popup card (reusing .pdp__card) on top of every page, instead of navigating to item.html. */
+.product-modal { position: fixed; inset: 0; margin: auto; width: min(58rem, calc(100vw - 2rem)); max-height: calc(100vh - 3rem); border: 0; padding: 0; background: transparent; overflow: visible; }
+.product-modal::backdrop { background: rgb(20 19 18 / 0.55); }
+.product-modal .pdp__card { position: relative; max-height: calc(100vh - 3rem); overflow-y: auto; }
+.product-modal__close { position: absolute; top: 1rem; right: 1rem; width: 2.5rem; height: 2.5rem; display: grid; place-items: center; font-size: 1.4rem; line-height: 1; background: #fff; border: 1px solid var(--hairline); border-radius: 50%; z-index: 2; }
+#product-modal-body { display: contents; }
 
 .pairs { border-top: 1px solid var(--hairline); padding-top: clamp(3rem, 6vw, 5rem); }
 .pairs h2 { font-size: var(--fs-h2); margin: 0.75rem 0 2.5rem; }

@@ -15,7 +15,7 @@ export function card(it, cat, dims, delay = 0) {
     </div></article>`;
 }
 
-/** One delegated handler keeps every "Add to cart" button in step with the list. */
+/** One delegated handler keeps every "Add to cart" button in step with the list. Returns an unsubscribe for callers that re-bind on fresh content (e.g. the product modal). */
 export function bindAdd(root) {
   root.addEventListener('click', (e) => {
     const b = e.target.closest('[data-add]'); if (!b) return;
@@ -26,5 +26,5 @@ export function bindAdd(root) {
     b.setAttribute('aria-pressed', on);
     b.textContent = b.dataset.long ? (on ? 'Added to cart' : 'Add to cart') : (on ? 'Added' : 'Add to cart');
   });
-  enquiry.subscribe(sync);
+  return enquiry.subscribe(sync);
 }

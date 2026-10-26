@@ -1,9 +1,10 @@
-// Site chrome: header, menu, footer, enquiry drawer, WhatsApp button. Injected so it lives in one place.
-import { loadSite, loadInventory, esc, picture, loadImages, reveal, stocked } from './util.js';
+// Site chrome: header, menu, footer, enquiry drawer, product modal, WhatsApp button. Injected so it lives in one place.
+import { loadSite, loadInventory, esc, picture, loadImages, reveal, stocked, byCategory } from './util.js';
 import { enquiry, summary, totals, money, daysLabel } from './enquiry.js';
 import { datesMarkup, bindDates } from './dates.js';
 import { clearMarkup, bindClear } from './clear.js';
 import { pop, menuIn, buttons } from './motion.js';
+import { buildCard, bindCard } from './pages/item.js';
 
 const NAV = [['index.html', 'Home'], ['collections.html', 'Rentals'], ['services.html', 'Styling'], ['portfolio.html', 'Portfolio'], ['about.html', 'About'], ['enquire.html', 'Enquire']];
 
@@ -53,7 +54,13 @@ export async function initLayout() {
       <div class="drawer__head"><h2 id="drawer-title">Your cart</h2><button class="drawer__close" type="button" data-close-enquiry aria-label="Close">×</button></div>
       <div class="drawer__body" id="drawer-body" aria-live="polite"></div>
       <div class="drawer__foot" id="drawer-foot"></div>
-    </div></dialog>`);
+    </div></dialog>
+    <dialog class="product-modal" id="product-modal" aria-label="Piece details">
+      <div class="pdp__card">
+        <button class="product-modal__close" type="button" data-close-product aria-label="Close">×</button>
+        <div id="product-modal-body"></div>
+      </div>
+    </dialog>`);
 
   // Header turns solid after the hero (or immediately on pages without one).
   const header = document.getElementById('header');
@@ -111,6 +118,30 @@ export async function initLayout() {
   });
   drawer.addEventListener('close', () => opener?.focus());
   enquiry.subscribe(renderDrawer); renderDrawer();
+
+  // Product modal: any link to a piece opens it as a popup instead of navigating, on every page.
+  const productModal = document.getElementById('product-modal'), productBody = document.getElementById('product-modal-body');
+  let productOpener, productUnsub;
+  function openProduct(slug) {
+    const it = inv.items.find((x) => x.slug === slug);
+    if (!it) return;
+    productUnsub?.();
+    productBody.innerHTML = buildCard(it, byCategory(inv, it.category), dims);
+    productUnsub = bindCard(productBody, it, dims);
+    productModal.showModal();
+    reveal(productBody);
+  }
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="item.html?i="]');
+    if (a && e.button === 0 && !e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey && a.target !== '_blank') {
+      e.preventDefault();
+      productOpener = a;
+      openProduct(new URL(a.href, location.href).searchParams.get('i'));
+    }
+    if (e.target.closest('[data-close-product]')) productModal.close();
+    if (e.target === productModal) productModal.close(); // click on backdrop
+  });
+  productModal.addEventListener('close', () => { productUnsub?.(); productUnsub = null; productOpener?.focus(); });
 
   buttons(); // GSAP hover, magnetic and press effects for every button
 
