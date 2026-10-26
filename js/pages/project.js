@@ -23,19 +23,19 @@ export default async function ({ inv, dims }) {
       <header class="project-head"><span class="label">${esc(p.type)} · ${esc(p.location)}</span><h1 data-reveal>${esc(p.title)}</h1><p class="lede" data-reveal style="--d:100ms">${esc(p.summary)}</p></header></div>
     <figure class="project-hero media" data-reveal ${p.placeholder ? 'data-placeholder' : ''}>${picture(p.cover, p.alt, dims[p.cover], { eager: true, sizes: '100vw' })}</figure>
     <section class="wrap project-body">
-      <dl class="project-facts" data-reveal><div><dt>Event</dt><dd>${esc(p.type)}</dd></div><div><dt>Location</dt><dd>${esc(p.location)}</dd></div><div><dt>Rentals featured</dt><dd>${pieces.length} pieces</dd></div></dl>
+      <dl class="project-facts" data-reveal><div><dt>Event</dt><dd>${esc(p.type)}</dd></div><div><dt>Location</dt><dd>${esc(p.location)}</dd></div>${pieces.length ? `<div><dt>Rentals featured</dt><dd>${pieces.length} ${pieces.length === 1 ? 'piece' : 'pieces'}</dd></div>` : ''}</dl>
       <div class="project-story" data-reveal style="--d:100ms">${p.story.map((t) => `<p>${esc(t)}</p>`).join('')}${p.placeholder ? '<span class="ph-note">Placeholder project</span>' : ''}</div>
     </section>
     <section class="wrap project-gallery" aria-label="Photographs">
       ${shots.slice(1).map((g, n) => `<button class="media project-gallery__item" type="button" data-shot="${n + 1}" data-reveal style="--d:${n * 90}ms" aria-label="Enlarge photograph ${n + 2} of ${shots.length}" ${p.placeholder ? 'data-placeholder' : ''}>${picture(g, `${p.title}, photograph ${n + 2}`, dims[g], { sizes: '(min-width: 48rem) 33vw, 100vw' })}</button>`).join('')}
     </section>
-    <section class="wrap pairs" aria-labelledby="r-h"><span class="label">From the rental collection</span><h2 id="r-h">Rentals that suit this setting</h2>
-      <div class="catalogue" style="padding-block:0">${pieces.map((it, n) => card(it, byCategory(inv, it.category), dims, n * 80)).join('')}</div></section>
+    ${pieces.length ? `<section class="wrap pairs" aria-labelledby="r-h"><span class="label">From the rental collection</span><h2 id="r-h">Rentals that suit this setting</h2>
+      <div class="catalogue" style="padding-block:0">${pieces.map((it, n) => card(it, byCategory(inv, it.category), dims, n * 80)).join('')}</div></section>` : ''}
     <nav class="wrap project-nav" aria-label="More projects">
       <a href="project.html?p=${esc(prev.slug)}"><span class="label">Previous</span><strong>${esc(prev.title)}</strong></a>
       <a href="project.html?p=${esc(next.slug)}" class="project-nav__next"><span class="label">Next</span><strong>${esc(next.title)}</strong></a>
     </nav>
-    <section class="section section--blue cta-band"><div class="wrap" data-reveal><span class="label">Enquire</span><h2>Planning something similar?</h2><div class="cta-band__actions"><a class="btn btn--solid" href="enquire.html">Begin your enquiry</a><a class="btn" href="collections.html">Browse rentals</a></div></div></section>`;
+    <section class="section section--gold cta-band"><div class="wrap" data-reveal><span class="label">Enquire</span><h2>Planning something similar?</h2><div class="cta-band__actions"><a class="btn btn--solid" href="enquire.html">Begin your enquiry</a><a class="btn" href="collections.html">Browse rentals</a></div></div></section>`;
 
   // Lightbox: a glass dialog with arrows and keyboard support.
   const dlg = document.createElement('dialog'); dlg.className = 'lightbox'; dlg.setAttribute('aria-label', 'Photograph viewer');

@@ -1,31 +1,17 @@
-import { esc, picture, loadSetups, loadJSON, byCategory, reveal } from '../util.js';
-import { heroIntro, parallax, settleImages, slideIn, quoteIn, marquee } from '../motion.js';
+import { esc, picture, loadSetups, loadJSON, reveal } from '../util.js';
+import { heroIntro, parallax, settleImages, slideIn, quoteIn } from '../motion.js';
 
-const FEATURED = [
-  ['lounge', 'ref-chair', 'A pale upholstered armchair with a timber frame'],
-  ['lighting', 'ref-lamp', 'A matte dome pendant light'],
-  ['decor', 'ref-vase', 'A sculptural stoneware vase'],
-];
 
 export default async function ({ site, inv, dims }) {
-  // "Our Collection": three categories, each with a quiet, neutral photograph.
-  document.getElementById('featured').innerHTML = FEATURED.map(([id, img, alt], n) => {
-    const cat = byCategory(inv, id);
-    return `<a class="tile" href="collections.html?c=${id}" data-reveal style="--d:${n * 80}ms"><div class="media" data-placeholder>${picture(img, alt, dims[img], { sizes: '(min-width: 40rem) 30vw, 100vw' })}</div><h3>${esc(cat.name)}</h3><span class="tile__go">View rentals →</span></a>`;
-  }).join('');
-
-  // Brands strip under the hero: a slow, endless slide. The list is repeated so the loop has no seam.
-  const brandData = await loadJSON('data/brands.json');
-  const brandTrack = document.getElementById('brands-track'), cell = (b) => `<li class="brand">${b.logo ? `<img src="${esc(b.logo)}" alt="${esc(b.name)}" height="32" loading="lazy">` : `<span>${esc(b.name)}</span>`}</li>`;
-  brandTrack.innerHTML = brandData.items.map(cell).join('') + brandData.items.map((b) => cell(b).replace('<li class="brand">', '<li class="brand" aria-hidden="true">')).join('');
-  if (brandData.placeholder) document.getElementById('brands-ph').hidden = false;
-  marquee(document.getElementById('brands'), brandTrack);
+  // "Our Rentals": the first three pieces in the inventory, each linking to its own page.
+  document.getElementById('featured').innerHTML = inv.items.slice(0, 3).map((it, n) =>
+    `<a class="tile" href="item.html?i=${esc(it.slug)}" data-reveal style="--d:${n * 80}ms"><div class="media r-45">${picture(it.image, it.alt, dims[it.image], { sizes: '(min-width: 40rem) 30vw, 100vw' })}${it.gallery?.[0] ? `<span class="card__alt" aria-hidden="true">${picture(it.gallery[0], '', dims[it.gallery[0]], { sizes: '(min-width: 40rem) 30vw, 100vw' })}</span>` : ''}</div><h3>${esc(it.name)}</h3><span class="tile__go">View piece →</span></a>`).join('');
 
   // Mobile slide: dots follow the scroll position and jump to a card when tapped.
   const grid = document.getElementById('featured'), cdots = document.getElementById('coll-dots');
-  cdots.innerHTML = FEATURED.map((_, n) => `<button type="button" data-c="${n}" aria-label="Show ${esc(byCategory(inv, FEATURED[n][0]).name)}" aria-current="${n === 0}"></button>`).join('');
+  cdots.innerHTML = inv.items.slice(0, 3).map((it, n) => `<button type="button" data-c="${n}" aria-label="Show ${esc(it.name)}" aria-current="${n === 0}"></button>`).join('');
   const cIdx = () => Math.round(grid.scrollLeft / (grid.firstElementChild.getBoundingClientRect().width + 16));
-  grid.addEventListener('scroll', () => [...cdots.children].forEach((d, n) => d.setAttribute('aria-current', n === Math.min(cIdx(), FEATURED.length - 1))), { passive: true });
+  grid.addEventListener('scroll', () => [...cdots.children].forEach((d, n) => d.setAttribute('aria-current', n === Math.min(cIdx(), cdots.children.length - 1))), { passive: true });
   cdots.addEventListener('click', (e) => { const b = e.target.closest('[data-c]'); if (b) grid.children[b.dataset.c].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' }); });
 
   // Signature setups: a slide carousel (native scroll-snap, so touch swipe works), with arrows and a counter.

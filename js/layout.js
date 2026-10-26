@@ -1,5 +1,5 @@
 // Site chrome: header, menu, footer, enquiry drawer, WhatsApp button. Injected so it lives in one place.
-import { loadSite, loadInventory, esc, picture, loadImages, reveal } from './util.js';
+import { loadSite, loadInventory, esc, picture, loadImages, reveal, stocked } from './util.js';
 import { enquiry, summary, totals, money, daysLabel } from './enquiry.js';
 import { datesMarkup, bindDates } from './dates.js';
 import { clearMarkup, bindClear } from './clear.js';
@@ -24,7 +24,7 @@ export async function initLayout() {
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header${over ? ' site-header--over' : ''}" id="header">
       <div class="wrap site-header__bar">
-        <a class="logo" href="index.html" aria-label="${esc(site.name)}, home"><img src="assets/logo.png" width="900" height="466" alt="Kekel Events &amp; Rentals"></a>
+        <a class="logo" href="index.html" aria-label="${esc(site.name)}, home"><img src="assets/logo.png" width="1063" height="703" alt="Kekel Events &amp; Rentals"></a>
         <nav class="nav" aria-label="Primary">${navLinks}</nav>
         <div class="header-actions">
           <a class="icon-btn" href="collections.html" aria-label="Browse rentals"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></a>
@@ -41,8 +41,8 @@ export async function initLayout() {
   document.body.insertAdjacentHTML('beforeend', `
     <footer class="site-footer"><div class="wrap">
       <div class="grid footer__top">
-        <div class="footer__brand"><a class="logo logo--footer" href="index.html"><img src="assets/logo.png" width="900" height="466" alt="Kekel Events &amp; Rentals" loading="lazy"></a><p>${esc(site.statement)}</p></div>
-        <div class="footer__col"><h2>Rentals</h2><ul>${inv.categories.slice(0, 5).map((c) => `<li><a href="collections.html?c=${c.id}">${esc(c.name)}</a></li>`).join('')}</ul></div>
+        <div class="footer__brand"><a class="logo logo--footer" href="index.html"><img src="assets/logo-white.png" width="1063" height="703" alt="Kekel Events &amp; Rentals" loading="lazy"></a><p>${esc(site.statement)}</p></div>
+        <div class="footer__col"><h2>Rentals</h2><ul>${stocked(inv).slice(0, 5).map((c) => `<li><a href="collections.html?c=${c.id}">${esc(c.name)}</a></li>`).join('')}</ul></div>
         <div class="footer__col"><h2>Studio</h2><ul><li><a href="about.html">About</a></li><li><a href="services.html">Styling</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="enquire.html">Contact</a></li></ul></div>
         <div class="footer__col"><h2>Follow us</h2><ul><li><a href="https://instagram.com/${esc(site.instagram)}" rel="noopener">Instagram</a></li><li>${esc(site.city)}</li></ul></div>
         <div class="footer__col"><h2>Enquire</h2><ul><li>${esc(site.serviceArea)}</li></ul><a class="btn" href="enquire.html">Begin your enquiry</a></div>

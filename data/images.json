@@ -350,5 +350,89 @@
  "ref-vase": {
   "w": 960,
   "h": 708
+ },
+ "rustic-louis-rattan": {
+  "w": 1254,
+  "h": 1254
+ },
+ "rustic-louis-rattan-detail1": {
+  "w": 1254,
+  "h": 1254
+ },
+ "rustic-louis-padded": {
+  "w": 1254,
+  "h": 1254
+ },
+ "bunny-chair": {
+  "w": 1254,
+  "h": 1254
+ },
+ "bunny-chair-detail1": {
+  "w": 1254,
+  "h": 1254
+ },
+ "rustic-louis-padded-detail1": {
+  "w": 1254,
+  "h": 1254
+ },
+ "crystal-louis": {
+  "w": 1199,
+  "h": 1312,
+  "jpgOnly": true
+ },
+ "crystal-louis-detail1": {
+  "w": 1199,
+  "h": 1312,
+  "jpgOnly": true
+ },
+ "cane-cade": {
+  "w": 1199,
+  "h": 1312,
+  "jpgOnly": true
+ },
+ "cane-cade-detail1": {
+  "w": 1281,
+  "h": 1228,
+  "jpgOnly": true
+ },
+ "square-louis": {
+  "w": 1199,
+  "h": 1312,
+  "jpgOnly": true
+ },
+ "square-louis-detail1": {
+  "w": 1199,
+  "h": 1312,
+  "jpgOnly": true
+ },
+ "rustic-louis-couple": {
+  "w": 1199,
+  "h": 1312,
+  "jpgOnly": true
+ },
+ "rustic-louis-couple-detail1": {
+  "w": 1199,
+  "h": 1312,
+  "jpgOnly": true
+ },
+ "infinity-rustic": {
+  "w": 1417,
+  "h": 1771,
+  "jpgOnly": true
+ },
+ "infinity-rustic-detail1": {
+  "w": 1435,
+  "h": 1794,
+  "jpgOnly": true
+ },
+ "rustic-couple": {
+  "w": 1545,
+  "h": 1931,
+  "jpgOnly": true
+ },
+ "rustic-couple-detail1": {
+  "w": 1533,
+  "h": 1917,
+  "jpgOnly": true
  }
 }

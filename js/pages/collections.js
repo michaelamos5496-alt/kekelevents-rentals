@@ -1,12 +1,13 @@
-import { esc, byCategory, reveal } from '../util.js';
+import { esc, byCategory, reveal, stocked } from '../util.js';
 import { card, bindAdd } from './shared.js';
 
 export default function ({ inv, dims }) {
   const grid = document.getElementById('catalogue'), filters = document.getElementById('filters'), count = document.getElementById('count'), blurb = document.getElementById('blurb');
   const params = new URLSearchParams(location.search);
-  let current = inv.categories.some((c) => c.id === params.get('c')) ? params.get('c') : 'all';
+  const cats = stocked(inv);
+  let current = cats.some((c) => c.id === params.get('c')) ? params.get('c') : 'all';
 
-  filters.innerHTML = [{ id: 'all', name: 'All' }, ...inv.categories].map((c) => `<button class="filter" type="button" data-cat="${c.id}" aria-pressed="false">${esc(c.name)}</button>`).join('');
+  filters.innerHTML = [{ id: 'all', name: 'All' }, ...cats].map((c) => `<button class="filter" type="button" data-cat="${c.id}" aria-pressed="false">${esc(c.name)}</button>`).join('');
 
   function render(push) {
     const items = inv.items.filter((i) => current === 'all' || i.category === current);

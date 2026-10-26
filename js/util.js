@@ -22,7 +22,9 @@ export function picture(id, alt, dims, { sizes = '100vw', eager = false, cls = '
   const w = dims?.w || 1600, h = dims?.h || 1067;
   const widths = [480, 960, 1600].filter((x) => x === 480 || x <= w);
   const srcset = widths.map((x) => `assets/images/${id}-${x}.webp ${x}w`).join(', ');
-  return `<picture><source type="image/webp" srcset="${srcset}" sizes="${sizes}"><img class="${cls}" src="assets/images/${id}-960.jpg" width="${w}" height="${h}" alt="${esc(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"></picture>`;
+  // No WebP variant has been generated for this image yet; serve the JPEG fallback directly.
+  const webpSource = dims?.jpgOnly ? '' : `<source type="image/webp" srcset="${srcset}" sizes="${sizes}">`;
+  return `<picture>${webpSource}<img class="${cls}" src="assets/images/${id}-960.jpg" width="${w}" height="${h}" alt="${esc(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"></picture>`;
 }
 
 let observer;
@@ -36,3 +38,5 @@ export function reveal(root = document) {
 }
 
 export const byCategory = (inv, id) => inv.categories.find((c) => c.id === id);
+/** Categories that currently have at least one piece; empty ones stay hidden until stock is added. */
+export const stocked = (inv) => inv.categories.filter((c) => inv.items.some((i) => i.category === c.id));

@@ -1,5 +1,5 @@
 {
- "_note": "PLACEHOLDER inventory: names, quantities, dimensions and photographs are placeholders until the real inventory is entered. Product photographs are shown on white. Add an item by copying an entry; images are Pexels ids in assets/images/raw/ (run scripts/make-images.py).",
+ "_note": "Rental inventory. Add an item by copying an entry; photos go in assets/products/<name>/ and are converted into assets/images/<id>-<width>.webp/.jpg with sizes in data/images.json. Categories with no items are hidden on the site.",
  "categories": [
   {
    "id": "seating",
@@ -34,299 +34,175 @@
  ],
  "items": [
   {
-   "slug": "bentwood-chair-walnut",
-   "name": "Bentwood Chair, Walnut",
+   "slug": "rustic-louis-rattan-back",
+   "name": "Rustic Louis Chair, Rattan Back",
    "category": "seating",
-   "note": "A café classic for dinners and receptions.",
-   "quantity": 150,
-   "material": "Bentwood, walnut stain",
-   "dimensions": "W 41 × D 45 × H 88 cm",
-   "image": "7193706",
-   "alt": "A walnut bentwood chair on a white floor",
+   "note": "An oval cane back and carved, fluted legs in a warm rustic wood finish.",
+   "quantity": 100,
+   "material": "Rustic wood-finish frame, rattan cane back, linen seat",
+   "dimensions": "On request",
+   "image": "rustic-louis-rattan",
+   "alt": "A front view of a Louis chair with an oval rattan cane back, cream seat and carved rustic wood frame, on white",
    "gallery": [
-    "7193706-detail1",
-    "7193706-detail2"
+    "rustic-louis-rattan-detail1"
    ],
    "mood": [
     "classic",
     "warm"
    ],
-   "placeholder": true,
-   "price": 28
-  },
-  {
-   "slug": "studio-chair-green",
-   "name": "Studio Chair, Green",
-   "category": "seating",
-   "note": "Slim timber frame with a forest-green seat.",
-   "quantity": 80,
-   "material": "Timber, upholstered seat",
-   "dimensions": "W 44 × D 46 × H 82 cm",
-   "image": "14391920",
-   "alt": "A timber chair with a green seat and back",
-   "gallery": [
-    "14391920-detail1",
-    "14391920-detail2"
-   ],
-   "mood": [
-    "modern",
-    "warm"
-   ],
-   "placeholder": true,
    "price": 30
   },
   {
-   "slug": "club-armchair-leather",
-   "name": "Club Armchair, Leather",
-   "category": "lounge",
-   "note": "Deep tan leather for lounge corners.",
-   "quantity": 12,
-   "material": "Leather, timber legs",
-   "dimensions": "W 78 × D 80 × H 76 cm",
-   "image": "11112734",
-   "alt": "A brown leather club armchair with studded detail",
+   "slug": "rustic-louis-padded-back",
+   "name": "Rustic Louis Chair, Padded Back",
+   "category": "seating",
+   "note": "An upholstered oval back and carved, fluted legs in a warm rustic wood finish.",
+   "quantity": 100,
+   "material": "Rustic wood-finish frame, padded cream linen back and seat",
+   "dimensions": "On request",
+   "image": "rustic-louis-padded",
+   "alt": "A front view of a Louis chair with a padded cream oval back and seat on a carved rustic wood frame, on white",
    "gallery": [
-    "11112734-detail1",
-    "11112734-detail2"
+    "rustic-louis-padded-detail1"
    ],
    "mood": [
     "classic",
     "warm"
    ],
-   "placeholder": true,
-   "price": 180
+   "price": 30
   },
   {
-   "slug": "reclaimed-bench",
-   "name": "Reclaimed Timber Bench",
-   "category": "lounge",
-   "note": "Weathered timber with painted legs.",
-   "quantity": 20,
-   "material": "Reclaimed timber",
-   "dimensions": "W 120 × D 30 × H 45 cm",
-   "image": "11112743",
-   "alt": "A low reclaimed timber bench with blue-painted legs",
+   "slug": "bunny-chair",
+   "name": "The Bunny Chair",
+   "category": "seating",
+   "note": "A padded bolster back on twin wood uprights, with a soft cream seat.",
+   "quantity": 100,
+   "material": "Wood-finish frame, padded cream upholstery",
+   "dimensions": "On request",
+   "image": "bunny-chair",
+   "alt": "A front view of the Bunny chair: cream padded bolster back on two wood uprights, cream seat, on white",
    "gallery": [
-    "11112743-detail1",
-    "11112743-detail2"
+    "bunny-chair-detail1"
    ],
    "mood": [
     "modern",
     "warm"
    ],
-   "placeholder": true,
-   "price": 120
+   "price": 50
   },
   {
-   "slug": "crystal-wine-glass-pair",
-   "name": "Crystal Wine Glass",
-   "category": "glassware",
-   "note": "Thin-rimmed crystal for the long table.",
-   "quantity": 400,
-   "material": "Crystal",
-   "dimensions": "Ø 8.5 × H 22 cm",
-   "image": "4110400",
-   "alt": "Two clear crystal wine glasses on white",
+   "slug": "crystal-louis-chair",
+   "name": "Crystal Back Louis Chair",
+   "category": "seating",
+   "note": "An oval medallion back and carved, fluted legs in a warm rustic wood finish.",
+   "quantity": 100,
+   "material": "Rustic wood-finish frame, cream linen seat",
+   "dimensions": "On request",
+   "image": "crystal-louis",
+   "alt": "A front view of a Louis chair with an oval medallion back, cream seat and carved rustic wood frame, on white",
    "gallery": [
-    "4110400-detail1",
-    "4110400-detail2"
-   ],
-   "mood": [
-    "classic",
-    "minimal"
-   ],
-   "placeholder": true,
-   "price": 6
-  },
-  {
-   "slug": "red-wine-glass",
-   "name": "Red Wine Glass",
-   "category": "glassware",
-   "note": "A generous bowl for reds.",
-   "quantity": 400,
-   "material": "Glass",
-   "dimensions": "Ø 10 × H 23 cm",
-   "image": "7597560",
-   "alt": "A red wine glass on a white ground",
-   "gallery": [
-    "7597560-detail1",
-    "7597560-detail2"
-   ],
-   "mood": [
-    "classic",
-    "minimal"
-   ],
-   "placeholder": true,
-   "price": 6
-  },
-  {
-   "slug": "porcelain-dinner-plate",
-   "name": "Porcelain Dinner Plate",
-   "category": "tablescape",
-   "note": "White porcelain, rolled edge.",
-   "quantity": 500,
-   "material": "Porcelain",
-   "dimensions": "Ø 27 cm",
-   "image": "291767",
-   "alt": "White porcelain plates, bowl and cutlery on a white table",
-   "gallery": [
-    "291767-detail1",
-    "291767-detail2"
-   ],
-   "mood": [
-    "minimal",
-    "classic"
-   ],
-   "placeholder": true,
-   "price": 8
-  },
-  {
-   "slug": "gold-flatware",
-   "name": "Gold Flatware",
-   "category": "tablescape",
-   "note": "Brushed gold forks, knives and spoons.",
-   "quantity": 500,
-   "material": "Stainless steel, gold finish",
-   "dimensions": "Dinner fork L 20 cm",
-   "image": "7335989",
-   "alt": "Gold forks resting on a white plate",
-   "gallery": [
-    "7335989-detail1",
-    "7335989-detail2"
+    "crystal-louis-detail1"
    ],
    "mood": [
     "classic",
     "warm"
    ],
-   "placeholder": true,
-   "price": 10
+   "price": 30
   },
   {
-   "slug": "stoneware-bowls",
-   "name": "Stoneware Bowl Stack",
-   "category": "tablescape",
-   "note": "Matte stoneware for starters and sharing.",
-   "quantity": 200,
-   "material": "Stoneware",
-   "dimensions": "Ø 16 cm",
-   "image": "7191403",
-   "alt": "A stack of white stoneware bowls",
+   "slug": "cane-cade-chair",
+   "name": "The Cane Cade Chair",
+   "category": "seating",
+   "note": "A rounded cane back on a pale oak frame, with a soft cream seat.",
+   "quantity": 100,
+   "material": "Oak-finish frame, natural cane back, linen seat",
+   "dimensions": "On request",
+   "image": "cane-cade",
+   "alt": "A front view of the Cane Cade chair: an arched cane back on a pale oak frame, with a cream linen seat, on white",
    "gallery": [
-    "7191403-detail1",
-    "7191403-detail2"
-   ],
-   "mood": [
-    "minimal",
-    "modern"
-   ],
-   "placeholder": true,
-   "price": 6
-  },
-  {
-   "slug": "round-glass-table",
-   "name": "Round Glass-top Table",
-   "category": "tablescape",
-   "note": "A light cocktail table on timber legs.",
-   "quantity": 25,
-   "material": "Glass, timber",
-   "dimensions": "Ø 70 × H 72 cm",
-   "image": "9774369",
-   "alt": "A round glass-top table with timber legs",
-   "gallery": [
-    "9774369-detail1",
-    "9774369-detail2"
+    "cane-cade-detail1"
    ],
    "mood": [
     "modern",
-    "minimal"
+    "warm"
    ],
-   "placeholder": true,
+   "price": 60
+  },
+  {
+   "slug": "square-back-louis-chair",
+   "name": "Square Back Louis Chair",
+   "category": "seating",
+   "note": "A padded square back and carved, fluted legs in a warm rustic wood finish.",
+   "quantity": 100,
+   "material": "Rustic wood-finish frame, padded cream linen back and seat",
+   "dimensions": "On request",
+   "image": "square-louis",
+   "alt": "A front view of a Louis chair with a padded cream square back and seat on a carved rustic wood frame, on white",
+   "gallery": [
+    "square-louis-detail1"
+   ],
+   "mood": [
+    "classic",
+    "warm"
+   ],
+   "price": 30
+  },
+  {
+   "slug": "rustic-louis-couple-chairs",
+   "name": "Rustic Louis Couple Armchairs",
+   "category": "seating",
+   "note": "A matched pair of blush velvet armchairs on a rustic wood frame, for the couple's table.",
+   "quantity": 100,
+   "material": "Rustic wood-finish frame, blush velvet upholstery",
+   "dimensions": "On request",
+   "image": "rustic-louis-couple",
+   "alt": "A front view of a blush velvet oval-back Louis armchair with a carved rustic wood frame, on white",
+   "gallery": [
+    "rustic-louis-couple-detail1"
+   ],
+   "mood": [
+    "classic",
+    "warm"
+   ],
    "price": 150
   },
   {
-   "slug": "brass-candelabra",
-   "name": "Brass Candelabra",
-   "category": "decor",
-   "note": "Three arms, aged brass.",
-   "quantity": 16,
-   "material": "Brass",
-   "dimensions": "W 42 × H 50 cm",
-   "image": "19457029",
-   "alt": "An aged brass candelabra with three tall candles",
+   "slug": "infinity-rustic-chair",
+   "name": "Infinity Rustic Chair",
+   "category": "seating",
+   "note": "A crossed spindle back in a warm walnut-toned wood, with a shaped solid wood seat.",
+   "quantity": 100,
+   "material": "Warm walnut-finish wood frame and seat",
+   "dimensions": "On request",
+   "image": "infinity-rustic",
+   "alt": "A front view of the Infinity Rustic chair: a crossed spindle back in warm walnut-toned wood, on white",
    "gallery": [
-    "19457029-detail1",
-    "19457029-detail2"
+    "infinity-rustic-detail1"
    ],
    "mood": [
     "classic",
     "warm"
    ],
-   "placeholder": true,
-   "price": 95
+   "price": 25
   },
   {
-   "slug": "ceramic-vase-set",
-   "name": "Ceramic Vase Set",
-   "category": "decor",
-   "note": "Soft white vases in mixed heights.",
-   "quantity": 30,
-   "material": "Ceramic",
-   "dimensions": "H 12–26 cm",
-   "image": "5040767",
-   "alt": "White ceramic vases and jugs on a white ground",
+   "slug": "rustic-couple-chairs",
+   "name": "Rustic Couple Armchairs",
+   "category": "seating",
+   "note": "A matched pair of carved cane-back armchairs with scrolled arms, for the couple's table.",
+   "quantity": 100,
+   "material": "Carved rustic wood-finish frame, natural cane back, cream linen seat",
+   "dimensions": "On request",
+   "image": "rustic-couple",
+   "alt": "A front view of a carved rustic wood armchair with a cane back and cream seat, on white",
    "gallery": [
-    "5040767-detail1",
-    "5040767-detail2"
+    "rustic-couple-detail1"
    ],
    "mood": [
-    "minimal",
-    "modern"
+    "classic",
+    "warm"
    ],
-   "placeholder": true,
-   "price": 70
-  },
-  {
-   "slug": "ribbed-vases",
-   "name": "Ribbed Vase Pair",
-   "category": "decor",
-   "note": "Tall ribbed vases in matte white.",
-   "quantity": 24,
-   "material": "Ceramic",
-   "dimensions": "H 28 and 36 cm",
-   "image": "8217492",
-   "alt": "Two ribbed matte white vases with a pillar candle",
-   "gallery": [
-    "8217492-detail1",
-    "8217492-detail2"
-   ],
-   "mood": [
-    "minimal",
-    "modern"
-   ],
-   "placeholder": true,
-   "price": 85
-  },
-  {
-   "slug": "arc-floor-lamp",
-   "name": "Arc Floor Lamp",
-   "category": "lighting",
-   "note": "A sweeping arm that lights a corner.",
-   "quantity": 10,
-   "material": "Steel, painted",
-   "dimensions": "H 200 × reach 160 cm",
-   "image": "112811",
-   "alt": "A black arc floor lamp against a white wall",
-   "gallery": [
-    "112811-detail1",
-    "112811-detail2"
-   ],
-   "mood": [
-    "modern",
-    "minimal"
-   ],
-   "placeholder": true,
-   "price": 140
+   "price": 150
   }
- ],
- "_pricing": "PLACEHOLDER rates in GH₵ per piece, per day. They exist so the cart can be built and tested. Replace every 'price' with the real daily rate before launch."
+ ]
 }
