@@ -19,11 +19,10 @@ export default function ({ site, inv, dims }) {
 
   // ---- Cart summary (editable here, shared with the drawer through the same store) ----
   function renderCart() {
-    const list = enquiry.all();
-    if (!list.length) {
+    const list = enquiry.all(), t = totals(list, inv);
+    if (!t.lines.length) {
       cartBox.innerHTML = '<p class="enq__empty">Nothing in your cart yet. <a href="collections.html">Browse the rentals</a> to add pieces, or simply tell us what you need below.</p>';
     } else {
-      const t = totals(list, inv);
       cartBox.innerHTML = t.lines.map(({ item: it, qty, unit, line }) => `<div class="enq-item" data-slug="${esc(it.slug)}">
           <a class="media" href="item.html?i=${esc(it.slug)}" tabindex="-1" aria-hidden="true">${picture(it.image, '', dims[it.image], { sizes: '56px' })}</a>
           <div><h3>${esc(it.name)}</h3><small class="muted">${money(unit)} per day</small><div class="qty" role="group" aria-label="Quantity for ${esc(it.name)}"><button type="button" data-dec aria-label="Decrease">−</button><output>${qty}</output><button type="button" data-inc aria-label="Increase"${qty >= enquiry.max(it.slug) ? ' disabled' : ''}>+</button></div></div>

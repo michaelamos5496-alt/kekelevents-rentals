@@ -28,7 +28,14 @@ export const enquiry = {
   all: () => items.map((i) => ({ ...i })),
   count: () => items.length,
   has: (slug) => items.some((i) => i.slug === slug),
-  setLimits(map) { limits = map; let changed = false; items.forEach((i) => { const m = limits[i.slug]; if (m && i.qty > m) { i.qty = m; changed = true; } }); if (changed) commit(); },
+  setLimits(map) {
+    limits = map;
+    let changed = false;
+    const kept = items.filter((i) => { if (!(i.slug in map)) { changed = true; return false; } return true; }); // drop pieces no longer in the catalogue
+    kept.forEach((i) => { const m = limits[i.slug]; if (m && i.qty > m) { i.qty = m; changed = true; } });
+    items = kept;
+    if (changed) commit();
+  },
   max: (slug) => limits[slug] || 9999,
   add(slug, qty = 1) { qty = Math.max(1, Math.min(qty, limits[slug] || 9999)); const cur = items.find((x) => x.slug === slug); if (cur) cur.qty = qty; else items.push({ slug, qty }); commit(); },
   remove(slug) { items = items.filter((i) => i.slug !== slug); commit(); },

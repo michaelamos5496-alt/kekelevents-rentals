@@ -80,17 +80,16 @@ export async function initLayout() {
   const counts = document.querySelectorAll('[data-enquiry-count]'), links = document.querySelectorAll('[data-open-enquiry]');
   let drawerPainted = false;
   function renderDrawer() {
-    const list = enquiry.all();
+    const list = enquiry.all(), t = totals(list, inv);
     const grew = drawerPainted && list.length > Number(counts[0]?.textContent || 0);
     drawerPainted = true;
     counts.forEach((c) => { c.textContent = list.length; if (grew) pop(c); });
     links.forEach((l) => l.setAttribute('data-count', list.length));
-    if (!list.length) {
+    if (!t.lines.length) {
       body.innerHTML = '<div class="drawer__empty"><p class="lede">Your cart is empty.</p><p>Add pieces from the rentals and they will wait here until you check out.</p></div>';
       foot.innerHTML = '<a class="btn" href="collections.html">Browse rentals</a>';
       return;
     }
-    const t = totals(list, inv);
     body.innerHTML = t.lines.map(({ item: it, qty, unit, line }) => `<div class="drawer-item" data-slug="${esc(it.slug)}">
         <a class="media" href="item.html?i=${esc(it.slug)}">${picture(it.image, it.alt, dims[it.image], { sizes: '72px' })}</a>
         <div><h3>${esc(it.name)}</h3><small>${money(unit)} per day</small><div class="qty" role="group" aria-label="Quantity for ${esc(it.name)}"><button type="button" data-dec aria-label="Decrease"${qty <= 1 ? ' disabled' : ''}>−</button><output>${qty}</output><button type="button" data-inc aria-label="Increase"${qty >= enquiry.max(it.slug) ? ' disabled' : ''}>+</button></div></div>
