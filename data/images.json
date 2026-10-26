@@ -534,5 +534,30 @@
   "w": 1359,
   "h": 1699,
   "jpgOnly": true
+ },
+ "rhonda-bw": {
+  "w": 1336,
+  "h": 1670,
+  "jpgOnly": true
+ },
+ "rhonda-bw-detail1": {
+  "w": 1393,
+  "h": 1741,
+  "jpgOnly": true
+ },
+ "rhonda-bw-detail2": {
+  "w": 1258,
+  "h": 1572,
+  "jpgOnly": true
+ },
+ "ring-back": {
+  "w": 1376,
+  "h": 1720,
+  "jpgOnly": true
+ },
+ "ring-back-detail1": {
+  "w": 1325,
+  "h": 1657,
+  "jpgOnly": true
  }
 }

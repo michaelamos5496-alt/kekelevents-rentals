@@ -393,6 +393,45 @@
     "elegant"
    ],
    "price": 45
+  },
+  {
+   "slug": "rhonda-chair-black-white",
+   "name": "Rhonda Chair, Black and White",
+   "category": "seating",
+   "note": "A round bouclé seat and curved back in ivory, on slender black metal legs.",
+   "quantity": 100,
+   "material": "Ivory bouclé upholstered back and seat, black-finish metal legs",
+   "dimensions": "On request",
+   "image": "rhonda-bw",
+   "alt": "A front view of the Rhonda chair: a round ivory bouclé seat and curved back on black metal legs, on white",
+   "gallery": [
+    "rhonda-bw-detail1",
+    "rhonda-bw-detail2"
+   ],
+   "mood": [
+    "modern",
+    "elegant"
+   ],
+   "price": 45
+  },
+  {
+   "slug": "ring-back-chair",
+   "name": "Ring Back Chair",
+   "category": "seating",
+   "note": "A channeled white back with a gold ring pull, on slender gold metal legs.",
+   "quantity": 100,
+   "material": "White upholstered back and seat, gold-finish metal legs and ring pull",
+   "dimensions": "On request",
+   "image": "ring-back",
+   "alt": "A front view of a white upholstered chair on slender gold metal legs, with a gold ring pull on the back, on white",
+   "gallery": [
+    "ring-back-detail1"
+   ],
+   "mood": [
+    "modern",
+    "elegant"
+   ],
+   "price": 50
   }
  ]
 }
