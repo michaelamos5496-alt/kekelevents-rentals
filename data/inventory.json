@@ -336,6 +336,63 @@
     "elegant"
    ],
    "price": 60
+  },
+  {
+   "slug": "rhonda-chair-blush-white",
+   "name": "Rhonda Chair, Blush and White",
+   "category": "seating",
+   "note": "A round velvet seat and curved back in dusty blush, on slender white metal legs.",
+   "quantity": 100,
+   "material": "Blush velvet upholstered back and seat, white-finish metal legs",
+   "dimensions": "On request",
+   "image": "rhonda-blush",
+   "alt": "A front view of the Rhonda chair: a round blush velvet seat and curved back on white metal legs, on white",
+   "gallery": [
+    "rhonda-blush-detail1"
+   ],
+   "mood": [
+    "modern",
+    "elegant"
+   ],
+   "price": 45
+  },
+  {
+   "slug": "rhonda-chair-white-white",
+   "name": "Rhonda Chair, White on White",
+   "category": "seating",
+   "note": "A round bouclé seat and curved back in ivory, on slender white metal legs.",
+   "quantity": 100,
+   "material": "Ivory bouclé upholstered back and seat, white-finish metal legs",
+   "dimensions": "On request",
+   "image": "rhonda-white",
+   "alt": "A front view of the Rhonda chair: a round ivory bouclé seat and curved back on white metal legs, on white",
+   "gallery": [
+    "rhonda-white-detail1"
+   ],
+   "mood": [
+    "modern",
+    "elegant"
+   ],
+   "price": 45
+  },
+  {
+   "slug": "rhonda-chair-black-black",
+   "name": "Rhonda Chair, Black on Black",
+   "category": "seating",
+   "note": "A round velvet seat and curved back in black, on slender black metal legs.",
+   "quantity": 100,
+   "material": "Black velvet upholstered back and seat, black-finish metal legs",
+   "dimensions": "On request",
+   "image": "rhonda-black",
+   "alt": "A front view of the Rhonda chair: a round black velvet seat and curved back on black metal legs, on white",
+   "gallery": [
+    "rhonda-black-detail1"
+   ],
+   "mood": [
+    "modern",
+    "elegant"
+   ],
+   "price": 45
   }
  ]
 }
