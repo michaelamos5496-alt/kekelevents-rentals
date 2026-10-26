@@ -432,6 +432,101 @@
     "elegant"
    ],
    "price": 50
+  },
+  {
+   "slug": "skyline-dining-chair",
+   "name": "Skyline Dining Chair",
+   "category": "seating",
+   "note": "A sleek geometric frame in gold, with black velvet back and seat cushions.",
+   "quantity": 100,
+   "material": "Gold-finish metal frame, black velvet upholstered back and seat",
+   "dimensions": "On request",
+   "image": "skyline-dining",
+   "alt": "A front view of a gold geometric-frame chair with black velvet back and seat cushions, on white",
+   "gallery": [
+    "skyline-dining-detail1"
+   ],
+   "mood": [
+    "modern",
+    "elegant"
+   ],
+   "price": 50
+  },
+  {
+   "slug": "silver-t-chair",
+   "name": "Silver T Chair",
+   "category": "seating",
+   "note": "A bolster backrest on a polished chrome T-frame, with a round white seat.",
+   "quantity": 100,
+   "material": "Chrome-finish metal frame, white upholstered bolster back and seat",
+   "dimensions": "On request",
+   "image": "silver-t",
+   "alt": "A front view of a white chair with a bolster backrest on a polished chrome T-frame, on white",
+   "gallery": [
+    "silver-t-detail1"
+   ],
+   "mood": [
+    "modern",
+    "elegant"
+   ],
+   "price": 50
+  },
+  {
+   "slug": "gold-crossback-chair",
+   "name": "Gold Crossback Chair",
+   "category": "seating",
+   "note": "A crossing lattice back in polished gold, with a black velvet seat.",
+   "quantity": 100,
+   "material": "Gold-finish metal frame, black velvet upholstered seat",
+   "dimensions": "On request",
+   "image": "gold-crossback",
+   "alt": "A front view of a gold lattice-back chair with a black velvet seat, on white",
+   "gallery": [
+    "gold-crossback-detail1"
+   ],
+   "mood": [
+    "modern",
+    "elegant"
+   ],
+   "price": 15
+  },
+  {
+   "slug": "serpentine-table",
+   "name": "Serpentine Table",
+   "category": "tablescape",
+   "note": "Curved modular sections that join into a serpentine or horseshoe layout, for a shared table or buffet line.",
+   "quantity": 100,
+   "material": "Wood-finish tabletop, folding black metal legs",
+   "dimensions": "On request",
+   "image": "serpentine-table",
+   "alt": "A curved serpentine table formed from modular wood-finish sections on folding black legs, on white",
+   "gallery": [
+    "serpentine-table-detail1"
+   ],
+   "mood": [
+    "modern",
+    "warm"
+   ],
+   "price": 70
+  },
+  {
+   "slug": "crystal-glass-table",
+   "name": "Crystal Glass Table",
+   "category": "tablescape",
+   "note": "A clear glass top on a gold frame, edged in faceted crystal trim.",
+   "quantity": 100,
+   "material": "Gold-finish metal frame, glass top, crystal trim",
+   "dimensions": "On request",
+   "image": "crystal-glass-table",
+   "alt": "A gold-framed glass-top coffee table with faceted crystal trim, on white",
+   "gallery": [
+    "crystal-glass-table-detail1"
+   ],
+   "mood": [
+    "modern",
+    "elegant"
+   ],
+   "price": 400
   }
  ]
 }

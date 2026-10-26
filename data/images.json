@@ -559,5 +559,55 @@
   "w": 1325,
   "h": 1657,
   "jpgOnly": true
+ },
+ "skyline-dining": {
+  "w": 1356,
+  "h": 1695,
+  "jpgOnly": true
+ },
+ "skyline-dining-detail1": {
+  "w": 1335,
+  "h": 1668,
+  "jpgOnly": true
+ },
+ "silver-t": {
+  "w": 1297,
+  "h": 1621,
+  "jpgOnly": true
+ },
+ "silver-t-detail1": {
+  "w": 1356,
+  "h": 1695,
+  "jpgOnly": true
+ },
+ "gold-crossback": {
+  "w": 1470,
+  "h": 1837,
+  "jpgOnly": true
+ },
+ "gold-crossback-detail1": {
+  "w": 1482,
+  "h": 1852,
+  "jpgOnly": true
+ },
+ "serpentine-table": {
+  "w": 1934,
+  "h": 2417,
+  "jpgOnly": true
+ },
+ "serpentine-table-detail1": {
+  "w": 973,
+  "h": 1216,
+  "jpgOnly": true
+ },
+ "crystal-glass-table": {
+  "w": 1901,
+  "h": 2376,
+  "jpgOnly": true
+ },
+ "crystal-glass-table-detail1": {
+  "w": 1896,
+  "h": 2369,
+  "jpgOnly": true
  }
 }
