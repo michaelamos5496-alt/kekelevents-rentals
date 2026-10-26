@@ -527,6 +527,44 @@
     "elegant"
    ],
    "price": 400
+  },
+  {
+   "slug": "gold-edior-chair",
+   "name": "Gold Edior Chair",
+   "category": "seating",
+   "note": "An oval back in white upholstery, on a slender gold metal frame.",
+   "quantity": 100,
+   "material": "Gold-finish metal frame, white upholstered oval back and seat",
+   "dimensions": "On request",
+   "image": "gold-edior",
+   "alt": "A front view of a white oval-back chair on a slender gold metal frame, on white",
+   "gallery": [
+    "gold-edior-detail1"
+   ],
+   "mood": [
+    "classic",
+    "elegant"
+   ],
+   "price": 30
+  },
+  {
+   "slug": "gold-o-back-chair",
+   "name": "Gold O Back Chair",
+   "category": "seating",
+   "note": "An open oval ring back in polished gold, with a white padded seat.",
+   "quantity": 100,
+   "material": "Gold-finish metal frame, white upholstered seat",
+   "dimensions": "On request",
+   "image": "gold-o-back",
+   "alt": "A front view of a chair with an open gold oval ring back and a white seat, on white",
+   "gallery": [
+    "gold-o-back-detail1"
+   ],
+   "mood": [
+    "modern",
+    "elegant"
+   ],
+   "price": 30
   }
  ]
 }

@@ -609,5 +609,25 @@
   "w": 1896,
   "h": 2369,
   "jpgOnly": true
+ },
+ "gold-edior": {
+  "w": 1519,
+  "h": 1898,
+  "jpgOnly": true
+ },
+ "gold-edior-detail1": {
+  "w": 1562,
+  "h": 1952,
+  "jpgOnly": true
+ },
+ "gold-o-back": {
+  "w": 1545,
+  "h": 1931,
+  "jpgOnly": true
+ },
+ "gold-o-back-detail1": {
+  "w": 1550,
+  "h": 1938,
+  "jpgOnly": true
  }
 }
