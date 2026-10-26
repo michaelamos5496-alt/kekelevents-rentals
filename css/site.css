@@ -283,15 +283,16 @@ html.hide-placeholders .ph-note { display: none; }
 .pdp__fine { font-size: var(--fs-small); color: var(--stone); }
 
 /* Product modal: a piece opens as a popup card (reusing .pdp__card) on top of every page, instead of navigating to item.html.
-   Kept to the essentials (photo, title, short note, price, quantity, actions) and always side-by-side so it never needs to scroll;
-   overflow is clipped rather than scrollable, and full detail (specs, gallery, fine print) stays on the item page. */
+   Kept to the essentials (photo + tiny thumbnails, title, short note, price, quantity, actions) and always side-by-side
+   so it never needs to scroll; overflow is clipped rather than scrollable, and full detail (specs, fine print) stays on the item page. */
 .product-modal { position: fixed; inset: 0; margin: auto; width: min(30rem, calc(100vw - 1.5rem)); max-height: calc(100vh - 2rem); border: 0; padding: 0; background: transparent; overflow: visible; }
 .product-modal::backdrop { background: rgb(20 19 18 / 0.55); }
 .product-modal .pdp__card { position: relative; grid-template-columns: 6rem 1fr; gap: 1rem; padding: 1.5rem; max-height: calc(100vh - 2rem); overflow: hidden; }
-.product-modal .pdp__gallery { border-right: 1px solid var(--hairline); padding-right: 1rem; }
+.product-modal .pdp__gallery { border-right: 1px solid var(--hairline); padding-right: 1rem; gap: 0.5rem; }
 .product-modal .pdp__info { padding-left: 0; }
 .product-modal .pdp__hero { max-width: 6rem; }
-.product-modal .pdp__thumbs { display: none; }
+.product-modal .pdp__thumbs { gap: 0.35rem; flex-wrap: wrap; justify-content: center; }
+.product-modal .pdp__thumb { width: 1.7rem; border-radius: 0.4rem; }
 .product-modal .pdp__crumb { margin-bottom: 0.3rem; }
 .product-modal .pdp__title { font-size: 1.05rem; margin-bottom: 0.5rem; }
 .product-modal .pdp__desc { font-size: var(--fs-small); line-height: 1.4; margin-bottom: 0.75rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
