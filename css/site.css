@@ -521,14 +521,14 @@ main section.about .about__figure { min-height: 16rem; }
 main section.about-intro { padding-block: 2rem; }
 main .about-wide { height: calc(100dvh - var(--header-h)); min-height: 18rem; }
 .hero { scroll-snap-align: start; scroll-margin-top: 0; }
-@media (min-width: 62rem) { .hero { height: calc(100dvh - 6.75rem); min-height: 34rem; } }
+@media (min-width: 62rem) { .hero { height: auto; min-height: calc(100dvh - 6.75rem); } }
 .site-footer { scroll-snap-align: end; }
 @media (prefers-reduced-motion: reduce) { html { scroll-snap-type: none; } }
 
 /* Phones and small tablets: compress each section so it fits inside one screen (below the header) */
 .recent-dots { display: none; }
 @media (max-width: 61.99rem) {
-  .hero { height: 100dvh; min-height: 30rem; grid-template-rows: auto minmax(0, 1fr); }
+  .hero { min-height: 100dvh; grid-template-rows: auto minmax(0, 1fr); }
   .hero__text { padding: 1rem var(--pad) 1.25rem; }
   .hero .label { font-size: 0.68rem; }
   .hero__statement { margin-top: 0.75rem; font-size: clamp(2rem, 9.5vw, 2.9rem); }
