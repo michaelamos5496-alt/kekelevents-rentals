@@ -224,6 +224,25 @@
    "price": 15
   },
   {
+   "slug": "resin-white-round-back",
+   "name": "Resin White Round Back Chair",
+   "category": "seating",
+   "note": "A white resin chiavari chair with a round medallion back, for a clean classic setting.",
+   "quantity": 100,
+   "material": "White resin",
+   "dimensions": "On request",
+   "image": "resin-white-round-back",
+   "alt": "A white resin chiavari chair with a round medallion back, on white",
+   "gallery": [
+    "resin-white-round-back-detail1"
+   ],
+   "mood": [
+    "classic",
+    "modern"
+   ],
+   "price": 10
+  },
+  {
    "slug": "rustic-cocktail-chair",
    "name": "Rustic Cocktail Chair",
    "category": "seating",
