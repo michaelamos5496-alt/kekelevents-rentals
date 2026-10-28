@@ -755,6 +755,16 @@
   "h": 2000,
   "jpgOnly": true
  },
+ "candelabra": {
+  "w": 1600,
+  "h": 2000,
+  "jpgOnly": true
+ },
+ "candelabra-detail1": {
+  "w": 1600,
+  "h": 2000,
+  "jpgOnly": true
+ },
  "crystal-glass-table": {
   "w": 1901,
   "h": 2376,

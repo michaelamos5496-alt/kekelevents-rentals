@@ -338,6 +338,25 @@
    "price": 300
   },
   {
+   "slug": "candelabra",
+   "name": "Candelabra",
+   "category": "decor",
+   "note": "A seven-arm silver candelabra with tall glass hurricane shades and crystal bobeches.",
+   "quantity": 100,
+   "material": "Silver-finish metal, glass hurricane shades, crystal trim",
+   "dimensions": "On request",
+   "image": "candelabra",
+   "alt": "A seven-arm silver candelabra with tall glass hurricane shades, on white",
+   "gallery": [
+    "candelabra-detail1"
+   ],
+   "mood": [
+    "glam",
+    "elegant"
+   ],
+   "price": 250
+  },
+  {
    "slug": "silver-glass-table",
    "name": "Silver Glass Table",
    "category": "tablescape",
