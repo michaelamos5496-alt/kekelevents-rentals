@@ -695,6 +695,16 @@
   "h": 2500,
   "jpgOnly": true
  },
+ "vogue-crystal-chair": {
+  "w": 1600,
+  "h": 2000,
+  "jpgOnly": true
+ },
+ "vogue-crystal-chair-detail1": {
+  "w": 1600,
+  "h": 2000,
+  "jpgOnly": true
+ },
  "crystal-glass-table": {
   "w": 1901,
   "h": 2376,

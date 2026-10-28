@@ -336,6 +336,25 @@
    "price": 400
   },
   {
+   "slug": "vogue-crystal-chair",
+   "name": "Vogue Chair, Crystal",
+   "category": "seating",
+   "note": "A clear acrylic baroque ghost chair with a carved crest and scrolled detailing.",
+   "quantity": 100,
+   "material": "Clear polycarbonate",
+   "dimensions": "On request",
+   "image": "vogue-crystal-chair",
+   "alt": "A clear acrylic baroque ghost chair with a carved crest, on white",
+   "gallery": [
+    "vogue-crystal-chair-detail1"
+   ],
+   "mood": [
+    "classic",
+    "modern"
+   ],
+   "price": 30
+  },
+  {
    "slug": "rustic-cocktail-chair",
    "name": "Rustic Cocktail Chair",
    "category": "seating",
