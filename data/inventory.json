@@ -376,6 +376,25 @@
    "price": 8
   },
   {
+   "slug": "gold-rim-underplate",
+   "name": "Gold Rim Underplate",
+   "category": "decor",
+   "note": "A fluted crystal underplate with a scalloped gold rim.",
+   "quantity": 100,
+   "material": "Glass, gold-finish rim",
+   "dimensions": "On request",
+   "image": "gold-rim-underplate",
+   "alt": "A fluted crystal underplate with a scalloped gold rim, on white",
+   "gallery": [
+    "gold-rim-underplate-detail1"
+   ],
+   "mood": [
+    "classic",
+    "glam"
+   ],
+   "price": 8
+  },
+  {
    "slug": "silver-glass-table",
    "name": "Silver Glass Table",
    "category": "tablescape",

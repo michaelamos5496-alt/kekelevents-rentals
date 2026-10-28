@@ -775,6 +775,16 @@
   "h": 2000,
   "jpgOnly": true
  },
+ "gold-rim-underplate": {
+  "w": 1600,
+  "h": 2000,
+  "jpgOnly": true
+ },
+ "gold-rim-underplate-detail1": {
+  "w": 1600,
+  "h": 2000,
+  "jpgOnly": true
+ },
  "crystal-glass-table": {
   "w": 1901,
   "h": 2376,
