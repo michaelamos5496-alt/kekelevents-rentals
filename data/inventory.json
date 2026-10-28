@@ -262,6 +262,25 @@
    "price": 150
   },
   {
+   "slug": "silver-couple-chair",
+   "name": "Silver Couple Chairs",
+   "category": "seating",
+   "note": "A matched pair of crystal-tufted ivory armchairs on curved chrome frames, for the couple's table.",
+   "quantity": 100,
+   "material": "Chrome-finish metal frame, ivory faux-leather upholstery, crystal tufting",
+   "dimensions": "On request",
+   "image": "silver-couple-chair",
+   "alt": "A front view of a crystal-tufted ivory armchair on a curved chrome frame, on white",
+   "gallery": [
+    "silver-couple-chair-detail1"
+   ],
+   "mood": [
+    "glam",
+    "classic"
+   ],
+   "price": 150
+  },
+  {
    "slug": "lined-gold-round-table",
    "name": "Lined Gold Round Table",
    "category": "tablescape",
