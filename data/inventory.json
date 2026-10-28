@@ -395,6 +395,25 @@
    "price": 8
   },
   {
+   "slug": "gold-rim-dinner-plate",
+   "name": "Gold Rim Dinner Plate",
+   "category": "decor",
+   "note": "A white porcelain dinner plate with a rose-gold rim and banded centre.",
+   "quantity": 100,
+   "material": "Porcelain, rose-gold rim",
+   "dimensions": "On request",
+   "image": "gold-rim-dinner-plate",
+   "alt": "A white porcelain dinner plate with a rose-gold rim and banded centre, on white",
+   "gallery": [
+    "gold-rim-dinner-plate-detail1"
+   ],
+   "mood": [
+    "classic",
+    "elegant"
+   ],
+   "price": 15
+  },
+  {
    "slug": "silver-glass-table",
    "name": "Silver Glass Table",
    "category": "tablescape",
