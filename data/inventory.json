@@ -300,6 +300,25 @@
    "price": 500
   },
   {
+   "slug": "candlestick-set",
+   "name": "Crystal Candlestick, Set of 2",
+   "category": "decor",
+   "note": "A pair of tall faceted crystal candlesticks on a chrome stem, for the table.",
+   "quantity": 100,
+   "material": "Crystal glass, chrome-finish stem",
+   "dimensions": "On request",
+   "image": "candlestick-set",
+   "alt": "A pair of tall faceted crystal candlesticks on a chrome stem, on white",
+   "gallery": [
+    "candlestick-set-detail1"
+   ],
+   "mood": [
+    "glam",
+    "elegant"
+   ],
+   "price": 200
+  },
+  {
    "slug": "lined-gold-round-table",
    "name": "Lined Gold Round Table",
    "category": "tablescape",

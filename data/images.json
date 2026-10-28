@@ -730,6 +730,16 @@
   "h": 2500,
   "jpgOnly": true
  },
+ "candlestick-set": {
+  "w": 1600,
+  "h": 2000,
+  "jpgOnly": true
+ },
+ "candlestick-set-detail1": {
+  "w": 1600,
+  "h": 2000,
+  "jpgOnly": true
+ },
  "crystal-glass-table": {
   "w": 1901,
   "h": 2376,
