@@ -262,6 +262,25 @@
    "price": 150
   },
   {
+   "slug": "lined-gold-round-table",
+   "name": "Lined Gold Round Table",
+   "category": "tablescape",
+   "note": "A round glass top on a gold hourglass base of crossed, lined metal spokes.",
+   "quantity": 100,
+   "material": "Tempered glass top, gold-finish metal base",
+   "dimensions": "On request",
+   "image": "lined-gold-round-table",
+   "alt": "A round glass-top table on a gold hourglass base of crossed lined spokes, on white",
+   "gallery": [
+    "lined-gold-round-table-detail1"
+   ],
+   "mood": [
+    "modern",
+    "glam"
+   ],
+   "price": 400
+  },
+  {
    "slug": "rustic-cocktail-chair",
    "name": "Rustic Cocktail Chair",
    "category": "seating",
