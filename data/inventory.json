@@ -319,6 +319,25 @@
    "price": 200
   },
   {
+   "slug": "candlestick-big",
+   "name": "Crystal Candlestick, Large",
+   "category": "decor",
+   "note": "A tall single crystal candlestick with a fluted drum shade on a square crystal base.",
+   "quantity": 100,
+   "material": "Crystal glass, chrome-finish stem",
+   "dimensions": "On request",
+   "image": "candlestick-big",
+   "alt": "A tall crystal candlestick with a fluted drum shade on a square crystal base, on white",
+   "gallery": [
+    "candlestick-big-detail1"
+   ],
+   "mood": [
+    "glam",
+    "elegant"
+   ],
+   "price": 300
+  },
+  {
    "slug": "silver-glass-table",
    "name": "Silver Glass Table",
    "category": "tablescape",
