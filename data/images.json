@@ -610,6 +610,16 @@
   "h": 2500,
   "jpgOnly": true
  },
+ "gold-s-table": {
+  "w": 2000,
+  "h": 2500,
+  "jpgOnly": true
+ },
+ "gold-s-table-detail1": {
+  "w": 2000,
+  "h": 2500,
+  "jpgOnly": true
+ },
  "crystal-glass-table": {
   "w": 1901,
   "h": 2376,

@@ -529,6 +529,25 @@
    "price": 400
   },
   {
+   "slug": "gold-s-table",
+   "name": "Gold S Table",
+   "category": "tablescape",
+   "note": "A curved glass-top segment on gold ball-and-spindle legs; four segments join into a full round table, GH₵800 per day for the set.",
+   "quantity": 100,
+   "material": "Tempered glass top, gold-finish turned metal legs",
+   "dimensions": "On request",
+   "image": "gold-s-table",
+   "alt": "A curved S-shaped glass-top table segment on gold ball-and-spindle legs, on white",
+   "gallery": [
+    "gold-s-table-detail1"
+   ],
+   "mood": [
+    "glam",
+    "elegant"
+   ],
+   "price": 200
+  },
+  {
    "slug": "crystal-glass-table",
    "name": "Crystal Glass Table",
    "category": "tablescape",
