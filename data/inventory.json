@@ -679,6 +679,25 @@
     "elegant"
    ],
    "price": 30
+  },
+  {
+   "slug": "silver-o-back-chair",
+   "name": "Silver O Back Chair",
+   "category": "seating",
+   "note": "An open oval ring back in polished chrome, with a white padded seat.",
+   "quantity": 100,
+   "material": "Chrome-finish metal frame, white upholstered seat",
+   "dimensions": "On request",
+   "image": "silver-o-back",
+   "alt": "A front view of a chair with an open chrome oval ring back and a white seat, on white",
+   "gallery": [
+    "silver-o-back-detail1"
+   ],
+   "mood": [
+    "modern",
+    "elegant"
+   ],
+   "price": 30
   }
  ]
 }
