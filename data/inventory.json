@@ -243,6 +243,25 @@
    "price": 10
   },
   {
+   "slug": "gold-white-couple-chair",
+   "name": "Gold & White Couple Chairs",
+   "category": "seating",
+   "note": "A matched pair of tall-back gold chairs with white padded panels and a beaded centre rail, for the couple's table.",
+   "quantity": 100,
+   "material": "Gold-finish metal frame, white faux-leather upholstery",
+   "dimensions": "On request",
+   "image": "gold-white-couple-chair",
+   "alt": "A front view of a tall-back gold chair with white padded panels and a beaded gold centre rail, on white",
+   "gallery": [
+    "gold-white-couple-chair-detail1"
+   ],
+   "mood": [
+    "glam",
+    "classic"
+   ],
+   "price": 150
+  },
+  {
    "slug": "rustic-cocktail-chair",
    "name": "Rustic Cocktail Chair",
    "category": "seating",
