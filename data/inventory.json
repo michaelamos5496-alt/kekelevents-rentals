@@ -319,6 +319,23 @@
    "price": 200
   },
   {
+   "slug": "silver-glass-table",
+   "name": "Silver Glass Table",
+   "category": "tablescape",
+   "note": "A domed silver birdcage-style side table with a glass top, for a decorative accent.",
+   "quantity": 100,
+   "material": "Chrome-finish metal frame, glass top",
+   "dimensions": "On request",
+   "image": "silver-glass-table",
+   "alt": "A domed silver birdcage-style table with a glass top, on white",
+   "gallery": [],
+   "mood": [
+    "glam",
+    "modern"
+   ],
+   "price": 400
+  },
+  {
    "slug": "lined-gold-round-table",
    "name": "Lined Gold Round Table",
    "category": "tablescape",
