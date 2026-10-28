@@ -357,6 +357,25 @@
    "price": 250
   },
   {
+   "slug": "black-gold-underplate",
+   "name": "Black & Gold Splash Underplate",
+   "category": "decor",
+   "note": "A black marbled underplate with a wavy scalloped rim and a gold-leaf splash accent.",
+   "quantity": 100,
+   "material": "Glazed ceramic, gold-leaf detail",
+   "dimensions": "On request",
+   "image": "black-gold-underplate",
+   "alt": "A black marbled underplate with a scalloped rim and a gold-leaf splash accent, on white",
+   "gallery": [
+    "black-gold-underplate-detail1"
+   ],
+   "mood": [
+    "modern",
+    "glam"
+   ],
+   "price": 8
+  },
+  {
    "slug": "silver-glass-table",
    "name": "Silver Glass Table",
    "category": "tablescape",
