@@ -281,6 +281,25 @@
    "price": 150
   },
   {
+   "slug": "gold-steel-bar",
+   "name": "Gold Stainless Steel Bar",
+   "category": "tablescape",
+   "note": "A long gold stainless steel bar with a glass top, for serving or display.",
+   "quantity": 100,
+   "material": "Polished gold-finish stainless steel, glass top",
+   "dimensions": "On request",
+   "image": "gold-steel-bar",
+   "alt": "A long gold stainless steel bar with a glass top, on white",
+   "gallery": [
+    "gold-steel-bar-detail1"
+   ],
+   "mood": [
+    "modern",
+    "glam"
+   ],
+   "price": 500
+  },
+  {
    "slug": "lined-gold-round-table",
    "name": "Lined Gold Round Table",
    "category": "tablescape",
