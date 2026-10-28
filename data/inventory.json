@@ -205,6 +205,25 @@
    "price": 150
   },
   {
+   "slug": "gold-chameleon-chair",
+   "name": "Gold Chameleon Chair",
+   "category": "seating",
+   "note": "A gold criss-cross lattice-back chair with a padded seat in black or white to fit your palette.",
+   "quantity": 100,
+   "material": "Gold-finish metal frame, black or white faux-leather pad",
+   "dimensions": "On request",
+   "image": "gold-chameleon-chair",
+   "alt": "A front view of a gold criss-cross lattice-back chair with a white padded seat, on white",
+   "gallery": [
+    "gold-chameleon-chair-detail1"
+   ],
+   "mood": [
+    "glam",
+    "modern"
+   ],
+   "price": 15
+  },
+  {
    "slug": "rustic-cocktail-chair",
    "name": "Rustic Cocktail Chair",
    "category": "seating",
