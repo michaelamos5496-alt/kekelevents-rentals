@@ -510,6 +510,25 @@
    "price": 70
   },
   {
+   "slug": "ribbed-white-table",
+   "name": "Ribbed White Table",
+   "category": "tablescape",
+   "note": "A glossy white tabletop set on fluted, ribbed drum bases, for a clean modern setting.",
+   "quantity": 100,
+   "material": "High-gloss white tabletop, fluted drum bases",
+   "dimensions": "On request",
+   "image": "ribbed-white-table",
+   "alt": "A rectangular glossy white table on two fluted, ribbed drum bases, on white",
+   "gallery": [
+    "ribbed-white-table-detail1"
+   ],
+   "mood": [
+    "modern",
+    "elegant"
+   ],
+   "price": 400
+  },
+  {
    "slug": "crystal-glass-table",
    "name": "Crystal Glass Table",
    "category": "tablescape",

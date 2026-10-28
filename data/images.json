@@ -600,6 +600,16 @@
   "h": 1216,
   "jpgOnly": true
  },
+ "ribbed-white-table": {
+  "w": 2000,
+  "h": 2500,
+  "jpgOnly": true
+ },
+ "ribbed-white-table-detail1": {
+  "w": 2000,
+  "h": 2500,
+  "jpgOnly": true
+ },
  "crystal-glass-table": {
   "w": 1901,
   "h": 2376,
