@@ -300,6 +300,25 @@
    "price": 300
   },
   {
+   "slug": "wooden-table",
+   "name": "Wooden Table",
+   "category": "tablescape",
+   "note": "A plain rustic wooden farmhouse table on square legs, for a simple warm setting.",
+   "quantity": 100,
+   "material": "Solid wood, stained finish",
+   "dimensions": "On request",
+   "image": "wooden-table",
+   "alt": "A rustic wooden farmhouse table on plain square legs, on white",
+   "gallery": [
+    "wooden-table-detail1"
+   ],
+   "mood": [
+    "rustic",
+    "warm"
+   ],
+   "price": 300
+  },
+  {
    "slug": "rustic-cocktail-chair",
    "name": "Rustic Cocktail Chair",
    "category": "seating",
