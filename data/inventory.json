@@ -281,6 +281,25 @@
    "price": 400
   },
   {
+   "slug": "cross-leg-wooden-table",
+   "name": "Cross Leg Wooden Table",
+   "category": "tablescape",
+   "note": "A long wooden farm table on X-shaped trestle legs, for a rustic shared setting.",
+   "quantity": 100,
+   "material": "Solid wood, honey-stained finish",
+   "dimensions": "On request",
+   "image": "cross-leg-wooden-table",
+   "alt": "A long wooden table on X-shaped cross trestle legs, on white",
+   "gallery": [
+    "cross-leg-wooden-table-detail1"
+   ],
+   "mood": [
+    "rustic",
+    "warm"
+   ],
+   "price": 300
+  },
+  {
    "slug": "rustic-cocktail-chair",
    "name": "Rustic Cocktail Chair",
    "category": "seating",
