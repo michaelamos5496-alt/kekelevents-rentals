@@ -673,6 +673,40 @@
    "price": 150
   },
   {
+   "slug": "black-white-parasol",
+   "name": "Black & White Parasol",
+   "category": "lounge",
+   "note": "A cream parasol with a black-outlined scalloped double canopy, on a wood pole and stone base.",
+   "quantity": 100,
+   "material": "Fabric canopy, wood-finish pole, stone base",
+   "dimensions": "On request",
+   "image": "black-white-parasol",
+   "alt": "A cream parasol with a black-outlined scalloped double canopy, on white",
+   "gallery": [],
+   "mood": [
+    "classic",
+    "elegant"
+   ],
+   "price": 300
+  },
+  {
+   "slug": "green-white-parasol",
+   "name": "Green & White Parasol",
+   "category": "lounge",
+   "note": "A sage and cream striped parasol with a fringed scalloped canopy, on a wood pole and stone base.",
+   "quantity": 100,
+   "material": "Fabric canopy, fringe trim, wood-finish pole, stone base",
+   "dimensions": "On request",
+   "image": "green-white-parasol",
+   "alt": "A sage and cream striped parasol with a fringed scalloped canopy, on white",
+   "gallery": [],
+   "mood": [
+    "classic",
+    "warm"
+   ],
+   "price": 300
+  },
+  {
    "slug": "cross-leg-wooden-table",
    "name": "Cross Leg Wooden Table",
    "category": "tablescape",
