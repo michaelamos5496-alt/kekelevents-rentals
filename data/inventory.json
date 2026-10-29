@@ -434,6 +434,24 @@
    "price": 100
   },
   {
+   "slug": "foldable-cocktail-table",
+   "name": "Foldable Cocktail Table",
+   "category": "tablescape",
+   "note": "A round white cocktail table on a folding X-frame base, easy to store and transport.",
+   "quantity": 100,
+   "material": "White plastic top, folding metal frame",
+   "dimensions": "On request",
+   "image": "foldable-cocktail-table",
+   "alt": "A round white cocktail table on a folding metal X-frame base, on white",
+   "gallery": [
+    "foldable-cocktail-table-detail1"
+   ],
+   "mood": [
+    "modern"
+   ],
+   "price": 50
+  },
+  {
    "slug": "silver-glass-table",
    "name": "Silver Glass Table",
    "category": "tablescape",
