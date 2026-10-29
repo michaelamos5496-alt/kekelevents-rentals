@@ -707,6 +707,25 @@
    "price": 300
   },
   {
+   "slug": "black-cocktail-table",
+   "name": "Black Cocktail Table",
+   "category": "tablescape",
+   "note": "A round black cocktail table on a fluted cylindrical pedestal base.",
+   "quantity": 100,
+   "material": "Lacquered wood top, fluted metal pedestal",
+   "dimensions": "On request",
+   "image": "black-cocktail-table",
+   "alt": "A round black cocktail table on a fluted cylindrical pedestal base, on white",
+   "gallery": [
+    "black-cocktail-table-detail1"
+   ],
+   "mood": [
+    "modern",
+    "elegant"
+   ],
+   "price": 250
+  },
+  {
    "slug": "cross-leg-wooden-table",
    "name": "Cross Leg Wooden Table",
    "category": "tablescape",
