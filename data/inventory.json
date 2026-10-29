@@ -726,6 +726,25 @@
    "price": 250
   },
   {
+   "slug": "cocktail-chair",
+   "name": "Cocktail Chair",
+   "category": "seating",
+   "note": "A tall gold cross-back cocktail stool with a white padded seat.",
+   "quantity": 100,
+   "material": "Gold-finish metal frame, white faux-leather seat",
+   "dimensions": "On request",
+   "image": "cocktail-chair",
+   "alt": "A tall gold cross-back cocktail stool with a white padded seat, on white",
+   "gallery": [
+    "cocktail-chair-detail1"
+   ],
+   "mood": [
+    "modern",
+    "elegant"
+   ],
+   "price": 50
+  },
+  {
    "slug": "cross-leg-wooden-table",
    "name": "Cross Leg Wooden Table",
    "category": "tablescape",
