@@ -262,6 +262,25 @@
    "price": 150
   },
   {
+   "slug": "gold-white-throne-chair",
+   "name": "Gold & White Throne Chairs",
+   "category": "seating",
+   "note": "A matched pair of oval-back gold armchairs with crystal-tufted white panels, for the couple's table.",
+   "quantity": 100,
+   "material": "Gold-finish metal frame, white faux-leather upholstery, crystal tufting",
+   "dimensions": "On request",
+   "image": "gold-white-throne-chair",
+   "alt": "A front view of an oval-back gold armchair with a crystal-tufted white panel, on white",
+   "gallery": [
+    "gold-white-throne-chair-detail1"
+   ],
+   "mood": [
+    "glam",
+    "classic"
+   ],
+   "price": 150
+  },
+  {
    "slug": "silver-couple-chair",
    "name": "Silver Couple Chairs",
    "category": "seating",
