@@ -18,7 +18,7 @@ export function buildCard(it, cat, dims) {
         <div class="pdp__spec"><span class="pdp__spec-k">Material</span><strong>${esc(it.material)}</strong></div>
         <div class="pdp__spec"><span class="pdp__spec-k">Dimensions</span><strong>${esc(it.dimensions)}</strong></div>
       </div>
-      <p class="pdp__price">${money(it.price)}<span>per day</span></p>
+      <p class="pdp__price">${it.price ? `${money(it.price)}<span>per day</span>` : 'Price on request'}</p>
       <div class="pdp__buy">
         <div class="qty qty--lg" role="group" aria-label="Quantity"><button type="button" data-q-dec aria-label="Decrease quantity">−</button><output data-q-out aria-live="polite">1</output><button type="button" data-q-inc aria-label="Increase quantity">+</button></div>
         <div class="pdp__actions">
@@ -55,7 +55,7 @@ export function bindCard(root, it, dims) {
     const inCart = enquiry.all().find((x) => x.slug === it.slug);
     out.textContent = qty;
     dec.disabled = qty <= 1; inc.disabled = qty >= it.quantity;
-    tot.textContent = `${money(it.price * qty)} per day · ${money(it.price * qty * enquiry.days())} for ${daysLabel(enquiry.days())}`;
+    tot.textContent = it.price ? `${money(it.price * qty)} per day · ${money(it.price * qty * enquiry.days())} for ${daysLabel(enquiry.days())}` : 'Price on request';
     addBtn.textContent = !inCart ? 'Add to cart' : inCart.qty === qty ? 'In your cart' : 'Update cart';
   };
   dec.addEventListener('click', () => { qty = Math.max(1, qty - 1); paintBuy(); });

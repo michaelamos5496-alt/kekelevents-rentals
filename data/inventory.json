@@ -656,6 +656,23 @@
    "price": 200
   },
   {
+   "slug": "silver-cross-leg-cake-table",
+   "name": "Silver Cross Leg Cake Table",
+   "category": "tablescape",
+   "note": "A round glass-top table on a crossed silver chrome X-leg base.",
+   "quantity": 100,
+   "material": "Tempered glass top, chrome-finish metal frame",
+   "dimensions": "On request",
+   "image": "silver-cross-leg-cake-table",
+   "alt": "A round glass-top table on a crossed silver chrome X-leg base, on white",
+   "gallery": [],
+   "mood": [
+    "modern",
+    "elegant"
+   ],
+   "price": null
+  },
+  {
    "slug": "cross-leg-wooden-table",
    "name": "Cross Leg Wooden Table",
    "category": "tablescape",
