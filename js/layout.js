@@ -47,7 +47,7 @@ export async function initLayout() {
         <div class="footer__col"><h2>Rentals</h2><ul>${stocked(inv).slice(0, 5).map((c) => `<li><a href="collections.html?c=${c.id}">${esc(c.name)}</a></li>`).join('')}</ul></div>
         <div class="footer__col"><h2>Studio</h2><ul><li><a href="about.html">About</a></li><li><a href="services.html">Styling</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="enquire.html">Contact</a></li></ul></div>
         <div class="footer__col"><h2>Follow us</h2><ul><li><a href="https://instagram.com/${esc(site.instagram)}" rel="noopener">Instagram</a></li><li>${esc(site.city)}</li></ul></div>
-        <div class="footer__col"><h2>Enquire</h2><ul><li>${esc(site.serviceArea)}</li></ul><a class="btn" href="enquire.html">Begin your enquiry</a></div>
+        <div class="footer__col"><h2>Enquire</h2><ul><li>${esc(site.serviceArea)}</li><li><a href="mailto:${esc(site.email)}">${esc(site.email)}</a></li><li><a href="tel:${esc(site.phone.replace(/\s/g, ''))}">${esc(site.phone)}</a></li></ul><a class="btn" href="enquire.html">Begin your enquiry</a></div>
       </div>
       <div class="footer__legal"><span>© ${new Date().getFullYear()} ${esc(site.name)}. All rights reserved.</span><span>Designed and Developed by <a class="credit" href="https://theimagedept.vercel.app/index.html" target="_blank" rel="noopener">TheImagedept</a></span></div>
     </div></footer>

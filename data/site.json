@@ -6,9 +6,10 @@
  "statement": "Considered settings for occasions worth remembering.",
  "serviceArea": "Based in Accra, travelling across Ghana and beyond.",
  "instagram": "kekelrentals",
+ "phone": "+233 24 452 0386",
+ "email": "Kekelevents@gmail.com",
  "whatsapp": {
-  "_note": "PLACEHOLDER: add the real number in international format with no plus or spaces, e.g. 233XXXXXXXXX. Until then the button opens WhatsApp with the message ready and lets the visitor pick a contact.",
-  "number": "",
+  "number": "233244520386",
   "message": "Hello Kekel Rentals, I would like to enquire about an event."
  },
  "showPlaceholderTags": true,

@@ -14,7 +14,7 @@ export default function ({ site, inv, dims }) {
   $('f-date').min = enquiry.today();
   if (enquiry.hasDates()) $('f-date').value = enquiry.dates().start; // the event date follows the rental start date
 
-  $('enq-insta').innerHTML = `Or follow <a href="https://instagram.com/${esc(site.instagram)}" rel="noopener">@${esc(site.instagram)}</a> on Instagram.`;
+  $('enq-insta').innerHTML = `Or follow <a href="https://instagram.com/${esc(site.instagram)}" rel="noopener">@${esc(site.instagram)}</a> on Instagram, email <a href="mailto:${esc(site.email)}">${esc(site.email)}</a>, or call <a href="tel:${esc(site.phone.replace(/\s/g, ''))}">${esc(site.phone)}</a>.`;
   $('enq-area').textContent = site.serviceArea;
 
   // ---- Cart summary (editable here, shared with the drawer through the same store) ----
