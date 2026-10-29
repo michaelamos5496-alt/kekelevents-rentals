@@ -959,18 +959,35 @@
    "price": 50
   },
   {
-   "slug": "skyline-dining-chair",
-   "name": "Skyline Dining Chair",
+   "slug": "skyline-dining-chair-black",
+   "name": "Skyline Dining Chair, Black",
    "category": "seating",
-   "note": "A sleek geometric frame in gold, with velvet back and seat cushions in black or white.",
+   "note": "A sleek geometric frame in gold, with black velvet back and seat cushions.",
    "quantity": 100,
-   "material": "Gold-finish metal frame, black or white velvet upholstered back and seat",
+   "material": "Gold-finish metal frame, black velvet upholstered back and seat",
    "dimensions": "On request",
    "image": "skyline-dining",
    "alt": "A front view of a gold geometric-frame chair with black velvet back and seat cushions, on white",
    "gallery": [
-    "skyline-dining-detail2"
+    "skyline-dining-detail1"
    ],
+   "mood": [
+    "modern",
+    "elegant"
+   ],
+   "price": 50
+  },
+  {
+   "slug": "skyline-dining-chair-white",
+   "name": "Skyline Dining Chair, White",
+   "category": "seating",
+   "note": "A sleek geometric frame in gold, with white velvet back and seat cushions.",
+   "quantity": 100,
+   "material": "Gold-finish metal frame, white velvet upholstered back and seat",
+   "dimensions": "On request",
+   "image": "skyline-dining-detail2",
+   "alt": "A front view of a gold geometric-frame chair with white velvet back and seat cushions, on white",
+   "gallery": [],
    "mood": [
     "modern",
     "elegant"
