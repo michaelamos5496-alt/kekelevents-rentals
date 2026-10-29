@@ -120,8 +120,7 @@ export async function initLayout() {
     foot.innerHTML = `${datesMarkup('dr')}
       <div class="sum-row"><span>Subtotal · ${daysLabel(t.days)}</span><strong>${money(t.subtotal)}</strong></div>
       <div class="sum-row sum-row--muted"><span>Delivery</span><span>${esc(site.cart.deliveryNote)}</span></div>
-      <a class="btn btn--solid" href="enquire.html">Checkout</a>
-      <a class="btn" href="${esc(cartWhatsappUrl(site, inv))}" target="_blank" rel="noopener">Checkout via WhatsApp</a>
+      <a class="btn btn--solid" href="${esc(cartWhatsappUrl(site, inv))}" target="_blank" rel="noopener">Checkout via WhatsApp</a>
       <a class="btn" href="cart.html">View cart</a>
       ${clearMarkup('link link--clear')}
       ${site.cart.ratesPlaceholder ? '<span class="ph-note">Placeholder rates</span>' : ''}

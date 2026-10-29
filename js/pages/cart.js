@@ -33,8 +33,7 @@ export default function ({ site, inv, dims }) {
         <div class="sum-row"><span>Subtotal · ${daysLabel(t.days)}</span><strong>${money(t.subtotal)}</strong></div>
         <div class="sum-row sum-row--muted"><span>Delivery and collection</span><span>${esc(site.cart.deliveryNote)}</span></div>
         <div class="sum-row sum-row--total"><span>Estimated total</span><strong>${money(t.subtotal)}</strong></div>
-        <a class="btn btn--solid cart__checkout" href="enquire.html">Checkout</a>
-        <a class="btn cart__checkout" href="${esc(cartWhatsappUrl(site, inv))}" target="_blank" rel="noopener">Checkout via WhatsApp</a>
+        <a class="btn btn--solid cart__checkout" href="${esc(cartWhatsappUrl(site, inv))}" target="_blank" rel="noopener">Checkout via WhatsApp</a>
         ${site.cart.ratesPlaceholder ? '<span class="ph-note">Placeholder rates</span>' : ''}
         <p class="muted cart__fine">${esc(site.cart.paymentNote)}</p>
       </aside>`;
