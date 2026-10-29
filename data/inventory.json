@@ -675,23 +675,6 @@
    "price": 300
   },
   {
-   "slug": "silver-serpentine-table",
-   "name": "Silver Serpentine Table",
-   "category": "tablescape",
-   "note": "A sinuous S-curve glass-top table on silver ball legs with crystal-trimmed sides.",
-   "quantity": 100,
-   "material": "Glass top, silver-finish metal frame, crystal trim",
-   "dimensions": "On request",
-   "image": "silver-serpentine-table",
-   "alt": "A sinuous S-curve glass-top table on silver ball legs with crystal-trimmed sides, on white",
-   "gallery": [],
-   "mood": [
-    "glam",
-    "modern"
-   ],
-   "price": 400
-  },
-  {
    "slug": "vogue-crystal-chair",
    "name": "Vogue Chair, Crystal",
    "category": "seating",
