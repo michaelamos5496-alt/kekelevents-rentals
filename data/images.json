@@ -795,6 +795,21 @@
   "h": 2000,
   "jpgOnly": true
  },
+ "stanchion-rope-set": {
+  "w": 2000,
+  "h": 2500,
+  "jpgOnly": true
+ },
+ "stanchion-rope-set-detail1": {
+  "w": 2000,
+  "h": 2500,
+  "jpgOnly": true
+ },
+ "stanchion-rope-set-detail2": {
+  "w": 2000,
+  "h": 2500,
+  "jpgOnly": true
+ },
  "crystal-glass-table": {
   "w": 1901,
   "h": 2376,

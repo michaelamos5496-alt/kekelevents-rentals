@@ -414,6 +414,26 @@
    "price": 15
   },
   {
+   "slug": "stanchion-rope-set",
+   "name": "Stanchion & Red Rope Set",
+   "category": "decor",
+   "note": "Gold stanchion posts with red velvet ropes, plus a red carpet runner, for an entrance or aisle.",
+   "quantity": 100,
+   "material": "Gold-finish metal posts, velvet rope, carpet runner",
+   "dimensions": "On request",
+   "image": "stanchion-rope-set",
+   "alt": "Gold stanchion posts with red velvet ropes and a red carpet runner, on white",
+   "gallery": [
+    "stanchion-rope-set-detail1",
+    "stanchion-rope-set-detail2"
+   ],
+   "mood": [
+    "glam",
+    "classic"
+   ],
+   "price": 100
+  },
+  {
    "slug": "silver-glass-table",
    "name": "Silver Glass Table",
    "category": "tablescape",
