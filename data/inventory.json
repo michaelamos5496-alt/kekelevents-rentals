@@ -601,6 +601,25 @@
    "price": 400
   },
   {
+   "slug": "gold-couple-table",
+   "name": "Gold Couple Table",
+   "category": "tablescape",
+   "note": "A glass-top table on a sculptural gold pedestal of two intertwined hearts, for the couple's table.",
+   "quantity": 100,
+   "material": "Tempered glass top, gold-finish metal pedestal",
+   "dimensions": "On request",
+   "image": "gold-couple-table",
+   "alt": "A glass-top table on a sculptural gold pedestal of two intertwined hearts, on white",
+   "gallery": [
+    "gold-couple-table-detail1"
+   ],
+   "mood": [
+    "glam",
+    "elegant"
+   ],
+   "price": 250
+  },
+  {
    "slug": "cross-leg-wooden-table",
    "name": "Cross Leg Wooden Table",
    "category": "tablescape",
