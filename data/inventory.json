@@ -646,7 +646,9 @@
    "dimensions": "On request",
    "image": "serpentine-gold-crystal-table",
    "alt": "A curved serpentine glass-top table on gold legs with dangling crystal trim, on white",
-   "gallery": [],
+   "gallery": [
+    "serpentine-gold-crystal-table-detail1"
+   ],
    "mood": [
     "glam",
     "elegant"
