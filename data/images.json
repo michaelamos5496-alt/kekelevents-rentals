@@ -935,6 +935,16 @@
   "h": 2000,
   "jpgOnly": true
  },
+ "ivory-parasol": {
+  "w": 2000,
+  "h": 2500,
+  "jpgOnly": true
+ },
+ "ivory-parasol-detail1": {
+  "w": 2000,
+  "h": 2500,
+  "jpgOnly": true
+ },
  "crystal-glass-table": {
   "w": 1901,
   "h": 2376,

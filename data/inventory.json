@@ -707,6 +707,25 @@
    "price": 300
   },
   {
+   "slug": "ivory-parasol",
+   "name": "Ivory Parasol",
+   "category": "lounge",
+   "note": "A cream cantilever umbrella on an offset pole with a weighted base.",
+   "quantity": 100,
+   "material": "Fabric canopy, metal frame, weighted base",
+   "dimensions": "On request",
+   "image": "ivory-parasol",
+   "alt": "A cream cantilever umbrella on an offset pole with a weighted base, on white",
+   "gallery": [
+    "ivory-parasol-detail1"
+   ],
+   "mood": [
+    "modern",
+    "elegant"
+   ],
+   "price": 300
+  },
+  {
    "slug": "black-cocktail-table",
    "name": "Black Cocktail Table",
    "category": "tablescape",
