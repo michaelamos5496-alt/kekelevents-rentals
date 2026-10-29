@@ -395,6 +395,25 @@
    "price": 8
   },
   {
+   "slug": "black-rim-underplate",
+   "name": "Black Rim Underplate",
+   "category": "decor",
+   "note": "A clear glass underplate with a thin black rim.",
+   "quantity": 100,
+   "material": "Glass, black rim",
+   "dimensions": "On request",
+   "image": "black-rim-underplate",
+   "alt": "A clear glass underplate with a thin black rim, on white",
+   "gallery": [
+    "black-rim-underplate-detail1"
+   ],
+   "mood": [
+    "modern",
+    "classic"
+   ],
+   "price": 8
+  },
+  {
    "slug": "gold-rim-dinner-plate",
    "name": "Gold Rim Dinner Plate",
    "category": "decor",
