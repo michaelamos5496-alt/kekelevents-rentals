@@ -414,6 +414,25 @@
    "price": 15
   },
   {
+   "slug": "gold-royal-cutlery",
+   "name": "Gold Royal Cutlery Set",
+   "category": "decor",
+   "note": "An ornate gold-finish place setting: knife, fork, spoon and teaspoon.",
+   "quantity": 100,
+   "material": "Gold-finish stainless steel",
+   "dimensions": "On request",
+   "image": "gold-royal-cutlery",
+   "alt": "An ornate gold-finish place setting of knife, fork, spoon and teaspoon, on white",
+   "gallery": [
+    "gold-royal-cutlery-detail1"
+   ],
+   "mood": [
+    "classic",
+    "glam"
+   ],
+   "price": 20
+  },
+  {
    "slug": "stanchion-rope-set",
    "name": "Stanchion & Red Rope Set",
    "category": "decor",

@@ -830,6 +830,16 @@
   "h": 2500,
   "jpgOnly": true
  },
+ "gold-royal-cutlery": {
+  "w": 1600,
+  "h": 2000,
+  "jpgOnly": true
+ },
+ "gold-royal-cutlery-detail1": {
+  "w": 1600,
+  "h": 2000,
+  "jpgOnly": true
+ },
  "crystal-glass-table": {
   "w": 1901,
   "h": 2376,
