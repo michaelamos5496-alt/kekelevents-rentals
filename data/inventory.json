@@ -620,6 +620,23 @@
    "price": 250
   },
   {
+   "slug": "crystal-cake-table",
+   "name": "Crystal Cake Table",
+   "category": "tablescape",
+   "note": "A round glass-top table on a gold cube base trimmed with dangling crystal teardrops.",
+   "quantity": 100,
+   "material": "Tempered glass top, gold-finish metal frame, crystal trim",
+   "dimensions": "On request",
+   "image": "crystal-cake-table",
+   "alt": "A round glass-top table on a gold cube base trimmed with dangling crystals, on white",
+   "gallery": [],
+   "mood": [
+    "glam",
+    "elegant"
+   ],
+   "price": 200
+  },
+  {
    "slug": "cross-leg-wooden-table",
    "name": "Cross Leg Wooden Table",
    "category": "tablescape",
