@@ -563,6 +563,25 @@
    "price": 400
   },
   {
+   "slug": "bubble-leg-gold-table",
+   "name": "Bubble Leg Gold Table",
+   "category": "tablescape",
+   "note": "A rectangular glass-top table on gold stainless steel legs stacked with bubble spheres.",
+   "quantity": 100,
+   "material": "Tempered glass top, gold-finish stainless steel legs",
+   "dimensions": "On request",
+   "image": "bubble-leg-gold-table",
+   "alt": "A rectangular glass-top table on gold stainless steel bubble-stacked legs, on white",
+   "gallery": [
+    "bubble-leg-gold-table-detail1"
+   ],
+   "mood": [
+    "modern",
+    "glam"
+   ],
+   "price": 400
+  },
+  {
    "slug": "cross-leg-wooden-table",
    "name": "Cross Leg Wooden Table",
    "category": "tablescape",
