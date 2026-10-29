@@ -637,6 +637,23 @@
    "price": 200
   },
   {
+   "slug": "serpentine-gold-crystal-table",
+   "name": "Serpentine Gold Crystal Table",
+   "category": "tablescape",
+   "note": "A curved serpentine glass-top table on gold legs, trimmed with dangling crystals.",
+   "quantity": 100,
+   "material": "Tempered glass top, gold-finish metal frame, crystal trim",
+   "dimensions": "On request",
+   "image": "serpentine-gold-crystal-table",
+   "alt": "A curved serpentine glass-top table on gold legs with dangling crystal trim, on white",
+   "gallery": [],
+   "mood": [
+    "glam",
+    "elegant"
+   ],
+   "price": 200
+  },
+  {
    "slug": "cross-leg-wooden-table",
    "name": "Cross Leg Wooden Table",
    "category": "tablescape",
