@@ -433,6 +433,25 @@
    "price": 20
   },
   {
+   "slug": "rustic-cutlery",
+   "name": "Rustic Cutlery Set",
+   "category": "decor",
+   "note": "A gold-finish place setting with warm wood-grain handles: knife, fork, spoon and teaspoon.",
+   "quantity": 100,
+   "material": "Gold-finish stainless steel, wood-effect handles",
+   "dimensions": "On request",
+   "image": "rustic-cutlery",
+   "alt": "A gold place setting with wood-grain handles: knife, fork, spoon and teaspoon, on white",
+   "gallery": [
+    "rustic-cutlery-detail1"
+   ],
+   "mood": [
+    "rustic",
+    "warm"
+   ],
+   "price": 15
+  },
+  {
    "slug": "stanchion-rope-set",
    "name": "Stanchion & Red Rope Set",
    "category": "decor",
