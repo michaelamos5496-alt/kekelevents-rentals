@@ -820,6 +820,16 @@
   "h": 2500,
   "jpgOnly": true
  },
+ "rectangular-trestle-table": {
+  "w": 2000,
+  "h": 2500,
+  "jpgOnly": true
+ },
+ "rectangular-trestle-table-detail1": {
+  "w": 2000,
+  "h": 2500,
+  "jpgOnly": true
+ },
  "crystal-glass-table": {
   "w": 1901,
   "h": 2376,

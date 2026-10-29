@@ -452,6 +452,24 @@
    "price": 50
   },
   {
+   "slug": "rectangular-trestle-table",
+   "name": "Rectangular Trestle Table",
+   "category": "tablescape",
+   "note": "A long white folding trestle table that halves and carries by its built-in handle.",
+   "quantity": 100,
+   "material": "White plastic top, folding metal frame",
+   "dimensions": "On request",
+   "image": "rectangular-trestle-table",
+   "alt": "A long white rectangular folding trestle table, on white",
+   "gallery": [
+    "rectangular-trestle-table-detail1"
+   ],
+   "mood": [
+    "modern"
+   ],
+   "price": 50
+  },
+  {
    "slug": "silver-glass-table",
    "name": "Silver Glass Table",
    "category": "tablescape",
