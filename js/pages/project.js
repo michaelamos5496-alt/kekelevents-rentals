@@ -35,7 +35,7 @@ export default async function ({ inv, dims }) {
       <a href="project.html?p=${esc(prev.slug)}"><span class="label">Previous</span><strong>${esc(prev.title)}</strong></a>
       <a href="project.html?p=${esc(next.slug)}" class="project-nav__next"><span class="label">Next</span><strong>${esc(next.title)}</strong></a>
     </nav>
-    <section class="section section--gold cta-band"><div class="wrap" data-reveal><span class="label">Enquire</span><h2>Planning something similar?</h2><div class="cta-band__actions"><a class="btn btn--solid" href="enquire.html">Begin your enquiry</a><a class="btn" href="collections.html">Browse rentals</a></div></div></section>`;
+    <section class="section section--gold cta-band"><div class="wrap" data-reveal><span class="label">Enquire</span><h2>Planning something similar?</h2><div class="cta-band__actions"><a class="btn btn--solid" href="collections.html">Browse rentals</a><a class="btn" href="enquire.html">Begin your enquiry</a></div></div></section>`;
 
   // Lightbox: a glass dialog with arrows and keyboard support.
   const dlg = document.createElement('dialog'); dlg.className = 'lightbox'; dlg.setAttribute('aria-label', 'Photograph viewer');
