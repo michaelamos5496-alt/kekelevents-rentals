@@ -673,6 +673,25 @@
    "price": 200
   },
   {
+   "slug": "gold-lamp",
+   "name": "Gold Lamp",
+   "category": "lighting",
+   "note": "A brushed gold table lamp with a cone shade on a slim stem and square base.",
+   "quantity": 100,
+   "material": "Brushed gold-finish metal",
+   "dimensions": "On request",
+   "image": "gold-lamp",
+   "alt": "A brushed gold table lamp with a cone shade on a slim stem and square base, on white",
+   "gallery": [
+    "gold-lamp-detail1"
+   ],
+   "mood": [
+    "modern",
+    "elegant"
+   ],
+   "price": 40
+  },
+  {
    "slug": "serpentine-gold-crystal-table",
    "name": "Serpentine Gold Crystal Table",
    "category": "tablescape",
