@@ -654,6 +654,25 @@
    "price": 200
   },
   {
+   "slug": "gold-lines-cake-table",
+   "name": "Gold Lines Cake Table",
+   "category": "tablescape",
+   "note": "A round glass-top table on a woven gold hourglass base with a fretwork rim.",
+   "quantity": 100,
+   "material": "Tempered glass top, gold-finish metal frame",
+   "dimensions": "On request",
+   "image": "gold-lines-cake-table",
+   "alt": "A round glass-top table on a woven gold hourglass base with a fretwork rim, on white",
+   "gallery": [
+    "gold-lines-cake-table-detail1"
+   ],
+   "mood": [
+    "glam",
+    "modern"
+   ],
+   "price": 200
+  },
+  {
    "slug": "serpentine-gold-crystal-table",
    "name": "Serpentine Gold Crystal Table",
    "category": "tablescape",
