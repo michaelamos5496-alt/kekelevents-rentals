@@ -433,6 +433,40 @@
    "price": 8
   },
   {
+   "slug": "crystal-underplate",
+   "name": "Crystal Underplate",
+   "category": "decor",
+   "note": "A clear glass underplate with a woven basket-weave rim.",
+   "quantity": 100,
+   "material": "Glass",
+   "dimensions": "On request",
+   "image": "crystal-underplate",
+   "alt": "A clear glass underplate with a woven basket-weave rim, on white",
+   "gallery": [],
+   "mood": [
+    "classic",
+    "elegant"
+   ],
+   "price": 8
+  },
+  {
+   "slug": "brown-woven-underplate",
+   "name": "Dark Brown Woven Underplate",
+   "category": "decor",
+   "note": "A round underplate in dark brown woven rattan.",
+   "quantity": 100,
+   "material": "Woven rattan",
+   "dimensions": "On request",
+   "image": "brown-woven-underplate",
+   "alt": "A round dark brown woven rattan underplate, on white",
+   "gallery": [],
+   "mood": [
+    "rustic",
+    "warm"
+   ],
+   "price": 5
+  },
+  {
    "slug": "gold-rim-dinner-plate",
    "name": "Gold Rim Dinner Plate",
    "category": "decor",
