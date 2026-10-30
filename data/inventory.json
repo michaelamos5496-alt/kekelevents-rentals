@@ -205,6 +205,25 @@
    "price": 150
   },
   {
+   "slug": "rustic-oval-couple-chair",
+   "name": "Rustic Oval Cane-Back Couple Chairs",
+   "category": "seating",
+   "note": "A matched pair of oval cane-back armchairs with scrolled arms and cabriole legs, for the couple's table.",
+   "quantity": 100,
+   "material": "Carved rustic wood-finish frame, natural cane back, cream linen seat",
+   "dimensions": "On request",
+   "image": "rustic-oval-couple-chair",
+   "alt": "A front view of an oval cane-back armchair with scrolled arms and cabriole legs, on white",
+   "gallery": [
+    "rustic-oval-couple-chair-detail1"
+   ],
+   "mood": [
+    "classic",
+    "warm"
+   ],
+   "price": 150
+  },
+  {
    "slug": "gold-chameleon-chair",
    "name": "Gold Chameleon Chair",
    "category": "seating",
