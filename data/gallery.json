@@ -1,0 +1,13 @@
+{
+ "_note": "Portfolio gallery: real decor setups. Each item is an image id (defined in data/images.json) with alt text. Add more as real event photography comes in.",
+ "items": [
+  {
+   "image": "garden-reception-setup",
+   "alt": "Round tables dressed with pampas and garden rose centrepieces under a slatted pergola and woven lantern light, beside a pool"
+  },
+  {
+   "image": "candlelit-tablescape",
+   "alt": "A long table set beneath a draped white tent ceiling, lit entirely by a long run of pillar candles"
+  }
+ ]
+}

@@ -1,26 +1,23 @@
-// Portfolio index: filterable, asymmetric grid of project cards (data/projects.json).
-import { esc, picture, loadJSON, reveal } from '../util.js';
+// Portfolio: a simple photo gallery of real decor setups, with a lightbox. No categories, no per-project pages.
+import { picture, loadJSON, reveal } from '../util.js';
 import { settleImages } from '../motion.js';
 
 export default async function ({ dims }) {
-  const { categories, items } = await loadJSON('data/projects.json');
-  const grid = document.getElementById('works'), filters = document.getElementById('p-filters'), count = document.getElementById('p-count');
-  const params = new URLSearchParams(location.search);
-  let current = categories.includes(params.get('c')) ? params.get('c') : 'All';
+  const { items } = await loadJSON('data/gallery.json');
+  const grid = document.getElementById('gallery');
+  grid.innerHTML = items.map((g, n) => `<button class="media project-gallery__item" type="button" data-shot="${n}" data-reveal style="--d:${(n % 3) * 90}ms" aria-label="Enlarge photograph ${n + 1} of ${items.length}">${picture(g.image, g.alt, dims[g.image], { sizes: '(min-width: 48rem) 33vw, 100vw' })}</button>`).join('');
 
-  filters.innerHTML = ['All', ...categories].map((c) => `<button class="filter" type="button" data-cat="${esc(c)}" aria-pressed="false">${esc(c)}</button>`).join('');
+  // Lightbox: a glass dialog with arrows and keyboard support.
+  const dlg = document.createElement('dialog'); dlg.className = 'lightbox'; dlg.setAttribute('aria-label', 'Photograph viewer');
+  dlg.innerHTML = '<button class="lightbox__close" type="button" aria-label="Close">×</button><button class="lightbox__nav lightbox__prev" type="button" aria-label="Previous photograph">←</button><div class="lightbox__stage"></div><button class="lightbox__nav lightbox__next" type="button" aria-label="Next photograph">→</button>';
+  document.body.append(dlg);
+  let cur = 0, opener;
+  const stage = dlg.querySelector('.lightbox__stage');
+  const show = (n) => { cur = (n + items.length) % items.length; const g = items[cur]; stage.innerHTML = picture(g.image, g.alt, dims[g.image], { eager: true, sizes: '90vw' }); };
+  grid.addEventListener('click', (e) => { const b = e.target.closest('[data-shot]'); if (b) { opener = b; show(Number(b.dataset.shot)); dlg.showModal(); } });
+  dlg.addEventListener('click', (e) => { if (e.target.closest('.lightbox__close') || e.target === dlg || e.target === stage) dlg.close(); if (e.target.closest('.lightbox__prev')) show(cur - 1); if (e.target.closest('.lightbox__next')) show(cur + 1); });
+  dlg.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') show(cur + 1); if (e.key === 'ArrowLeft') show(cur - 1); });
+  dlg.addEventListener('close', () => opener?.focus());
 
-  function render() {
-    const list = items.filter((p) => current === 'All' || p.category === current);
-    filters.querySelectorAll('.filter').forEach((b) => b.setAttribute('aria-pressed', b.dataset.cat === current));
-    count.textContent = `${list.length} ${list.length === 1 ? 'project' : 'projects'}`;
-    grid.innerHTML = list.map((p, n) => `<article class="work" data-reveal style="--d:${(n % 2) * 90}ms">
-        <a href="project.html?p=${esc(p.slug)}"><div class="media work__media" ${p.placeholder ? 'data-placeholder' : ''}>${picture(p.cover, p.alt, dims[p.cover], { sizes: '(min-width: 62rem) 55vw, 100vw' })}</div>
-        <div class="work__meta"><div><h2>${esc(p.title)}</h2><span class="label">${esc(p.type)} · ${esc(p.location)}</span></div><span class="work__go" aria-hidden="true">View →</span></div></a>
-      </article>`).join('');
-    reveal(grid); settleImages('.work__media');
-    const u = new URL(location); current === 'All' ? u.searchParams.delete('c') : u.searchParams.set('c', current); history.replaceState(null, '', u);
-  }
-  filters.addEventListener('click', (e) => { const b = e.target.closest('.filter'); if (b) { current = b.dataset.cat; render(); } });
-  render();
+  reveal(grid); settleImages('.project-gallery__item');
 }
