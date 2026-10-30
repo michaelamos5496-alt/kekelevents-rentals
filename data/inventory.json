@@ -452,6 +452,23 @@
    "price": 15
   },
   {
+   "slug": "rattan-placemat",
+   "name": "Rattan Placemat",
+   "category": "decor",
+   "note": "A round woven rattan placemat.",
+   "quantity": 100,
+   "material": "Woven rattan",
+   "dimensions": "On request",
+   "image": "rattan-placemat",
+   "alt": "A round woven rattan placemat, on white",
+   "gallery": [],
+   "mood": [
+    "rustic",
+    "warm"
+   ],
+   "price": 6
+  },
+  {
    "slug": "gold-royal-cutlery",
    "name": "Gold Royal Cutlery Set",
    "category": "decor",
