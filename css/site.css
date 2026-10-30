@@ -1,6 +1,6 @@
 /* ==========================================================================
    KEKEL RENTALS: site stylesheet
-   One restrained accent (champagne), ivory ground, charcoal ink. High-contrast serif for display,
+   One restrained accent (brand blue), ivory ground, charcoal ink. High-contrast serif for display,
    clean sans for text. Editorial 12-column grid, slow soft motion. No gradients.
    Sections: 1 tokens · 2 base · 3 layout · 4 header/menu · 5 components · 6 home · 7 collections · 8 detail · 9 drawer · 10 footer · 11 motion
    ========================================================================== */
@@ -14,7 +14,7 @@
   --ink: var(--charcoal);  /* primary text/foreground: flips light<->dark with the theme */
   --stone: #6B6965;        /* secondary text */
   --hairline: #E3E1DD;
-  --gold: #8F6B2E;         /* brand gold: antique, deep enough for AA text on ivory and white */
+  --gold: #4A72AA;         /* brand accent (blue, from the logo): kept the variable name "gold" to avoid touching every usage site-wide */
   --champagne: var(--gold);   /* accent: links, underlines, labels */
   --champagne-ink: var(--gold);
   color-scheme: light dark;
