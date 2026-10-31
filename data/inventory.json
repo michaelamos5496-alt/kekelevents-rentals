@@ -1538,6 +1538,23 @@
     "classic"
    ],
    "price": 50
+  },
+  {
+   "slug": "champagne-flute",
+   "name": "Champagne Flute",
+   "category": "glassware",
+   "note": "A tall, slender clear glass flute on a fine stem, for toasts and welcome drinks.",
+   "quantity": 100,
+   "material": "Clear glass",
+   "dimensions": "On request",
+   "image": "champagne-flute",
+   "alt": "A tall clear champagne flute on a slender stem, on white",
+   "gallery": [],
+   "mood": [
+    "elegant",
+    "classic"
+   ],
+   "price": 4
   }
  ]
 }

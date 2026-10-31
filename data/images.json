@@ -1086,5 +1086,10 @@
   "w": 1536,
   "h": 1024,
   "jpgOnly": true
+ },
+ "champagne-flute": {
+  "w": 1600,
+  "h": 2000,
+  "jpgOnly": true
  }
 }
