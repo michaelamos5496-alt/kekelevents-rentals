@@ -17,9 +17,9 @@ export default function ({ site, inv, dims }) {
     root.innerHTML = `
       <section class="cart__items" aria-label="Items in your cart">
         <div class="cart__head" aria-hidden="true"><span>Piece</span><span>Price per day</span><span>Quantity</span><span>Total</span></div>
-        ${t.lines.map(({ item: it, qty, unit, line }) => `<article class="cart-line" data-slug="${esc(it.slug)}">
+        ${t.lines.map(({ item: it, key, option, qty, unit, line }) => `<article class="cart-line" data-key="${esc(key)}">
           <a class="cart-line__media media" href="item.html?i=${esc(it.slug)}">${picture(it.image, it.alt, dims[it.image], { sizes: '110px' })}</a>
-          <div class="cart-line__info"><span class="card__cat">${esc(byCategory(inv, it.category).name)}</span><h2><a href="item.html?i=${esc(it.slug)}">${esc(it.name)}</a></h2><button class="cart-line__remove" type="button" data-remove aria-label="Remove ${esc(it.name)}">Remove</button></div>
+          <div class="cart-line__info"><span class="card__cat">${esc(byCategory(inv, it.category).name)}</span><h2><a href="item.html?i=${esc(it.slug)}">${esc(it.name)}</a></h2>${option ? `<span class="line-opt">${esc(option)}</span>` : ''}<button class="cart-line__remove" type="button" data-remove aria-label="Remove ${esc(it.name)}">Remove</button></div>
           <div class="cart-line__price" data-label="Per day">${money(unit)}</div>
           <div class="qty" role="group" aria-label="Quantity for ${esc(it.name)}"><button type="button" data-dec aria-label="Decrease">−</button><input class="qty__input" type="number" inputmode="numeric" pattern="[0-9]*" min="1" max="${enquiry.max(it.slug)}" step="1" data-qty aria-label="Quantity for ${esc(it.name)}" value="${qty}"><button type="button" data-inc aria-label="Increase"${qty >= enquiry.max(it.slug) ? ' disabled' : ''}>+</button></div>
           <div class="cart-line__total" data-label="Total"><strong>${money(line)}</strong><small>${money(unit * qty)} per day × ${daysLabel(t.days)}</small></div>
@@ -40,16 +40,16 @@ export default function ({ site, inv, dims }) {
   }
 
   root.addEventListener('click', (e) => {
-    const row = e.target.closest('.cart-line'), slug = row?.dataset.slug, cur = slug && enquiry.all().find((x) => x.slug === slug);
-    if (e.target.closest('[data-remove]')) enquiry.remove(slug);
-    else if (e.target.closest('[data-inc]')) enquiry.setQty(slug, cur.qty + 1);
-    else if (e.target.closest('[data-dec]')) { cur.qty > 1 ? enquiry.setQty(slug, cur.qty - 1) : enquiry.remove(slug); }
+    const row = e.target.closest('.cart-line'), key = row?.dataset.key, cur = key && enquiry.get(key);
+    if (e.target.closest('[data-remove]')) enquiry.remove(key);
+    else if (e.target.closest('[data-inc]')) enquiry.setQty(key, cur.qty + 1);
+    else if (e.target.closest('[data-dec]')) { cur.qty > 1 ? enquiry.setQty(key, cur.qty - 1) : enquiry.remove(key); }
   });
   root.addEventListener('change', (e) => {
     const input = e.target.closest('[data-qty]'); if (!input) return;
-    const row = input.closest('.cart-line'), slug = row?.dataset.slug;
+    const row = input.closest('.cart-line'), key = row?.dataset.key;
     const n = Math.round(Number(input.value));
-    enquiry.setQty(slug, Number.isFinite(n) && n > 0 ? n : 1);
+    enquiry.setQty(key, Number.isFinite(n) && n > 0 ? n : 1);
   });
   root.addEventListener('keydown', (e) => { if (e.key === 'Enter' && e.target.matches('[data-qty]')) { e.preventDefault(); e.target.blur(); } });
   bindDates(root); bindClear(root);

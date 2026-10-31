@@ -336,6 +336,15 @@ html.hide-placeholders .ph-note { display: none; }
 .pdp__price { font-size: 1.6rem; font-weight: 600; margin-bottom: 1.1rem; }
 .pdp__price span { margin-left: 0.4rem; font-size: var(--fs-small); font-weight: 400; color: var(--stone); }
 .pdp__buy { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.swatches { border: 0; padding: 0; margin: 0 0 1.25rem; min-width: 0; }
+.swatches legend { padding: 0; margin-bottom: 0.6rem; }
+.swatches legend strong { color: var(--ink); font-weight: 600; letter-spacing: 0.06em; }
+.swatches__list { display: flex; flex-wrap: wrap; gap: 0.55rem; }
+.swatch { width: 2rem; height: 2rem; border-radius: 50%; background: var(--sw); border: 1px solid rgba(0, 0, 0, 0.18); box-shadow: 0 0 0 2px var(--ivory), 0 0 0 3px transparent; transition: box-shadow 0.25s var(--ease), transform 0.25s var(--ease); }
+.swatch:hover { transform: scale(1.08); }
+.swatch[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--ivory), 0 0 0 3.5px var(--ink); }
+.pdp__actions .btn:disabled { opacity: 0.45; cursor: not-allowed; pointer-events: none; }
+.line-opt { display: block; font-size: var(--fs-small); color: var(--stone); margin-block: 0.1rem 0.2rem; }
 .pdp__actions { display: flex; gap: 0.75rem; }
 .pdp__actions .btn { border-radius: 999px; padding-inline: 1.9rem; }
 .pdp__actions .btn--solid { background: var(--ink); border-color: var(--ink); }
@@ -348,7 +357,7 @@ html.hide-placeholders .ph-note { display: none; }
    so it never needs to scroll; overflow is clipped rather than scrollable, and full detail (specs, fine print) stays on the item page. */
 .product-modal { position: fixed; inset: 0; margin: auto; width: min(30rem, calc(100vw - 1.5rem)); max-height: calc(100vh - 2rem); border: 0; padding: 0; background: transparent; overflow: visible; }
 .product-modal::backdrop { background: rgb(20 19 18 / 0.55); }
-.product-modal .pdp__card { position: relative; grid-template-columns: 6rem 1fr; gap: 1rem; padding: 1.5rem; max-height: calc(100vh - 2rem); overflow: hidden; }
+.product-modal .pdp__card { position: relative; grid-template-columns: 6rem minmax(0, 1fr); gap: 1rem; padding: 1.5rem; max-height: calc(100vh - 2rem); overflow: hidden auto; overscroll-behavior: contain; }
 .product-modal .pdp__gallery { border-right: 1px solid var(--hairline); padding-right: 1rem; gap: 0.5rem; }
 .product-modal .pdp__info { padding-left: 0; }
 .product-modal .pdp__hero { max-width: 6rem; }
@@ -364,6 +373,16 @@ html.hide-placeholders .ph-note { display: none; }
 .product-modal .pdp__fine { display: none; }
 .product-modal__close { position: absolute; top: 1rem; right: 1rem; width: 2.5rem; height: 2.5rem; display: grid; place-items: center; font-size: 1.4rem; line-height: 1; background: var(--ivory); color: var(--ink); border: 1px solid var(--hairline); border-radius: 50%; z-index: 2; }
 #product-modal-body { display: contents; }
+.product-modal .pdp__card:focus-visible { outline: none; } /* the dialog focuses the scrollable card on open; its controls keep their own rings */
+/* Phones: slimmer photo column, and the two buttons stack full width instead of pushing past the card's edge. */
+@media (max-width: 34rem) {
+  .product-modal .pdp__card { grid-template-columns: 4.5rem minmax(0, 1fr); gap: 0.75rem; padding: 1.25rem; }
+  .product-modal .pdp__gallery { padding-right: 0.75rem; }
+  .product-modal .pdp__hero { max-width: 4.5rem; }
+  .product-modal .pdp__title { padding-right: 2.5rem; }
+  .product-modal .pdp__actions { width: 100%; flex-direction: column; gap: 0.5rem; }
+  .product-modal .pdp__actions .btn { width: 100%; padding-inline: 0.75rem; }
+}
 
 .pairs { border-top: 1px solid var(--hairline); padding-top: clamp(3rem, 6vw, 5rem); }
 .pairs h2 { font-size: var(--fs-h2); margin: 0.75rem 0 2.5rem; }

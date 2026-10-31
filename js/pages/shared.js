@@ -11,7 +11,7 @@ export function card(it, cat, dims, delay = 0) {
       <h3><a href="item.html?i=${esc(it.slug)}">${esc(it.name)}</a></h3>
       <p class="card__note">${esc(it.note)}</p>
       <div class="card__foot"><span class="card__qty"><strong class="card__price">${it.price ? money(it.price) : 'Price on request'}</strong>${it.price ? ' per day' : ''}<br>${it.quantity} to hire</span>
-        <button class="add" type="button" data-add="${esc(it.slug)}" aria-pressed="${on}">${on ? 'Added' : 'Add to cart'}</button></div>
+        ${it.options ? `<a class="add" href="item.html?i=${esc(it.slug)}">Choose ${esc(it.options.label.toLowerCase())}</a>` : `<button class="add" type="button" data-add="${esc(it.slug)}" aria-pressed="${on}">${on ? 'Added' : 'Add to cart'}</button>`}</div>
     </div></article>`;
 }
 

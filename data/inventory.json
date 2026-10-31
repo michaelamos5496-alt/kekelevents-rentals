@@ -1450,6 +1450,94 @@
     "modern"
    ],
    "price": 400
+  },
+  {
+   "slug": "satin-tablecloth",
+   "name": "Satin Tablecloth",
+   "category": "tablescape",
+   "note": "A floor-length round satin tablecloth with a soft sheen and full, even drape. Available in sixteen colours.",
+   "quantity": 100,
+   "material": "Satin",
+   "dimensions": "On request",
+   "image": "satin-tablecloth",
+   "alt": "A round table dressed in a floor-length burgundy satin tablecloth, beside smaller tables in sixteen satin colours, on white",
+   "gallery": [
+    "satin-tablecloth-detail1"
+   ],
+   "options": {
+    "label": "Colour",
+    "choices": [
+     {
+      "name": "Red",
+      "hex": "#d4161c"
+     },
+     {
+      "name": "Burgundy",
+      "hex": "#7d1530"
+     },
+     {
+      "name": "Sage Green",
+      "hex": "#76854a"
+     },
+     {
+      "name": "Navy Blue",
+      "hex": "#1d2556"
+     },
+     {
+      "name": "Fuchsia Pink",
+      "hex": "#e8197b"
+     },
+     {
+      "name": "Blush Pink",
+      "hex": "#f2a2b4"
+     },
+     {
+      "name": "Chocolate Brown",
+      "hex": "#5a2e22"
+     },
+     {
+      "name": "Ivory",
+      "hex": "#f6f1dc"
+     },
+     {
+      "name": "Royal Blue",
+      "hex": "#1534c0"
+     },
+     {
+      "name": "Silver Grey",
+      "hex": "#b5b5bb"
+     },
+     {
+      "name": "Champagne",
+      "hex": "#f1dcc0"
+     },
+     {
+      "name": "Purple",
+      "hex": "#7a1fb8"
+     },
+     {
+      "name": "Orange",
+      "hex": "#f6873a"
+     },
+     {
+      "name": "Lime Green",
+      "hex": "#a4d42c"
+     },
+     {
+      "name": "White",
+      "hex": "#ffffff"
+     },
+     {
+      "name": "Turquoise",
+      "hex": "#16b5ad"
+     }
+    ]
+   },
+   "mood": [
+    "elegant",
+    "classic"
+   ],
+   "price": 50
   }
  ]
 }

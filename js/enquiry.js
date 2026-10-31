@@ -1,4 +1,4 @@
-// The cart: a list of items (slug + quantity), persisted in localStorage.
+// The cart: a list of items (slug + quantity, plus the chosen option such as a colour), persisted in localStorage.
 // It holds no prices and no personal data, and is a request for a quote, not a reservation.
 const KEY = 'kekel.enquiry.v1';
 const listeners = new Set();
@@ -6,7 +6,7 @@ const listeners = new Set();
 function read() {
   try {
     const v = JSON.parse(localStorage.getItem(KEY) || '[]');
-    return Array.isArray(v) ? v.filter((i) => i && typeof i.slug === 'string' && Number.isInteger(i.qty) && i.qty > 0) : [];
+    return Array.isArray(v) ? v.filter((i) => i && typeof i.slug === 'string' && Number.isInteger(i.qty) && i.qty > 0 && (i.option === undefined || typeof i.option === 'string')) : [];
   } catch { return []; }
 }
 let items = read();
@@ -19,13 +19,19 @@ let dates = (() => { try { const v = JSON.parse(localStorage.getItem(DATES_KEY) 
 const spanDays = (s, e2) => Math.round((Date.parse(e2) - Date.parse(s)) / 86400000) + 1;
 let limits = {}; // slug -> units available, so a cart can never hold more than we own
 
+/** One cart line per piece, or per piece and option (each colour of a tablecloth is its own line). */
+export const lineKey = (slug, option) => (option ? `${slug}#${option}` : slug);
+const keyOf = (i) => lineKey(i.slug, i.option);
+const byKey = (key) => items.find((x) => keyOf(x) === key);
+
 function commit() {
   try { localStorage.setItem(KEY, JSON.stringify(items)); } catch { /* storage unavailable: list lives for this page only */ }
   listeners.forEach((fn) => fn(items));
 }
 
 export const enquiry = {
-  all: () => items.map((i) => ({ ...i })),
+  all: () => items.map((i) => ({ ...i, key: keyOf(i) })),
+  get: (key) => { const i = byKey(key); return i && { ...i, key }; },
   count: () => items.length,
   has: (slug) => items.some((i) => i.slug === slug),
   setLimits(map) {
@@ -37,10 +43,10 @@ export const enquiry = {
     if (changed) commit();
   },
   max: (slug) => limits[slug] || 9999,
-  add(slug, qty = 1) { qty = Math.max(1, Math.min(qty, limits[slug] || 9999)); const cur = items.find((x) => x.slug === slug); if (cur) cur.qty = qty; else items.push({ slug, qty }); commit(); },
-  remove(slug) { items = items.filter((i) => i.slug !== slug); commit(); },
+  add(slug, qty = 1, option) { qty = Math.max(1, Math.min(qty, limits[slug] || 9999)); const cur = byKey(lineKey(slug, option)); if (cur) cur.qty = qty; else items.push(option ? { slug, qty, option } : { slug, qty }); commit(); },
+  remove(key) { items = items.filter((i) => keyOf(i) !== key); commit(); },
   toggle(slug) { this.has(slug) ? this.remove(slug) : this.add(slug); return this.has(slug); },
-  setQty(slug, qty) { const i = items.find((x) => x.slug === slug); if (i && qty >= 1) { i.qty = Math.min(qty, limits[slug] || 9999); commit(); } },
+  setQty(key, qty) { const i = byKey(key); if (i && qty >= 1) { i.qty = Math.min(qty, limits[i.slug] || 9999); commit(); } },
   today: todayISO,
   dates: () => ({ ...dates }),
   days: () => (dates.start && dates.end ? Math.max(1, Math.min(90, spanDays(dates.start, dates.end))) : 1),
@@ -64,7 +70,7 @@ export const money = (n) => `GH₵ ${Number(n).toLocaleString('en-GB')}`;
 
 /** Priced lines plus the subtotal. Rates are per piece, per day; the subtotal covers every rental day. */
 export function totals(list, inv, nDays = enquiry.days()) {
-  const lines = list.map((i) => { const item = inv.items.find((x) => x.slug === i.slug); return item ? { item, qty: i.qty, unit: item.price || 0, perDay: (item.price || 0) * i.qty, line: (item.price || 0) * i.qty * nDays } : null; }).filter(Boolean);
+  const lines = list.map((i) => { const item = inv.items.find((x) => x.slug === i.slug); return item ? { item, key: keyOf(i), option: i.option, qty: i.qty, unit: item.price || 0, perDay: (item.price || 0) * i.qty, line: (item.price || 0) * i.qty * nDays } : null; }).filter(Boolean);
   return { lines, days: nDays, perDay: lines.reduce((s, l) => s + l.perDay, 0), subtotal: lines.reduce((s, l) => s + l.line, 0), units: lines.reduce((s, l) => s + l.qty, 0) };
 }
 export const daysLabel = (n) => `${n} ${n === 1 ? 'day' : 'days'}`;
@@ -75,5 +81,5 @@ export const periodLabel = () => { const d = enquiry.dates(); return d.start && 
 export function summary(list, inv) {
   const t = totals(list, inv);
   if (!t.lines.length) return '';
-  return `${t.lines.map((l) => `${l.item.name} × ${l.qty} at ${money(l.unit)} per day`).join('\n')}\nRental period: ${periodLabel()}\nEstimated total: ${money(t.subtotal)} (delivery is confirmed in the quote)`;
+  return `${t.lines.map((l) => `${l.item.name}${l.option ? ` (${l.option})` : ''} × ${l.qty} at ${money(l.unit)} per day`).join('\n')}\nRental period: ${periodLabel()}\nEstimated total: ${money(t.subtotal)} (delivery is confirmed in the quote)`;
 }

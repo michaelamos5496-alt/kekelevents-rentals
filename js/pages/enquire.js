@@ -23,9 +23,9 @@ export default function ({ site, inv, dims }) {
     if (!t.lines.length) {
       cartBox.innerHTML = '<p class="enq__empty">Nothing in your cart yet. <a href="collections.html">Browse the rentals</a> to add pieces, or simply tell us what you need below.</p>';
     } else {
-      cartBox.innerHTML = t.lines.map(({ item: it, qty, unit, line }) => `<div class="enq-item" data-slug="${esc(it.slug)}">
+      cartBox.innerHTML = t.lines.map(({ item: it, key, option, qty, unit, line }) => `<div class="enq-item" data-key="${esc(key)}">
           <a class="media" href="item.html?i=${esc(it.slug)}" tabindex="-1" aria-hidden="true">${picture(it.image, '', dims[it.image], { sizes: '56px' })}</a>
-          <div><h3>${esc(it.name)}</h3><small class="muted">${money(unit)} per day</small><div class="qty" role="group" aria-label="Quantity for ${esc(it.name)}"><button type="button" data-dec aria-label="Decrease">−</button><output>${qty}</output><button type="button" data-inc aria-label="Increase"${qty >= enquiry.max(it.slug) ? ' disabled' : ''}>+</button></div></div>
+          <div><h3>${esc(it.name)}</h3>${option ? `<span class="line-opt">${esc(option)}</span>` : ''}<small class="muted">${money(unit)} per day</small><div class="qty" role="group" aria-label="Quantity for ${esc(it.name)}"><button type="button" data-dec aria-label="Decrease">−</button><output>${qty}</output><button type="button" data-inc aria-label="Increase"${qty >= enquiry.max(it.slug) ? ' disabled' : ''}>+</button></div></div>
           <div class="drawer-item__side"><strong>${money(line)}</strong><button class="drawer-item__remove" type="button" data-remove aria-label="Remove ${esc(it.name)}">Remove</button></div></div>`).join('')
         + `<div class="sum-row"><span>Rental period</span><span class="sum-row__r">${esc(periodLabel())}</span></div>
         <div class="sum-row sum-row--total"><span>Estimated total</span><strong>${money(t.subtotal)}</strong></div>
@@ -36,10 +36,10 @@ export default function ({ site, inv, dims }) {
   }
   cartBox.addEventListener('click', (e) => {
     const row = e.target.closest('.enq-item'); if (!row) return;
-    const slug = row.dataset.slug, cur = enquiry.all().find((x) => x.slug === slug);
-    if (e.target.closest('[data-remove]')) enquiry.remove(slug);
-    else if (e.target.closest('[data-inc]')) enquiry.setQty(slug, cur.qty + 1);
-    else if (e.target.closest('[data-dec]')) enquiry.setQty(slug, cur.qty - 1);
+    const key = row.dataset.key, cur = enquiry.get(key);
+    if (e.target.closest('[data-remove]')) enquiry.remove(key);
+    else if (e.target.closest('[data-inc]')) enquiry.setQty(key, cur.qty + 1);
+    else if (e.target.closest('[data-dec]')) enquiry.setQty(key, cur.qty - 1);
   });
   enquiry.subscribe(renderCart);
 

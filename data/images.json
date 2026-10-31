@@ -1076,5 +1076,15 @@
   "w": 1600,
   "h": 2000,
   "jpgOnly": true
+ },
+ "satin-tablecloth": {
+  "w": 1600,
+  "h": 2000,
+  "jpgOnly": true
+ },
+ "satin-tablecloth-detail1": {
+  "w": 1536,
+  "h": 1024,
+  "jpgOnly": true
  }
 }

@@ -1,5 +1,5 @@
 import { esc, picture, byCategory, reveal } from '../util.js';
-import { enquiry, money, daysLabel } from '../enquiry.js';
+import { enquiry, money, daysLabel, lineKey } from '../enquiry.js';
 import { card, bindAdd } from './shared.js';
 
 /** Product card markup (gallery + info) for one piece. Shared by the full item page and the product modal. */
@@ -19,6 +19,7 @@ export function buildCard(it, cat, dims) {
         <div class="pdp__spec"><span class="pdp__spec-k">Dimensions</span><strong>${esc(it.dimensions)}</strong></div>
       </div>
       <p class="pdp__price">${it.price ? `${money(it.price)}<span>per day</span>` : 'Price on request'}</p>
+      ${it.options ? `<fieldset class="swatches"><legend class="pdp__spec-k">${esc(it.options.label)}: <strong data-opt-name>choose one</strong></legend><div class="swatches__list">${it.options.choices.map((c) => `<button class="swatch" type="button" data-opt="${esc(c.name)}" aria-pressed="false" aria-label="${esc(c.name)}" title="${esc(c.name)}" style="--sw:${esc(c.hex)}"></button>`).join('')}</div></fieldset>` : ''}
       <div class="pdp__buy">
         <div class="qty qty--lg" role="group" aria-label="Quantity"><button type="button" data-q-dec aria-label="Decrease quantity">−</button><input class="qty__input" type="number" inputmode="numeric" pattern="[0-9]*" min="1" max="${it.quantity}" step="1" data-q-out aria-label="Quantity" value="1"><button type="button" data-q-inc aria-label="Increase quantity">+</button></div>
         <div class="pdp__actions">
@@ -48,21 +49,33 @@ export function bindCard(root, it, dims) {
   });
 
   // Quantity and add-to-cart: shows the current cart quantity if the piece is already in it.
+  // A piece with options (e.g. tablecloth colours) needs one chosen first; each choice is its own cart line.
   const dec = root.querySelector('[data-q-dec]'), inc = root.querySelector('[data-q-inc]');
   const out = root.querySelector('[data-q-out]'), tot = root.querySelector('[data-q-total]'), addBtn = root.querySelector('[data-add-cart]');
-  let qty = enquiry.all().find((x) => x.slug === it.slug)?.qty || 1;
+  let opt = it.options ? enquiry.all().find((x) => x.slug === it.slug)?.option : undefined;
+  const key = () => lineKey(it.slug, opt);
+  let qty = enquiry.get(key())?.qty || 1;
   const paintBuy = () => {
-    const inCart = enquiry.all().find((x) => x.slug === it.slug);
+    const inCart = (!it.options || opt) && enquiry.get(key());
     out.value = qty;
     dec.disabled = qty <= 1; inc.disabled = qty >= it.quantity;
     tot.textContent = it.price ? `${money(it.price * qty)} per day · ${money(it.price * qty * enquiry.days())} for ${daysLabel(enquiry.days())}` : 'Price on request';
-    addBtn.textContent = !inCart ? 'Add to cart' : inCart.qty === qty ? 'In your cart' : 'Update cart';
+    addBtn.disabled = Boolean(it.options && !opt);
+    addBtn.textContent = addBtn.disabled ? `Choose a ${it.options.label.toLowerCase()}` : !inCart ? 'Add to cart' : inCart.qty === qty ? 'In your cart' : 'Update cart';
+    if (it.options) {
+      root.querySelector('[data-opt-name]').textContent = opt || 'choose one';
+      root.querySelectorAll('[data-opt]').forEach((b) => b.setAttribute('aria-pressed', b.dataset.opt === opt));
+    }
   };
+  root.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-opt]'); if (!b) return;
+    opt = b.dataset.opt; qty = enquiry.get(key())?.qty || qty; paintBuy();
+  });
   dec.addEventListener('click', () => { qty = Math.max(1, qty - 1); paintBuy(); });
   inc.addEventListener('click', () => { qty = Math.min(it.quantity, qty + 1); paintBuy(); });
   out.addEventListener('change', () => { const n = Math.round(Number(out.value)); qty = Number.isFinite(n) && n > 0 ? Math.min(it.quantity, n) : qty; paintBuy(); });
   out.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); out.blur(); } });
-  addBtn.addEventListener('click', () => { enquiry.add(it.slug, qty); paintBuy(); });
+  addBtn.addEventListener('click', () => { enquiry.add(it.slug, qty, opt); paintBuy(); });
   const unsubBuy = enquiry.subscribe(paintBuy); paintBuy();
   const unsubAdd = bindAdd(root);
   return () => { unsubBuy(); unsubAdd(); };
