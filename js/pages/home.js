@@ -3,6 +3,23 @@ import { heroIntro, parallax, settleImages, slideIn, quoteIn } from '../motion.j
 
 
 export default async function ({ site, inv, dims }) {
+  // Hero: rotating photo slides, cross-fading. The first slide is already in the markup (it's the LCP image).
+  const { items: heroItems } = await loadJSON('data/hero-slides.json');
+  const heroTrack = document.getElementById('heroSlides');
+  heroTrack.insertAdjacentHTML('beforeend', heroItems.slice(1).map((s) => {
+    const d = dims[s.image] || {};
+    return `<img class="hero__slide" srcset="assets/images/${s.image}-960.jpg 960w, assets/images/${s.image}-1600.jpg 1600w" sizes="100vw" src="assets/images/${s.image}-1600.jpg" width="${d.w || 1672}" height="${d.h || 941}" alt="${esc(s.alt)}" loading="lazy" decoding="async">`;
+  }).join(''));
+  if (heroItems.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let heroIdx = 0;
+    setInterval(() => {
+      const slides = heroTrack.children;
+      slides[heroIdx].classList.remove('is-active');
+      heroIdx = (heroIdx + 1) % slides.length;
+      slides[heroIdx].classList.add('is-active');
+    }, 6000);
+  }
+
   // "Our Rentals": the first three pieces in the inventory, each linking to its own page.
   document.getElementById('featured').innerHTML = inv.items.slice(0, 3).map((it, n) =>
     `<a class="tile" href="item.html?i=${esc(it.slug)}" data-reveal style="--d:${n * 80}ms"><div class="media r-45">${picture(it.image, it.alt, dims[it.image], { sizes: '(min-width: 40rem) 30vw, 100vw' })}${it.gallery?.[0] ? `<span class="card__alt" aria-hidden="true">${picture(it.gallery[0], '', dims[it.gallery[0]], { sizes: '(min-width: 40rem) 30vw, 100vw' })}</span>` : ''}</div><h3>${esc(it.name)}</h3><span class="tile__go">View piece →</span></a>`).join('');

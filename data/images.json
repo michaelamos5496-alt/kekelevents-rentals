@@ -1,4 +1,18 @@
 {
+ "mediterranean-golden-table": { "w": 1672, "h": 941, "jpgOnly": true },
+ "golden-coastal-table": { "w": 1672, "h": 941, "jpgOnly": true },
+ "sunlit-mediterranean-dining-room": { "w": 1671, "h": 941, "jpgOnly": true },
+ "sunlit-gold-ivory-dining-room": { "w": 1670, "h": 941, "jpgOnly": true },
+ "sunlit-marble-dining-elegance": { "w": 1670, "h": 941, "jpgOnly": true },
+ "sunlit-oak-table-lounge": { "w": 1670, "h": 941, "jpgOnly": true },
+ "chiavari-chair-sea": { "w": 1672, "h": 941, "jpgOnly": true },
+ "chiavari-chair-sunlight": { "w": 1672, "h": 941, "jpgOnly": true },
+ "mediterranean-cane-armchair": { "w": 1672, "h": 941, "jpgOnly": true },
+ "french-wooden-chairs": { "w": 1672, "h": 941, "jpgOnly": true },
+ "blush-velvet-armchairs": { "w": 1670, "h": 941, "jpgOnly": true },
+ "cane-chairs-interior": { "w": 1672, "h": 941, "jpgOnly": true },
+ "cane-bar-stools-interior": { "w": 1672, "h": 941, "jpgOnly": true },
+ "walnut-lattice-chairs": { "w": 1671, "h": 941, "jpgOnly": true },
  "garden-reception-setup": {
   "w": 754,
   "h": 1280,

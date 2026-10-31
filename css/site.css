@@ -201,7 +201,10 @@ html.hide-placeholders .ph-note { display: none; }
 /* ---- 6. Home: full-bleed photo hero, overlaid header and statement ---- */
 .hero { position: relative; display: block; min-height: 100svh; overflow: hidden; }
 .hero__image { position: absolute; inset: 0; width: 100%; height: 100%; }
-.hero__image img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.hero__slides { position: relative; width: 100%; height: 100%; }
+.hero__slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; opacity: 0; transition: opacity 1.6s var(--ease); }
+.hero__slide.is-active { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .hero__slide { transition: none; } }
 .hero__scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgb(0 0 0 / 0.72) 0%, rgb(0 0 0 / 0.32) 38%, rgb(0 0 0 / 0) 68%); pointer-events: none; }
 .hero__text { position: relative; z-index: 1; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; max-width: 42rem; padding: calc(var(--header-h) + 2rem) var(--pad) clamp(3rem, 8vw, 6rem); padding-left: max(var(--pad), calc((100vw - var(--max)) / 2 + var(--pad))); }
 .hero .label, .hero__statement, .hero__sub { color: #fff; }
@@ -636,7 +639,7 @@ main .about-wide { height: calc(100dvh - var(--header-h)); min-height: 18rem; }
 }
 @keyframes vt-out { to { opacity: 0; } } @keyframes vt-in { from { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; } .hero__slide img { transform: none !important; }
+  html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; transition-delay: 0ms !important; scroll-behavior: auto !important; }
   .js [data-reveal] { opacity: 1; transform: none; }
 }

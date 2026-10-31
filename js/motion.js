@@ -36,7 +36,7 @@ export function heroIntro() {
   const hero = document.querySelector('.hero'); if (!hero) return false;
   const h1 = hero.querySelector('.hero__statement');
   const label = hero.querySelector('.label'), sub = hero.querySelector('.hero__sub'), actions = hero.querySelector('.hero__actions');
-  const media = hero.querySelector('.hero__image'), pic = media?.querySelector('picture');
+  const media = hero.querySelector('.hero__image'), pic = media?.querySelector('.hero__slides');
 
   h1.setAttribute('aria-label', h1.textContent.trim());
   h1.innerHTML = h1.textContent.trim().split(/\s+/).map((w) => `<span class="w" aria-hidden="true"><span>${w}</span></span>`).join(' ');
