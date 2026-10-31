@@ -1096,5 +1096,15 @@
   "w": 1600,
   "h": 2000,
   "jpgOnly": true
+ },
+ "black-champagne-flute": {
+  "w": 1600,
+  "h": 2000,
+  "jpgOnly": true
+ },
+ "black-champagne-flute-detail1": {
+  "w": 1331,
+  "h": 1181,
+  "jpgOnly": true
  }
 }

@@ -1572,6 +1572,25 @@
     "classic"
    ],
    "price": 4
+  },
+  {
+   "slug": "black-champagne-flute",
+   "name": "Black Champagne Flute",
+   "category": "glassware",
+   "note": "A tall champagne flute in glossy opaque black, from rim to foot, for a dramatic toast.",
+   "quantity": 100,
+   "material": "Glass, glossy black finish",
+   "dimensions": "On request",
+   "image": "black-champagne-flute",
+   "alt": "A tall glossy black champagne flute on a slender stem, on white",
+   "gallery": [
+    "black-champagne-flute-detail1"
+   ],
+   "mood": [
+    "glam",
+    "modern"
+   ],
+   "price": 6
   }
  ]
 }
