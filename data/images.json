@@ -1058,23 +1058,23 @@
   "jpgOnly": true
  },
  "round-wooden-table": {
-  "w": 1280,
-  "h": 1536,
+  "w": 1600,
+  "h": 2000,
   "jpgOnly": true
  },
  "centerpiece-acrylic-stand": {
-  "w": 1280,
-  "h": 1129,
+  "w": 1600,
+  "h": 2000,
   "jpgOnly": true
  },
  "round-glass-dinner-table": {
-  "w": 1280,
-  "h": 1536,
+  "w": 1600,
+  "h": 2000,
   "jpgOnly": true
  },
  "black-glass-table": {
-  "w": 1280,
-  "h": 1536,
+  "w": 1600,
+  "h": 2000,
   "jpgOnly": true
  }
 }
