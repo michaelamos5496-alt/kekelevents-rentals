@@ -12,7 +12,7 @@
   "number": "233244520386",
   "message": "Hello Kekel Rentals, I would like to enquire about an event."
  },
- "showPlaceholderTags": true,
+ "showPlaceholderTags": false,
  "enquiry": {
   "_note": "PLACEHOLDER: to receive enquiries by email set 'endpoint' to a form service URL that accepts a JSON POST (for example a Formspree form). While it is empty, submitting opens WhatsApp with the full enquiry ready to send.",
   "endpoint": "",
