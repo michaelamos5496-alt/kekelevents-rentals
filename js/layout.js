@@ -6,7 +6,7 @@ import { clearMarkup, bindClear } from './clear.js';
 import { pop, menuIn, buttons } from './motion.js';
 import { buildCard, bindCard } from './pages/item.js';
 
-const NAV = [['index.html', 'Home'], ['collections.html', 'Rentals'], ['services.html', 'Styling'], ['portfolio.html', 'Portfolio'], ['about.html', 'About'], ['enquire.html', 'Enquire']];
+const NAV = [['index.html', 'Home'], ['collections.html', 'Rentals'], ['portfolio.html', 'Portfolio'], ['about.html', 'About'], ['enquire.html', 'Enquire']];
 
 export function whatsappUrl(site, text) {
   const n = (site.whatsapp.number || '').replace(/\D/g, '');
@@ -51,7 +51,7 @@ export async function initLayout() {
       <div class="grid footer__top">
         <div class="footer__brand"><a class="logo logo--footer" href="index.html"><img src="assets/logo-white.png" width="900" height="596" alt="Kekel Events &amp; Rentals" loading="lazy"></a><p>${esc(site.statement)}</p></div>
         <div class="footer__col"><h2>Rentals</h2><ul>${stocked(inv).slice(0, 5).map((c) => `<li><a href="collections.html?c=${c.id}">${esc(c.name)}</a></li>`).join('')}</ul></div>
-        <div class="footer__col"><h2>Studio</h2><ul><li><a href="about.html">About</a></li><li><a href="services.html">Styling</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="enquire.html">Contact</a></li></ul></div>
+        <div class="footer__col"><h2>Studio</h2><ul><li><a href="about.html">About</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="enquire.html">Contact</a></li></ul></div>
         <div class="footer__col"><h2>Follow us</h2><ul><li><a href="https://instagram.com/${esc(site.instagram)}" rel="noopener">Instagram</a></li><li>${esc(site.city)}</li></ul></div>
         <div class="footer__col"><h2>Enquire</h2><ul><li>${esc(site.serviceArea)}</li><li><a href="mailto:${esc(site.email)}">${esc(site.email)}</a></li><li><a href="tel:${esc(site.phone.replace(/\s/g, ''))}">${esc(site.phone)}</a></li></ul><a class="btn" href="enquire.html">Begin your enquiry</a></div>
       </div>
