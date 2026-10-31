@@ -14,9 +14,17 @@ export default async function ({ site, inv, dims }) {
     let heroIdx = 0;
     setInterval(() => {
       const slides = heroTrack.children;
-      slides[heroIdx].classList.remove('is-active');
+      const current = slides[heroIdx];
       heroIdx = (heroIdx + 1) % slides.length;
+      current.classList.remove('is-active');
+      current.classList.add('is-prev');
       slides[heroIdx].classList.add('is-active');
+      setTimeout(() => {
+        current.style.transition = 'none';
+        current.classList.remove('is-prev');
+        void current.offsetHeight;
+        current.style.transition = '';
+      }, 1600);
     }, 6000);
   }
 
