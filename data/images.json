@@ -1091,5 +1091,10 @@
   "w": 1600,
   "h": 2000,
   "jpgOnly": true
+ },
+ "wine-glass": {
+  "w": 1600,
+  "h": 2000,
+  "jpgOnly": true
  }
 }

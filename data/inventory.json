@@ -1555,6 +1555,23 @@
     "classic"
    ],
    "price": 4
+  },
+  {
+   "slug": "wine-glass",
+   "name": "Wine Glass",
+   "category": "glassware",
+   "note": "A clear stemmed wine glass with a generous rounded bowl, for red or white wine at the table.",
+   "quantity": 100,
+   "material": "Clear glass",
+   "dimensions": "On request",
+   "image": "wine-glass",
+   "alt": "A clear stemmed wine glass with a rounded bowl, on white",
+   "gallery": [],
+   "mood": [
+    "elegant",
+    "classic"
+   ],
+   "price": 4
   }
  ]
 }
