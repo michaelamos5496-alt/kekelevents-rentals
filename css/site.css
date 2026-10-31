@@ -603,6 +603,12 @@ main .about-wide { height: calc(100dvh - var(--header-h)); min-height: 18rem; }
   .service h3 { font-size: 1.35rem; } .slide__text h3 { margin: 0.25rem 0 0.5rem; } .slide__text p { margin-bottom: 0.75rem; }
   main section.about-intro .about-intro__figure { aspect-ratio: 4 / 3; }
   .about-intro__text .lede { margin: 0.6rem 0 0.9rem; }
+  .logo--footer img { height: 4.25rem; }
+  .site-footer { padding-block: 2.5rem 1.5rem; }
+  .footer__top { row-gap: 1.5rem; padding-bottom: 2rem; }
+  .footer__brand p { margin-top: 0.75rem; }
+  .footer__col ul { gap: 0.4rem; margin-top: 0.75rem; }
+  .footer__legal { padding-top: 1rem; }
   .principles, .steps { gap: 0.9rem; } .principles article, .steps li { padding-top: 0.7rem; }
   .principles h3, .steps h3 { margin: 0.35rem 0 0.25rem; font-size: 1.15rem; } .principles p, .steps p { font-size: 0.88rem; }
   .service { padding-block: 0.9rem; gap: 0.35rem; } .service ul { display: none; } .service p { margin-bottom: 0.5rem; font-size: 0.92rem; }
