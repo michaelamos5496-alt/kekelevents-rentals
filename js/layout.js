@@ -42,7 +42,7 @@ export async function initLayout() {
       </div>
     </header>
     <div class="menu" id="menu" role="dialog" aria-modal="false" aria-label="Menu">
-      <nav aria-label="Mobile">${NAV.map(([h, l]) => `<a href="${h}">${l}</a>`).join('')}</nav>
+      <nav aria-label="Mobile">${NAV.map(([h, l]) => `<a href="${h}"${page === h ? ' aria-current="page"' : ''}>${l}</a>`).join('')}</nav>
       <div class="menu__foot"><span class="label">${esc(site.city)}</span><a href="https://instagram.com/${esc(site.instagram)}" rel="noopener">@${esc(site.instagram)}</a></div>
     </div>`);
 
@@ -95,6 +95,7 @@ export async function initLayout() {
   const setMenu = (open) => { if (open) menuIn(); toggle.setAttribute('aria-expanded', open); menu.classList.toggle('is-open', open); document.body.classList.toggle('menu-open', open); };
   toggle.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
   menu.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('click', (e) => { if (menu.classList.contains('is-open') && !e.target.closest('#menu, .menu-toggle')) setMenu(false); }); // tap the dimmed page to close
   addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
   matchMedia('(min-width: 62rem)').addEventListener('change', (e) => e.matches && setMenu(false));
 

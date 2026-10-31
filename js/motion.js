@@ -93,7 +93,7 @@ export function pop(el) {
 /** Menu links rise in as the mobile menu opens. */
 export function menuIn() {
   if (!hasGsap()) return;
-  gsap.from('.menu nav a, .menu__foot', { y: 36, opacity: 0, duration: 0.8, stagger: 0.06, delay: 0.1, clearProps: 'all' });
+  gsap.from('.menu nav a, .menu__foot', { y: 10, opacity: 0, duration: 0.5, stagger: 0.04, delay: 0.08, clearProps: 'all' });
 }
 
 /** Testimonial text eases in line by line as it becomes the active quote. */

@@ -158,10 +158,17 @@ body[data-header="over"]:not(.menu-open) .site-header:not(.is-solid) .enquiry-li
 .menu-toggle span { display: block; height: 1px; background: currentColor; transition: transform 0.5s var(--ease), opacity 0.3s; }
 .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(3.5px) rotate(45deg); }
 .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
-.menu { position: fixed; inset: 0; z-index: 90; background: var(--ivory); color: var(--ink); padding: calc(var(--header-h) + 2rem) var(--pad) 3rem; display: flex; flex-direction: column; justify-content: space-between; opacity: 0; visibility: hidden; transition: opacity 0.5s var(--ease), visibility 0s 0.5s; }
-.menu.is-open { opacity: 1; visibility: visible; transition: opacity 0.5s var(--ease); }
-.menu a { display: block; font-family: var(--serif); font-size: clamp(2.6rem, 11vw, 4.5rem); line-height: 1.15; }
-.menu__foot { display: grid; gap: 0.35rem; }
+/* Mobile menu: a panel that drops below the header, with the page dimmed behind it (body::after). */
+.menu { position: fixed; top: calc(var(--header-h) + 0.5rem); inset-inline: 0.75rem; z-index: 90; max-height: calc(100dvh - var(--header-h) - 1.25rem); overflow-y: auto; overscroll-behavior: contain; background: var(--ivory); color: var(--ink); border: 1px solid var(--hairline); border-radius: 22px; padding: 0.35rem 1.25rem 1rem; opacity: 0; visibility: hidden; transform: translateY(-0.6rem) scale(0.98); transform-origin: top center; transition: opacity 0.3s var(--ease), transform 0.4s var(--ease), visibility 0s 0.4s; }
+.menu.is-open { opacity: 1; visibility: visible; transform: none; transition: opacity 0.3s var(--ease), transform 0.4s var(--ease); }
+.menu nav { display: flex; flex-direction: column; }
+.menu nav a { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.9rem 0.25rem; font-size: 1rem; font-weight: 500; line-height: 1.3; border-bottom: 1px solid var(--hairline); transition: color 0.3s; }
+.menu nav a::after { content: ""; flex: none; width: 0.42rem; height: 0.42rem; border-top: 1.5px solid currentColor; border-right: 1.5px solid currentColor; transform: rotate(45deg); opacity: 0.3; }
+.menu nav a[aria-current="page"]::after { opacity: 1; }
+.menu__foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 0.25rem 0; font-size: var(--fs-small); }
+.menu__foot .label { margin: 0; }
+body::after { content: ""; position: fixed; inset: 0; z-index: 80; background: rgb(20 20 20 / 0.22); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.35s var(--ease), visibility 0s 0.35s; }
+body.menu-open::after { opacity: 1; visibility: visible; transition: opacity 0.35s var(--ease); }
 @media (min-width: 62rem) { .nav { display: flex; } .menu-toggle, .menu { display: none; } }
 body.menu-open { overflow: hidden; }
 body.menu-open .site-header { color: var(--ink); }
@@ -559,9 +566,9 @@ html.hide-placeholders .ph-note { display: none; }
   --glass-fill-input: rgb(255 255 255 / 0.6);
 }
 .site-header.is-solid { background: var(--glass); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); border-bottom-color: var(--glass-line); box-shadow: 0 1px 0 rgb(255 255 255 / 0.6) inset; }
-body.menu-open .site-header { background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; border-bottom-color: transparent; }
-.menu { background: var(--glass-strong); -webkit-backdrop-filter: blur(34px) saturate(190%); backdrop-filter: blur(34px) saturate(190%); }
-.menu a { text-shadow: 0 1px 0 rgb(255 255 255 / 0.6); }
+body.menu-open .site-header { background: var(--glass); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); border-bottom-color: var(--glass-line); }
+.menu { background: var(--glass-strong); -webkit-backdrop-filter: blur(34px) saturate(190%); backdrop-filter: blur(34px) saturate(190%); border-color: var(--glass-edge); box-shadow: var(--glass-shadow); }
+.menu nav a { border-bottom-color: var(--glass-line); } .menu nav a:last-child { border-bottom: 0; } .menu__foot { border-top: 1px solid var(--glass-line); }
 /* Cart drawer: a floating frosted sheet with rounded corners */
 .drawer { inset: 12px 12px 12px auto; width: min(29rem, calc(100vw - 24px)); max-width: none; height: calc(100dvh - 24px); border: 1px solid var(--glass-edge); border-radius: 26px; background: var(--glass); -webkit-backdrop-filter: blur(30px) saturate(190%); backdrop-filter: blur(30px) saturate(190%); box-shadow: var(--glass-shadow); overflow: hidden; }
 .drawer::backdrop { -webkit-backdrop-filter: blur(0); backdrop-filter: blur(0); transition: background-color 0.6s var(--ease), backdrop-filter 0.6s var(--ease), overlay 0.6s allow-discrete, display 0.6s allow-discrete; }
