@@ -119,6 +119,12 @@ main { display: block; min-height: 60vh; }
 .site-header { position: fixed; inset: 0 0 auto; z-index: 100; height: var(--header-h); color: var(--ink); transition: background-color 0.5s var(--ease), color 0.5s var(--ease), border-color 0.5s var(--ease); border-bottom: 1px solid transparent; }
 .site-header__bar { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
 .site-header.is-solid { background: var(--ivory); border-bottom-color: var(--hairline); }  /* replaced by the glass block at the end of the Motion section */
+/* data-header="over": transparent white-on-photo header until it solidifies on scroll (set in layout.js). Suppressed while the mobile menu (solid ivory) is open, so its own ink-on-light rule wins. */
+body[data-header="over"]:not(.menu-open) .site-header:not(.is-solid) { color: #fff; }
+body[data-header="over"]:not(.menu-open) .site-header:not(.is-solid) .logo__light { display: none; }
+body[data-header="over"]:not(.menu-open) .site-header:not(.is-solid) .logo__dark { display: block; }
+body[data-header="over"]:not(.menu-open) .site-header:not(.is-solid) .icon-btn,
+body[data-header="over"]:not(.menu-open) .site-header:not(.is-solid) .enquiry-link { color: #fff; }
 .wordmark { display: inline-flex; flex-direction: column; line-height: 1; }
 .wordmark__name { font-size: 1.5rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; margin-right: -0.3em; }
 .wordmark__sub { margin-top: 0.3rem; font-size: 0.52rem; letter-spacing: 0.55em; text-transform: uppercase; font-weight: 500; opacity: 0.7; }
@@ -192,21 +198,18 @@ html.hide-placeholders .ph-note { display: none; }
 .rule { height: 1px; background: var(--hairline); border: 0; margin: 0; }
 .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--champagne); display: inline-block; }
 
-/* ---- 6. Home (follows the NÜMA reference: grey hero, centred collection, split about) ---- */
-.hero { background: var(--hero); padding-top: var(--header-h); display: grid; grid-template-columns: 1fr; }
-.hero__text { padding: clamp(3rem, 7vw, 5rem) var(--pad) 3rem; align-self: center; }
-.hero .label { color: var(--ink); }
-.hero__statement { margin-top: 1.25rem; max-width: 13ch; font-size: clamp(2.5rem, 1.3rem + 3.6vw, 4.8rem); line-height: 1.02; letter-spacing: -0.03em; }
-.hero__sub { margin: 1.5rem 0 2rem; max-width: 30ch; font-size: 1.1rem; line-height: 1.6; color: var(--ink); opacity: 0.78; }
+/* ---- 6. Home: full-bleed photo hero, overlaid header and statement ---- */
+.hero { position: relative; display: block; min-height: 100svh; overflow: hidden; }
+.hero__image { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero__image img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.hero__scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgb(0 0 0 / 0.72) 0%, rgb(0 0 0 / 0.32) 38%, rgb(0 0 0 / 0) 68%); pointer-events: none; }
+.hero__text { position: relative; z-index: 1; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; max-width: 42rem; padding: calc(var(--header-h) + 2rem) var(--pad) clamp(3rem, 8vw, 6rem); padding-left: max(var(--pad), calc((100vw - var(--max)) / 2 + var(--pad))); }
+.hero .label, .hero__statement, .hero__sub { color: #fff; }
+.hero__statement { margin-top: 1.25rem; max-width: 14ch; font-size: clamp(2.5rem, 1.3rem + 3.6vw, 4.8rem); line-height: 1.02; letter-spacing: -0.03em; }
+.hero__sub { margin: 1.5rem 0 2rem; max-width: 30ch; font-size: 1.1rem; line-height: 1.6; opacity: 0.88; }
 .hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; }
-.hero__image { aspect-ratio: 4 / 5; width: 100%; }
-.hero__image img { object-position: 50% 40%; }
-.btn--hero { background: var(--gold); color: #fff; padding: 1.05rem 2.1rem; } .btn--hero:hover { background: transparent; color: var(--gold); }
-@media (min-width: 62rem) {
-  .hero { grid-template-columns: 1fr 1fr; height: min(54rem, 100svh); min-height: 36rem; }
-  .hero__text { padding-left: max(var(--pad), calc((100vw - var(--max)) / 2 + var(--pad))); padding-right: 3rem; }
-  .hero__image { aspect-ratio: auto; height: 100%; }
-}
+.hero .arrow-link { color: #fff; }
+.btn--hero { background: var(--gold); color: #fff; padding: 1.05rem 2.1rem; } .btn--hero:hover { background: transparent; color: #fff; border-color: #fff; }
 
 .collection { text-align: center; }
 .collection > .wrap > h2 { font-size: var(--fs-h2); }
@@ -579,20 +582,17 @@ main section.about { display: grid; align-content: stretch; }
 main section.about .about__figure { min-height: 16rem; }
 main section.about-intro { padding-block: 2rem; }
 main .about-wide { height: calc(100dvh - var(--header-h)); min-height: 18rem; }
-.hero { scroll-snap-align: start; scroll-margin-top: 0; }
-@media (min-width: 62rem) { .hero { height: auto; min-height: calc(100dvh - 6.75rem); } }
+.hero { scroll-snap-align: start; scroll-margin-top: 0; min-height: 100dvh; }
 .site-footer { scroll-snap-align: end; }
 @media (prefers-reduced-motion: reduce) { html { scroll-snap-type: none; } }
 
 /* Phones and small tablets: compress each section so it fits inside one screen (below the header) */
 .recent-dots { display: none; }
 @media (max-width: 61.99rem) {
-  .hero { min-height: 100dvh; grid-template-rows: auto minmax(0, 1fr); }
-  .hero__text { padding: 1rem var(--pad) 1.25rem; }
+  .hero__text { min-height: 100dvh; padding: calc(var(--header-h) + 1rem) var(--pad) 2rem; }
   .hero .label { font-size: 0.68rem; }
   .hero__statement { margin-top: 0.75rem; font-size: clamp(2rem, 9.5vw, 2.9rem); }
   .hero__sub { margin: 0.85rem 0 1.1rem; font-size: 0.98rem; line-height: 1.5; }
-  .hero__image { aspect-ratio: auto; height: auto; min-height: 9rem; }
   .slide__figure { aspect-ratio: 2 / 1; } .slider__dots { margin-top: 0.6rem; } .section-head { margin-bottom: 0.9rem; }
   .steps + .ph-note { margin-top: 1rem; } .steps p, .principles p { max-width: none; } .steps { grid-template-columns: 1fr 1fr; gap: 0.9rem 1rem; }
   .service h3 { font-size: 1.35rem; } .slide__text h3 { margin: 0.25rem 0 0.5rem; } .slide__text p { margin-bottom: 0.75rem; }
