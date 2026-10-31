@@ -244,7 +244,7 @@ html.hide-placeholders .ph-note { display: none; }
 .slider__track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; }
 .slider__track::-webkit-scrollbar { display: none; }
 .slide { flex: 0 0 100%; scroll-snap-align: start; display: grid; grid-template-columns: 1fr; gap: 1.5rem; align-items: center; }
-.slide__figure { aspect-ratio: 3 / 2; }
+.slide__figure { aspect-ratio: 3 / 2; max-height: clamp(16rem, 49vh, 34rem); }
 .slide__text h3 { font-size: var(--fs-h2); margin: 0.5rem 0 1rem; }
 .slide__text p { color: var(--stone); max-width: 38ch; margin-bottom: 1.25rem; font-size: 0.95rem; }
 .setup__num { font-size: 0.8rem; color: var(--stone); letter-spacing: 0.12em; }
@@ -592,7 +592,9 @@ main .about-wide { height: calc(100dvh - var(--header-h)); min-height: 18rem; }
   .hero .label { font-size: 0.68rem; }
   .hero__statement { margin-top: 0.75rem; font-size: clamp(2rem, 9.5vw, 2.9rem); }
   .hero__sub { margin: 0.85rem 0 1.1rem; font-size: 0.98rem; line-height: 1.5; }
-  .slide__figure { aspect-ratio: 2 / 1; } .slider__dots { margin-top: 0.6rem; } .section-head { margin-bottom: 0.9rem; }
+  .slide__figure { aspect-ratio: 2.3 / 1; } .slider__dots { margin-top: 0.4rem; } .section-head { margin-bottom: 0.6rem; }
+  .section--parchment { padding-block: clamp(1.5rem, 5vh, 4rem); }
+  .slide { gap: 1rem; } .slide__text .arrow-link { margin-top: 0.75rem; }
   .steps + .ph-note { margin-top: 1rem; } .steps p, .principles p { max-width: none; } .steps { grid-template-columns: 1fr 1fr; gap: 0.9rem 1rem; }
   .service h3 { font-size: 1.35rem; } .slide__text h3 { margin: 0.25rem 0 0.5rem; } .slide__text p { margin-bottom: 0.75rem; }
   main section.about-intro .about-intro__figure { aspect-ratio: 4 / 3; }
