@@ -115,7 +115,7 @@ export async function initLayout() {
     }
     body.innerHTML = t.lines.map(({ item: it, qty, unit, line }) => `<div class="drawer-item" data-slug="${esc(it.slug)}">
         <a class="media" href="item.html?i=${esc(it.slug)}">${picture(it.image, it.alt, dims[it.image], { sizes: '72px' })}</a>
-        <div><h3>${esc(it.name)}</h3><small>${money(unit)} per day</small><div class="qty" role="group" aria-label="Quantity for ${esc(it.name)}"><button type="button" data-dec aria-label="Decrease"${qty <= 1 ? ' disabled' : ''}>−</button><output>${qty}</output><button type="button" data-inc aria-label="Increase"${qty >= enquiry.max(it.slug) ? ' disabled' : ''}>+</button></div></div>
+        <div><h3>${esc(it.name)}</h3><small>${money(unit)} per day</small><div class="qty" role="group" aria-label="Quantity for ${esc(it.name)}"><button type="button" data-dec aria-label="Decrease"${qty <= 1 ? ' disabled' : ''}>−</button><input class="qty__input" type="number" inputmode="numeric" pattern="[0-9]*" min="1" max="${enquiry.max(it.slug)}" step="1" data-qty aria-label="Quantity for ${esc(it.name)}" value="${qty}"><button type="button" data-inc aria-label="Increase"${qty >= enquiry.max(it.slug) ? ' disabled' : ''}>+</button></div></div>
         <div class="drawer-item__side"><strong>${money(line)}</strong><button class="drawer-item__remove" type="button" data-remove aria-label="Remove ${esc(it.name)}">Remove</button></div></div>`).join('');
     foot.innerHTML = `${datesMarkup('dr')}
       <div class="sum-row"><span>Subtotal · ${daysLabel(t.days)}</span><strong>${money(t.subtotal)}</strong></div>
@@ -134,6 +134,13 @@ export async function initLayout() {
     else if (e.target.closest('[data-inc]')) enquiry.setQty(slug, cur.qty + 1);
     else if (e.target.closest('[data-dec]')) enquiry.setQty(slug, cur.qty - 1);
   });
+  body.addEventListener('change', (e) => {
+    const input = e.target.closest('[data-qty]'); if (!input) return;
+    const row = input.closest('.drawer-item'), slug = row?.dataset.slug;
+    const n = Math.round(Number(input.value));
+    enquiry.setQty(slug, Number.isFinite(n) && n > 0 ? n : 1);
+  });
+  body.addEventListener('keydown', (e) => { if (e.key === 'Enter' && e.target.matches('[data-qty]')) { e.preventDefault(); e.target.blur(); } });
   // Product modal: any link to a piece opens it as a popup instead of navigating, on every page.
   const productModal = document.getElementById('product-modal'), productBody = document.getElementById('product-modal-body');
   let productOpener, productUnsub;

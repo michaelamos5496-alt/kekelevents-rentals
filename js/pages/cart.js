@@ -21,7 +21,7 @@ export default function ({ site, inv, dims }) {
           <a class="cart-line__media media" href="item.html?i=${esc(it.slug)}">${picture(it.image, it.alt, dims[it.image], { sizes: '110px' })}</a>
           <div class="cart-line__info"><span class="card__cat">${esc(byCategory(inv, it.category).name)}</span><h2><a href="item.html?i=${esc(it.slug)}">${esc(it.name)}</a></h2><button class="cart-line__remove" type="button" data-remove aria-label="Remove ${esc(it.name)}">Remove</button></div>
           <div class="cart-line__price" data-label="Per day">${money(unit)}</div>
-          <div class="qty" role="group" aria-label="Quantity for ${esc(it.name)}"><button type="button" data-dec aria-label="Decrease">−</button><output>${qty}</output><button type="button" data-inc aria-label="Increase"${qty >= enquiry.max(it.slug) ? ' disabled' : ''}>+</button></div>
+          <div class="qty" role="group" aria-label="Quantity for ${esc(it.name)}"><button type="button" data-dec aria-label="Decrease">−</button><input class="qty__input" type="number" inputmode="numeric" pattern="[0-9]*" min="1" max="${enquiry.max(it.slug)}" step="1" data-qty aria-label="Quantity for ${esc(it.name)}" value="${qty}"><button type="button" data-inc aria-label="Increase"${qty >= enquiry.max(it.slug) ? ' disabled' : ''}>+</button></div>
           <div class="cart-line__total" data-label="Total"><strong>${money(line)}</strong><small>${money(unit * qty)} per day × ${daysLabel(t.days)}</small></div>
         </article>`).join('')}
         <div class="cart__foot"><a class="link" href="collections.html">Continue browsing</a>${clearMarkup('btn btn--clear')}</div>
@@ -45,6 +45,13 @@ export default function ({ site, inv, dims }) {
     else if (e.target.closest('[data-inc]')) enquiry.setQty(slug, cur.qty + 1);
     else if (e.target.closest('[data-dec]')) { cur.qty > 1 ? enquiry.setQty(slug, cur.qty - 1) : enquiry.remove(slug); }
   });
+  root.addEventListener('change', (e) => {
+    const input = e.target.closest('[data-qty]'); if (!input) return;
+    const row = input.closest('.cart-line'), slug = row?.dataset.slug;
+    const n = Math.round(Number(input.value));
+    enquiry.setQty(slug, Number.isFinite(n) && n > 0 ? n : 1);
+  });
+  root.addEventListener('keydown', (e) => { if (e.key === 'Enter' && e.target.matches('[data-qty]')) { e.preventDefault(); e.target.blur(); } });
   bindDates(root); bindClear(root);
   enquiry.subscribe(render); render(); reveal();
 }

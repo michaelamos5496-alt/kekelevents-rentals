@@ -20,7 +20,7 @@ export function buildCard(it, cat, dims) {
       </div>
       <p class="pdp__price">${it.price ? `${money(it.price)}<span>per day</span>` : 'Price on request'}</p>
       <div class="pdp__buy">
-        <div class="qty qty--lg" role="group" aria-label="Quantity"><button type="button" data-q-dec aria-label="Decrease quantity">−</button><output data-q-out aria-live="polite">1</output><button type="button" data-q-inc aria-label="Increase quantity">+</button></div>
+        <div class="qty qty--lg" role="group" aria-label="Quantity"><button type="button" data-q-dec aria-label="Decrease quantity">−</button><input class="qty__input" type="number" inputmode="numeric" pattern="[0-9]*" min="1" max="${it.quantity}" step="1" data-q-out aria-label="Quantity" value="1"><button type="button" data-q-inc aria-label="Increase quantity">+</button></div>
         <div class="pdp__actions">
           <button class="btn btn--solid" type="button" data-add-cart>Add to cart</button>
           <button class="btn" type="button" data-open-enquiry>View cart</button>
@@ -53,13 +53,15 @@ export function bindCard(root, it, dims) {
   let qty = enquiry.all().find((x) => x.slug === it.slug)?.qty || 1;
   const paintBuy = () => {
     const inCart = enquiry.all().find((x) => x.slug === it.slug);
-    out.textContent = qty;
+    out.value = qty;
     dec.disabled = qty <= 1; inc.disabled = qty >= it.quantity;
     tot.textContent = it.price ? `${money(it.price * qty)} per day · ${money(it.price * qty * enquiry.days())} for ${daysLabel(enquiry.days())}` : 'Price on request';
     addBtn.textContent = !inCart ? 'Add to cart' : inCart.qty === qty ? 'In your cart' : 'Update cart';
   };
   dec.addEventListener('click', () => { qty = Math.max(1, qty - 1); paintBuy(); });
   inc.addEventListener('click', () => { qty = Math.min(it.quantity, qty + 1); paintBuy(); });
+  out.addEventListener('change', () => { const n = Math.round(Number(out.value)); qty = Number.isFinite(n) && n > 0 ? Math.min(it.quantity, n) : qty; paintBuy(); });
+  out.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); out.blur(); } });
   addBtn.addEventListener('click', () => { enquiry.add(it.slug, qty); paintBuy(); });
   const unsubBuy = enquiry.subscribe(paintBuy); paintBuy();
   const unsubAdd = bindAdd(root);

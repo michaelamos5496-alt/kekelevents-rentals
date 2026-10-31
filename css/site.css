@@ -389,6 +389,9 @@ html.hide-placeholders .ph-note { display: none; }
 .drawer-item h3 { font-size: 1.25rem; } .drawer-item small { display: block; color: var(--stone); font-size: 0.78rem; margin-top: 0.2rem; }
 .qty { display: inline-flex; align-items: center; border: 1px solid var(--hairline); margin-top: 0.5rem; }
 .qty button { width: 2rem; height: 2rem; font-size: 1.1rem; } .qty button:hover { background: var(--parchment); } .qty output { min-width: 2.2rem; text-align: center; font-size: var(--fs-small); }
+.qty__input { width: 2.2rem; min-width: 2.2rem; height: 2rem; border: 0; background: transparent; text-align: center; font-size: var(--fs-small); font-family: inherit; color: inherit; padding: 0; -moz-appearance: textfield; }
+.qty__input::-webkit-outer-spin-button, .qty__input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.qty__input:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; border-radius: 2px; }
 .drawer-item__remove { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone); padding: 0.5rem; } .drawer-item__remove:hover { color: var(--ink); }
 .drawer__foot { padding: 1.5rem 1.75rem 1.75rem; border-top: 1px solid var(--hairline); display: grid; gap: 0.85rem; }
 .drawer__foot p { margin: 0; font-size: var(--fs-small); color: var(--stone); }
@@ -419,7 +422,7 @@ html.hide-placeholders .ph-note { display: none; }
 .qty button:disabled { opacity: 0.35; cursor: not-allowed; }
 .card__price { font-weight: 600; color: var(--ink); font-size: 1rem; } .card__qty { line-height: 1.4; }
 .detail__price { font-size: 1.6rem; font-weight: 500; letter-spacing: -0.02em; margin: 0 0 1.5rem; } .detail__price span { font-size: 0.9rem; color: var(--stone); font-weight: 400; letter-spacing: 0; }
-.buybox { display: grid; gap: 0.9rem; margin-bottom: 1.25rem; } .buybox .qty { justify-self: start; } .qty--lg button { width: 2.75rem; height: 2.75rem; font-size: 1.25rem; } .qty--lg output { min-width: 3rem; font-size: 1rem; }
+.buybox { display: grid; gap: 0.9rem; margin-bottom: 1.25rem; } .buybox .qty { justify-self: start; } .qty--lg button { width: 2.75rem; height: 2.75rem; font-size: 1.25rem; } .qty--lg output, .qty--lg .qty__input { min-width: 3rem; font-size: 1rem; }
 .buybox__total { margin: 0; font-size: 0.9rem; color: var(--stone); }
 .cart { display: grid; grid-template-columns: 1fr; gap: 3rem; padding-bottom: var(--section); }
 @media (min-width: 62rem) { .cart:has(.cart__summary) { grid-template-columns: 8fr 4fr; gap: clamp(3rem, 5vw, 6rem); align-items: start; } .cart__summary { position: sticky; top: calc(var(--header-h) + 2rem); } }
