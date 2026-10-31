@@ -28,17 +28,6 @@ export default async function ({ site, inv, dims }) {
     }, 6000);
   }
 
-  // "Our Rentals": the first three pieces in the inventory, each linking to its own page.
-  document.getElementById('featured').innerHTML = inv.items.slice(0, 3).map((it, n) =>
-    `<a class="tile" href="item.html?i=${esc(it.slug)}" data-reveal style="--d:${n * 80}ms"><div class="media r-45">${picture(it.image, it.alt, dims[it.image], { sizes: '(min-width: 40rem) 30vw, 100vw' })}${it.gallery?.[0] ? `<span class="card__alt" aria-hidden="true">${picture(it.gallery[0], '', dims[it.gallery[0]], { sizes: '(min-width: 40rem) 30vw, 100vw' })}</span>` : ''}</div><h3>${esc(it.name)}</h3><span class="tile__go">View piece →</span></a>`).join('');
-
-  // Mobile slide: dots follow the scroll position and jump to a card when tapped.
-  const grid = document.getElementById('featured'), cdots = document.getElementById('coll-dots');
-  cdots.innerHTML = inv.items.slice(0, 3).map((it, n) => `<button type="button" data-c="${n}" aria-label="Show ${esc(it.name)}" aria-current="${n === 0}"></button>`).join('');
-  const cIdx = () => Math.round(grid.scrollLeft / (grid.firstElementChild.getBoundingClientRect().width + 16));
-  grid.addEventListener('scroll', () => [...cdots.children].forEach((d, n) => d.setAttribute('aria-current', n === Math.min(cIdx(), cdots.children.length - 1))), { passive: true });
-  cdots.addEventListener('click', (e) => { const b = e.target.closest('[data-c]'); if (b) grid.children[b.dataset.c].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' }); });
-
   // Signature setups: a slide carousel (native scroll-snap, so touch swipe works), with arrows and a counter.
   const { items } = await loadSetups();
   const track = document.getElementById('setups');
@@ -85,6 +74,6 @@ export default async function ({ site, inv, dims }) {
 
   reveal();
   heroIntro();
-  settleImages('.tile .media');
+  settleImages('.cat-card .media');
   parallax('.about__figure .media', 6);
 }

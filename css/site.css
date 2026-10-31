@@ -215,18 +215,20 @@ html.hide-placeholders .ph-note { display: none; }
 .hero .arrow-link { color: #fff; }
 .btn--hero { background: var(--gold); color: #fff; padding: 1.05rem 2.1rem; } .btn--hero:hover { background: transparent; color: #fff; border-color: #fff; }
 
-.collection { text-align: center; }
-.collection > .wrap > h2 { font-size: var(--fs-h2); }
 .collection__sub { margin: 0.75rem 0 clamp(2.5rem, 5vw, 4rem); color: var(--stone); font-size: 0.95rem; }
-/* Mobile: the three rentals are a swipeable slide with a peek of the next card; from 40rem up they sit in a row. */
-.collection__grid { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--pad); margin-inline: calc(var(--pad) * -1); padding-inline: var(--pad); scrollbar-width: none; overscroll-behavior-x: contain; text-align: left; }
-.collection__grid::-webkit-scrollbar { display: none; }
-.collection__grid .tile { flex: 0 0 82%; scroll-snap-align: start; }
-@media (min-width: 40rem) { .collection__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem var(--gutter); overflow: visible; margin-inline: 0; padding-inline: 0; scroll-snap-type: none; } .collection__grid .tile { flex: none; } .collection__dots { display: none; } }
-.tile .media { aspect-ratio: 4 / 3; background: #F0EFED; } .tile .media.r-45 { aspect-ratio: 4 / 5; }
-.tile h3 { margin-top: 1rem; font-size: 1rem; font-weight: 500; letter-spacing: 0; }
-.tile__go { display: inline-block; margin-top: 0.35rem; font-size: 0.82rem; color: var(--ink); }
-.tile:hover .tile__go { text-decoration: underline; text-underline-offset: 0.3em; }
+
+.categories { text-align: center; }
+.categories > .wrap > h2 { font-size: var(--fs-h2); }
+.categories__grid { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--pad); margin-inline: calc(var(--pad) * -1); padding-inline: var(--pad); scrollbar-width: none; overscroll-behavior-x: contain; text-align: left; }
+.categories__grid::-webkit-scrollbar { display: none; }
+.cat-card { position: relative; display: block; flex: 0 0 82%; scroll-snap-align: start; overflow: hidden; }
+.cat-card .media { aspect-ratio: 4 / 3; }
+.cat-card__scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgb(0 0 0 / 0.65) 0%, rgb(0 0 0 / 0.08) 55%, rgb(0 0 0 / 0) 72%); pointer-events: none; }
+.cat-card__text { position: absolute; left: 1.25rem; right: 1.25rem; bottom: 1.25rem; z-index: 1; color: #fff; }
+.cat-card__text h3 { font-size: 1.3rem; font-weight: 500; }
+.cat-card__go { display: inline-block; margin-top: 0.35rem; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; }
+.cat-card:hover .cat-card__go { text-decoration: underline; text-underline-offset: 0.3em; }
+@media (min-width: 40rem) { .categories__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem var(--gutter); overflow: visible; margin-inline: 0; padding-inline: 0; scroll-snap-type: none; } .cat-card { flex: none; } }
 
 .about { display: grid; grid-template-columns: 1fr; background: var(--gold); color: #fff; }
 .about__text { padding: clamp(2.5rem, 4vw, 3.5rem) var(--pad); align-self: center; max-width: 36rem; }
@@ -253,12 +255,12 @@ html.hide-placeholders .ph-note { display: none; }
 .setup__num { font-size: 0.8rem; color: var(--stone); letter-spacing: 0.12em; }
 @media (min-width: 62rem) { .slide { grid-template-columns: 7fr 4fr; gap: clamp(2rem, 5vw, 5rem); } }
 /* Slide indicators (shared): a dash per slide, the current one longer and in brand gold. */
-.collection__dots, .testimonials__dots, .slider__dots { display: flex; justify-content: center; gap: 0.4rem; }
-.collection__dots { margin-top: 1.25rem; } .slider__dots { margin-top: 1.5rem; }
-.collection__dots button, .testimonials__dots button, .slider__dots button { height: 2.25rem; width: 1.9rem; position: relative; transition: width 0.5s var(--ease); }
-.collection__dots button::after, .testimonials__dots button::after, .slider__dots button::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 3px; margin-top: -1.5px; border-radius: 2px; background: rgb(143 107 46 / 0.22); transition: background-color 0.4s; }
-.collection__dots button[aria-current="true"], .testimonials__dots button[aria-current="true"], .slider__dots button[aria-current="true"] { width: 3rem; }
-.collection__dots button[aria-current="true"]::after, .testimonials__dots button[aria-current="true"]::after, .slider__dots button[aria-current="true"]::after { background: var(--gold); }
+.testimonials__dots, .slider__dots { display: flex; justify-content: center; gap: 0.4rem; }
+.slider__dots { margin-top: 1.5rem; }
+.testimonials__dots button, .slider__dots button { height: 2.25rem; width: 1.9rem; position: relative; transition: width 0.5s var(--ease); }
+.testimonials__dots button::after, .slider__dots button::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 3px; margin-top: -1.5px; border-radius: 2px; background: rgb(143 107 46 / 0.22); transition: background-color 0.4s; }
+.testimonials__dots button[aria-current="true"], .slider__dots button[aria-current="true"] { width: 3rem; }
+.testimonials__dots button[aria-current="true"]::after, .slider__dots button[aria-current="true"]::after { background: var(--gold); }
 /* Testimonials */
 .testimonials { text-align: center; }
 .testimonials__stage { display: grid; max-width: 56rem; margin: 2rem auto 0; outline-offset: 8px; }
@@ -295,7 +297,7 @@ html.hide-placeholders .ph-note { display: none; }
 .card__image { display: block; }
 .card__alt { position: absolute; inset: 0; opacity: 0; transition: opacity 0.7s var(--ease); pointer-events: none; }
 .card__alt picture, .card__alt img { width: 100%; height: 100%; }
-@media (hover: hover) { .card:hover .card__alt, .tile:hover .card__alt { opacity: 1; } }
+@media (hover: hover) { .card:hover .card__alt { opacity: 1; } }
 .card__body { padding-top: 1rem; display: grid; gap: 0.35rem; }
 .card__cat { font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--champagne-ink); font-weight: 500; }
 .card h3 { font-size: clamp(1.05rem, 1rem + 0.35vw, 1.3rem); }
@@ -567,19 +569,17 @@ body.menu-open .site-header { background: transparent; -webkit-backdrop-filter: 
    Every main section is at least one screen tall (below the fixed header), its content centred, and the page
    snaps gently from section to section. "proximity" keeps snapping soft so tall sections never trap the visitor. */
 html { scroll-snap-type: y proximity; scroll-padding-top: var(--header-h); }
-main section.section, main section.about, main section.about-intro, main .about-wide, main section.collection {
+main section.section, main section.about, main section.about-intro, main .about-wide {
   min-height: calc(100svh - var(--header-h)); min-height: calc(100dvh - var(--header-h));
   scroll-snap-align: start;
 }
 main section.section { display: flex; flex-direction: column; justify-content: center; }
 main section.about-intro { align-content: center; }
-@media (min-width: 40rem) { .collection__dots { display: none; } }
 main section.section { padding-block: clamp(2.5rem, 7vh, 5rem); } /* vh-based, so a section keeps its content inside one screen */
 .section-head { margin-bottom: clamp(1.25rem, 4vh, 3rem); }
 @media (min-width: 62rem) {
   main section.about-intro .about-intro__figure { aspect-ratio: auto; height: min(68dvh, 40rem); }
   .service { padding-block: clamp(1rem, 3vh, 2.25rem); }
-  .tile .media { aspect-ratio: 16 / 10; }
 }
 main section.about { display: grid; align-content: stretch; }
 @media (min-width: 62rem) { main section.about .about__figure .media { height: 100%; min-height: 0; } }

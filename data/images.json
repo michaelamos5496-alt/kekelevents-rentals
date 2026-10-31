@@ -13,6 +13,9 @@
  "cane-chairs-interior": { "w": 1672, "h": 941, "jpgOnly": true },
  "cane-bar-stools-interior": { "w": 1672, "h": 941, "jpgOnly": true },
  "walnut-lattice-chairs": { "w": 1671, "h": 941, "jpgOnly": true },
+ "category-seating": { "w": 1448, "h": 1086, "jpgOnly": true },
+ "category-tablescape": { "w": 1448, "h": 1086, "jpgOnly": true },
+ "category-decor": { "w": 1448, "h": 1086, "jpgOnly": true },
  "garden-reception-setup": {
   "w": 754,
   "h": 1280,
