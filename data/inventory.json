@@ -1363,6 +1363,93 @@
     "elegant"
    ],
    "price": 30
+  },
+  {
+   "slug": "rattan-vintage-lamp",
+   "name": "Rattan Vintage Lamp",
+   "category": "lighting",
+   "note": "A brass table lamp with a woven rattan shade and a cane-wrapped stem, scalloped at the shade's edge.",
+   "quantity": 100,
+   "material": "Brass-finish metal, woven rattan shade, cane-wrapped stem",
+   "dimensions": "On request",
+   "image": "rattan-vintage-lamp",
+   "alt": "A brass table lamp with a woven rattan scalloped shade and a cane-wrapped stem, on white",
+   "gallery": [
+    "rattan-vintage-lamp-detail1"
+   ],
+   "mood": [
+    "rustic",
+    "warm"
+   ],
+   "price": 60
+  },
+  {
+   "slug": "round-wooden-table",
+   "name": "Round Wooden Table",
+   "category": "tablescape",
+   "note": "A round folding table with a warm wood-grain top and silver folding legs.",
+   "quantity": 100,
+   "material": "Wood-grain laminate top, silver-finish folding steel legs",
+   "dimensions": "On request",
+   "image": "round-wooden-table",
+   "alt": "A round table with a warm wood-grain top on silver folding legs, on white",
+   "gallery": [],
+   "mood": [
+    "rustic",
+    "warm"
+   ],
+   "price": 50
+  },
+  {
+   "slug": "centerpiece-acrylic-stand",
+   "name": "Centerpiece Clear Acrylic Stand",
+   "category": "decor",
+   "note": "A slim white-finish pedestal riser on four rods, for raising centerpieces and florals.",
+   "quantity": 100,
+   "material": "Acrylic and metal, white finish",
+   "dimensions": "On request",
+   "image": "centerpiece-acrylic-stand",
+   "alt": "Three white pedestal centerpiece stands of graduating height, on white",
+   "gallery": [],
+   "mood": [
+    "modern",
+    "elegant"
+   ],
+   "price": 50
+  },
+  {
+   "slug": "round-glass-dinner-table",
+   "name": "Round Glass Dinner Table",
+   "category": "tablescape",
+   "note": "A round high-gloss black table with a mirrored glass-look top, trimmed in gold on a drum base.",
+   "quantity": 100,
+   "material": "High-gloss lacquered top and base, gold-finish trim",
+   "dimensions": "On request",
+   "image": "round-glass-dinner-table",
+   "alt": "A round high-gloss black dinner table with gold trim, on a drum pedestal base, on white",
+   "gallery": [],
+   "mood": [
+    "glam",
+    "modern"
+   ],
+   "price": 400
+  },
+  {
+   "slug": "black-glass-table",
+   "name": "Black Glass Table",
+   "category": "tablescape",
+   "note": "A rectangular high-gloss black table with a mirrored glass-look top, trimmed in gold on a plinth base.",
+   "quantity": 100,
+   "material": "High-gloss lacquered top and base, gold-finish trim",
+   "dimensions": "On request",
+   "image": "black-glass-table",
+   "alt": "A rectangular high-gloss black dining table with gold trim, on a plinth base, on white",
+   "gallery": [],
+   "mood": [
+    "glam",
+    "modern"
+   ],
+   "price": 400
   }
  ]
 }

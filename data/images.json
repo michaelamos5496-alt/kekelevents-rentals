@@ -1046,5 +1046,35 @@
   "w": 1550,
   "h": 1938,
   "jpgOnly": true
+ },
+ "rattan-vintage-lamp": {
+  "w": 1024,
+  "h": 1536,
+  "jpgOnly": true
+ },
+ "rattan-vintage-lamp-detail1": {
+  "w": 1024,
+  "h": 1536,
+  "jpgOnly": true
+ },
+ "round-wooden-table": {
+  "w": 1280,
+  "h": 976,
+  "jpgOnly": true
+ },
+ "centerpiece-acrylic-stand": {
+  "w": 1280,
+  "h": 1129,
+  "jpgOnly": true
+ },
+ "round-glass-dinner-table": {
+  "w": 1280,
+  "h": 1010,
+  "jpgOnly": true
+ },
+ "black-glass-table": {
+  "w": 1280,
+  "h": 853,
+  "jpgOnly": true
  }
 }
