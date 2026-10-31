@@ -221,7 +221,7 @@ html.hide-placeholders .ph-note { display: none; }
 .categories > .wrap > h2 { font-size: var(--fs-h2); }
 .categories__grid { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--pad); margin-inline: calc(var(--pad) * -1); padding-inline: var(--pad); scrollbar-width: none; overscroll-behavior-x: contain; text-align: left; }
 .categories__grid::-webkit-scrollbar { display: none; }
-.cat-card { position: relative; display: block; flex: 0 0 82%; scroll-snap-align: start; overflow: hidden; border-radius: 10px; }
+.cat-card { position: relative; display: block; flex: 0 0 100%; scroll-snap-align: start; overflow: hidden; border-radius: 10px; }
 .cat-card .media { aspect-ratio: 4 / 3; background: none; }
 @media (min-width: 40rem) { .categories__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem var(--gutter); overflow: visible; margin-inline: 0; padding-inline: 0; scroll-snap-type: none; } .cat-card { flex: none; } }
 
