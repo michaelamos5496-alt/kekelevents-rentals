@@ -24,12 +24,14 @@ export function buildCard(it, cat, dims) {
       <p class="pdp__meta"><span>${esc(it.material)}</span><span>Size: ${esc(it.dimensions)}</span></p>
       <p class="pdp__price">${it.price ? `${money(it.price)}<span>per piece, per day</span>` : 'Price on request'}</p>
       <p class="pdp__stock"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8.5 12 4l8 4.5v7L12 20l-8-4.5z"/><path d="m4 8.5 8 4.5 8-4.5M12 13v7"/></svg>${it.quantity} available to hire</p>
-      ${it.options ? `<fieldset class="swatches"><legend class="pdp__label">${esc(it.options.label)}: <strong data-opt-name>choose one</strong></legend><div class="swatches__list">${it.options.choices.map((c) => `<button class="swatch" type="button" data-opt="${esc(c.name)}" aria-pressed="false" aria-label="${esc(c.name)}" title="${esc(c.name)}" style="--sw:${esc(c.hex)}"></button>`).join('')}</div></fieldset>` : ''}
+      ${it.options ? `<fieldset class="swatches"><legend class="pdp__label">${esc(it.options.label)}s: <strong data-opt-name>choose one or more</strong></legend><div class="swatches__list">${it.options.choices.map((c) => `<button class="swatch" type="button" data-opt="${esc(c.name)}" aria-pressed="false" aria-label="${esc(c.name)}" title="${esc(c.name)}" style="--sw:${esc(c.hex)}"></button>`).join('')}</div></fieldset>
+      <div class="picks" data-picks></div>
+      <p class="pdp__total" data-q-total aria-live="polite"></p>` : `
       <span class="pdp__label">Quantity</span>
       <div class="pdp__buy">
         <div class="qty qty--lg" role="group" aria-label="Quantity"><button type="button" data-q-dec aria-label="Decrease quantity">−</button><input class="qty__input" type="number" inputmode="numeric" pattern="[0-9]*" min="1" max="${it.quantity}" step="1" data-q-out aria-label="Quantity" value="1"><button type="button" data-q-inc aria-label="Increase quantity">+</button></div>
         <p class="pdp__total" data-q-total aria-live="polite"></p>
-      </div>
+      </div>`}
       <div class="pdp__actions">
         <button class="btn btn--solid" type="button" data-add-cart>Add to cart</button>
         <button class="btn" type="button" data-open-enquiry>View cart<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg></button>
@@ -77,38 +79,98 @@ export function bindCard(root, it, dims) {
     const t = tabBtns[(i + (e.key === 'ArrowRight' ? 1 : -1) + tabBtns.length) % tabBtns.length]; selectTab(t); t.focus();
   });
 
-  // Quantity and add-to-cart: shows the current cart quantity if the piece is already in it.
-  // A piece with options (e.g. tablecloth colours) needs one chosen first; each choice is its own cart line.
-  const dec = root.querySelector('[data-q-dec]'), inc = root.querySelector('[data-q-inc]');
-  const out = root.querySelector('[data-q-out]'), tot = root.querySelector('[data-q-total]'), addBtn = root.querySelector('[data-add-cart]');
-  let opt = it.options ? enquiry.all().find((x) => x.slug === it.slug)?.option : undefined;
-  const key = () => lineKey(it.slug, opt);
-  let qty = enquiry.get(key())?.qty || 1;
-  const paintBuy = () => {
-    const inCart = (!it.options || opt) && enquiry.get(key());
-    out.value = qty;
-    dec.disabled = qty <= 1; inc.disabled = qty >= it.quantity;
-    tot.textContent = it.price ? `${money(it.price * qty)} per day · ${money(it.price * qty * enquiry.days())} for ${daysLabel(enquiry.days())}` : 'Price on request';
-    addBtn.disabled = Boolean(it.options && !opt);
-    addBtn.textContent = addBtn.disabled ? `Choose a ${it.options.label.toLowerCase()}` : !inCart ? 'Add to cart' : inCart.qty === qty ? 'In your cart' : 'Update cart';
-    if (it.options) {
-      root.querySelector('[data-opt-name]').textContent = opt || 'choose one';
-      root.querySelectorAll('[data-opt]').forEach((b) => b.setAttribute('aria-pressed', b.dataset.opt === opt));
-    }
-  };
-  root.addEventListener('click', (e) => {
-    const b = e.target.closest('[data-opt]'); if (!b) return;
-    opt = b.dataset.opt; qty = enquiry.get(key())?.qty || qty; paintBuy(); showOption(opt);
-  });
-  dec.addEventListener('click', () => { qty = Math.max(1, qty - 1); paintBuy(); });
-  inc.addEventListener('click', () => { qty = Math.min(it.quantity, qty + 1); paintBuy(); });
-  out.addEventListener('change', () => { const n = Math.round(Number(out.value)); qty = Number.isFinite(n) && n > 0 ? Math.min(it.quantity, n) : qty; paintBuy(); });
-  out.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); out.blur(); } });
-  addBtn.addEventListener('click', () => { enquiry.add(it.slug, qty, opt); paintBuy(); });
-  const unsubBuy = enquiry.subscribe(paintBuy); paintBuy();
-  if (opt) showOption(opt);
+  const tot = root.querySelector('[data-q-total]'), addBtn = root.querySelector('[data-add-cart]');
+  const totalLine = (n) => (it.price ? `${money(it.price * n)} per day · ${money(it.price * n * enquiry.days())} for ${daysLabel(enquiry.days())}` : 'Price on request');
+  const paintBuy = it.options ? bindPicks(root, it, { tot, addBtn, totalLine, showOption }) : bindQty(root, it, { tot, addBtn, totalLine });
+  const unsubBuy = enquiry.subscribe(paintBuy);
   const unsubAdd = bindAdd(root);
   return () => { unsubBuy(); unsubAdd(); };
+}
+
+/** A single quantity for a piece without options. Shows the current cart quantity if the piece is already in it. */
+function bindQty(root, it, { tot, addBtn, totalLine }) {
+  const dec = root.querySelector('[data-q-dec]'), inc = root.querySelector('[data-q-inc]'), out = root.querySelector('[data-q-out]');
+  let qty = enquiry.get(it.slug)?.qty || 1;
+  const paint = () => {
+    const inCart = enquiry.get(it.slug);
+    out.value = qty;
+    dec.disabled = qty <= 1; inc.disabled = qty >= it.quantity;
+    tot.textContent = totalLine(qty);
+    addBtn.textContent = !inCart ? 'Add to cart' : inCart.qty === qty ? 'In your cart' : 'Update cart';
+  };
+  dec.addEventListener('click', () => { qty = Math.max(1, qty - 1); paint(); });
+  inc.addEventListener('click', () => { qty = Math.min(it.quantity, qty + 1); paint(); });
+  out.addEventListener('change', () => { const n = Math.round(Number(out.value)); qty = Number.isFinite(n) && n > 0 ? Math.min(it.quantity, n) : qty; paint(); });
+  out.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); out.blur(); } });
+  addBtn.addEventListener('click', () => enquiry.add(it.slug, qty));
+  paint();
+  return paint;
+}
+
+/**
+ * Several options at once (e.g. 10 red and 10 ivory tablecloths): each swatch toggles a colour on or off, each chosen
+ * colour gets its own quantity, and one button adds them all. Each colour is still its own cart line.
+ * The quantities together never exceed the number of pieces available.
+ */
+function bindPicks(root, it, { tot, addBtn, totalLine, showOption }) {
+  const list = root.querySelector('[data-picks]'), label = root.querySelector('[data-opt-name]');
+  const hex = Object.fromEntries(it.options.choices.map((c) => [c.name, c.hex]));
+  // Start from whatever colours of this piece are already in the cart.
+  const picks = new Map(enquiry.all().filter((x) => x.slug === it.slug && x.option in hex).map((x) => [x.option, x.qty]));
+  const total = () => [...picks.values()].reduce((s, n) => s + n, 0);
+  const room = (name) => it.quantity - total() + (picks.get(name) || 0); // most this colour can take
+  let rowsFor = '';
+
+  const paint = () => {
+    const names = [...picks.keys()];
+    if (names.join('|') !== rowsFor) { // rebuild rows only when the set of colours changes, so focus stays put while adjusting
+      rowsFor = names.join('|');
+      list.innerHTML = names.map((n) => `<div class="pick" data-pick="${esc(n)}"><span class="pick__dot" style="--sw:${esc(hex[n])}"></span><span class="pick__name">${esc(n)}</span><div class="qty" role="group" aria-label="Quantity of ${esc(n)}"><button type="button" data-pick-dec aria-label="Fewer ${esc(n)}">−</button><input class="qty__input" type="number" inputmode="numeric" pattern="[0-9]*" min="1" step="1" data-pick-qty aria-label="Quantity of ${esc(n)}"><button type="button" data-pick-inc aria-label="More ${esc(n)}">+</button></div><button class="pick__remove" type="button" data-pick-remove aria-label="Remove ${esc(n)}">×</button></div>`).join('');
+    }
+    list.querySelectorAll('[data-pick]').forEach((row) => {
+      const n = row.dataset.pick, q = picks.get(n);
+      const input = row.querySelector('[data-pick-qty]'); input.value = q; input.max = room(n);
+      row.querySelector('[data-pick-dec]').disabled = q <= 1;
+      row.querySelector('[data-pick-inc]').disabled = q >= room(n);
+    });
+    root.querySelectorAll('[data-opt]').forEach((b) => b.setAttribute('aria-pressed', picks.has(b.dataset.opt)));
+    label.textContent = names.length ? names.join(', ') : 'choose one or more';
+    const sum = total();
+    tot.textContent = sum ? `${sum} ${sum === 1 ? 'piece' : 'pieces'} · ${totalLine(sum)}` : '';
+    const inCart = names.filter((n) => enquiry.get(lineKey(it.slug, n))?.qty === picks.get(n)).length;
+    addBtn.disabled = !names.length;
+    addBtn.textContent = !names.length ? `Choose a ${it.options.label.toLowerCase()}`
+      : inCart === names.length ? 'In your cart'
+        : names.some((n) => enquiry.get(lineKey(it.slug, n))) ? 'Update cart'
+          : names.length === 1 ? 'Add to cart' : `Add ${names.length} ${it.options.label.toLowerCase()}s to cart`;
+  };
+
+  const setQty = (n, q) => { picks.set(n, Math.max(1, Math.min(room(n), q))); paint(); };
+  root.addEventListener('click', (e) => {
+    const sw = e.target.closest('[data-opt]');
+    if (sw) {
+      const n = sw.dataset.opt;
+      if (picks.has(n)) { picks.delete(n); const last = [...picks.keys()].pop(); showOption(last); } // back to another chosen colour, or the main photo
+      else if (room(n) >= 1) { picks.set(n, 1); showOption(n); }
+      paint(); return;
+    }
+    const row = e.target.closest('[data-pick]'); if (!row) return;
+    const n = row.dataset.pick;
+    if (e.target.closest('[data-pick-dec]')) setQty(n, picks.get(n) - 1);
+    else if (e.target.closest('[data-pick-inc]')) setQty(n, picks.get(n) + 1);
+    else if (e.target.closest('[data-pick-remove]')) { picks.delete(n); showOption([...picks.keys()].pop()); paint(); }
+  });
+  list.addEventListener('change', (e) => {
+    const input = e.target.closest('[data-pick-qty]'); if (!input) return;
+    const n = input.closest('[data-pick]').dataset.pick, q = Math.round(Number(input.value));
+    setQty(n, Number.isFinite(q) && q > 0 ? q : picks.get(n));
+  });
+  list.addEventListener('keydown', (e) => { if (e.key === 'Enter' && e.target.matches('[data-pick-qty]')) { e.preventDefault(); e.target.blur(); } });
+  addBtn.addEventListener('click', () => picks.forEach((q, n) => enquiry.add(it.slug, q, n)));
+
+  paint();
+  if (picks.size) showOption([...picks.keys()].pop());
+  return paint;
 }
 
 export default function ({ inv, dims }) {
