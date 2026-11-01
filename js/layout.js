@@ -61,6 +61,7 @@ export async function initLayout() {
     <dialog class="drawer" id="drawer" aria-labelledby="drawer-title"><div class="drawer__inner">
       <div class="drawer__head"><h2 id="drawer-title">Your cart</h2><button class="drawer__close" type="button" data-close-enquiry aria-label="Close">×</button></div>
       <div class="drawer__body" id="drawer-body" aria-live="polite"></div>
+      <div class="drawer__extras" id="drawer-extras"></div>
       <div class="drawer__foot" id="drawer-foot"></div>
     </div></dialog>
     <dialog class="product-modal" id="product-modal" aria-label="Piece details">
@@ -112,7 +113,7 @@ export async function initLayout() {
   addEventListener('keydown', (e) => { if (e.key === 'Escape' && navSearch.classList.contains('is-open')) { setSearch(false); searchToggle.focus(); } });
 
   // Enquiry drawer
-  const drawer = document.getElementById('drawer'), body = document.getElementById('drawer-body'), foot = document.getElementById('drawer-foot');
+  const drawer = document.getElementById('drawer'), body = document.getElementById('drawer-body'), foot = document.getElementById('drawer-foot'), extras = document.getElementById('drawer-extras');
   const counts = document.querySelectorAll('[data-enquiry-count]'), links = document.querySelectorAll('[data-open-enquiry]');
   let drawerPainted = false;
   function renderDrawer() {
@@ -123,23 +124,29 @@ export async function initLayout() {
     links.forEach((l) => l.setAttribute('data-count', list.length));
     if (!t.lines.length) {
       body.innerHTML = '<div class="drawer__empty"><p class="lede">Your cart is empty.</p><p>Add pieces from the rentals and they will wait here until you check out.</p></div>';
+      extras.innerHTML = '';
       foot.innerHTML = '<a class="btn" href="collections.html">Browse rentals</a>';
       return;
     }
+    // Each line: photo, then name with a remove (×) beside it, colour and day rate, and the quantity with the line total.
     body.innerHTML = t.lines.map(({ item: it, key, option, qty, unit, line }) => `<div class="drawer-item" data-key="${esc(key)}">
         <a class="media" href="item.html?i=${esc(it.slug)}">${picture(optionImage(it, option), it.alt, dims[optionImage(it, option)], { sizes: '72px' })}</a>
-        <div><h3>${esc(it.name)}</h3>${option ? `<span class="line-opt">${esc(option)}</span>` : ''}<small>${money(unit)} per day</small><div class="qty" role="group" aria-label="Quantity for ${esc(it.name)}"><button type="button" data-dec aria-label="Decrease"${qty <= 1 ? ' disabled' : ''}>−</button><input class="qty__input" type="number" inputmode="numeric" pattern="[0-9]*" min="1" max="${enquiry.max(it.slug)}" step="1" data-qty aria-label="Quantity for ${esc(it.name)}" value="${qty}"><button type="button" data-inc aria-label="Increase"${qty >= enquiry.max(it.slug) ? ' disabled' : ''}>+</button></div></div>
-        <div class="drawer-item__side"><strong>${money(line)}</strong><button class="drawer-item__remove" type="button" data-remove aria-label="Remove ${esc(it.name)}">Remove</button></div></div>`).join('');
-    foot.innerHTML = `${datesMarkup('dr')}
-      <div class="sum-row"><span>Subtotal · ${daysLabel(t.days)}</span><strong>${money(t.subtotal)}</strong></div>
-      <div class="sum-row sum-row--muted"><span>Delivery</span><span>${esc(site.cart.deliveryNote)}</span></div>
-      <a class="btn btn--solid" href="${esc(cartWhatsappUrl(site, inv))}" target="_blank" rel="noopener">Checkout via WhatsApp</a>
-      <a class="btn" href="cart.html">View cart</a>
+        <div class="drawer-item__info">
+          <div class="drawer-item__top"><h3>${esc(it.name)}</h3><button class="drawer-item__remove" type="button" data-remove aria-label="Remove ${esc(it.name)}${option ? ` (${esc(option)})` : ''}">×</button></div>
+          <small>${option ? `<span class="line-opt">${esc(option)}</span> · ` : ''}${money(unit)} per day</small>
+          <div class="drawer-item__row"><div class="qty" role="group" aria-label="Quantity for ${esc(it.name)}"><button type="button" data-dec aria-label="Decrease"${qty <= 1 ? ' disabled' : ''}>−</button><input class="qty__input" type="number" inputmode="numeric" pattern="[0-9]*" min="1" max="${enquiry.max(it.slug)}" step="1" data-qty aria-label="Quantity for ${esc(it.name)}" value="${qty}"><button type="button" data-inc aria-label="Increase"${qty >= enquiry.max(it.slug) ? ' disabled' : ''}>+</button></div><strong>${money(line)}</strong></div>
+        </div></div>`).join('');
+    // Dates and the fine print scroll with the list; the subtotal and checkout stay pinned at the bottom.
+    extras.innerHTML = `${datesMarkup('dr')}
       ${clearMarkup('link link--clear')}
       ${site.cart.ratesPlaceholder ? '<span class="ph-note">Placeholder rates</span>' : ''}
       <p>${esc(site.cart.paymentNote)}</p>`;
+    foot.innerHTML = `
+      <div class="sum-row"><span>Subtotal · ${daysLabel(t.days)}</span><strong>${money(t.subtotal)}</strong></div>
+      <div class="sum-row sum-row--muted"><span>Delivery</span><span>${esc(site.cart.deliveryNote)}</span></div>
+      <div class="drawer__btns"><a class="btn btn--solid" href="${esc(cartWhatsappUrl(site, inv))}" target="_blank" rel="noopener">Checkout via WhatsApp</a><a class="btn" href="cart.html">View cart</a></div>`;
   }
-  bindDates(foot); bindClear(foot);
+  bindDates(extras); bindClear(extras);
   body.addEventListener('click', (e) => {
     const row = e.target.closest('.drawer-item'); if (!row) return;
     const key = row.dataset.key, cur = enquiry.get(key);

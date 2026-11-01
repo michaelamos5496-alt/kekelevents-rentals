@@ -419,11 +419,32 @@ html.hide-placeholders .ph-note { display: none; }
 .product-modal__close { position: absolute; top: 1rem; right: 1rem; width: 2.5rem; height: 2.5rem; display: grid; place-items: center; font-size: 1.4rem; line-height: 1; background: var(--ivory); color: var(--ink); border: 1px solid var(--hairline); border-radius: 50%; z-index: 2; }
 #product-modal-body { display: contents; }
 .product-modal .pdp__card:focus-visible { outline: none; } /* the dialog focuses the scrollable card on open; its controls keep their own rings */
-/* Phones: the photo shrinks so the price and buttons are visible without much scrolling. */
+/* Phones: the popup becomes a bottom sheet. The photo is shorter so the name and price show straight away,
+   and Add to cart / View cart stay pinned to the bottom of the sheet while the rest scrolls. */
 @media (max-width: 34rem) {
-  .product-modal .pdp__frame { padding: 0.5rem; }
-  .product-modal .pdp__hero { aspect-ratio: 4 / 3; }
+  .product-modal { inset: auto 0 0; margin: 0; width: 100vw; max-width: 100vw; max-height: 92dvh; }
+  .product-modal .pdp__card { max-height: 92dvh; border-radius: 1.5rem 1.5rem 0 0; padding: 1rem 1.1rem 0; gap: 1rem; box-shadow: 0 -1rem 3rem rgb(0 0 0 / 0.25); }
+  .product-modal .pdp__frame { padding: 0.4rem; }
+  .product-modal .pdp__hero { aspect-ratio: 16 / 10; }
+  .product-modal .pdp__thumbs { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0.4rem; }
+  .product-modal .product-modal__close { top: 0.75rem; right: 0.75rem; }
+  .product-modal .pdp__head { padding-right: 0; }
   .pdp__badge { display: none; }
+  .pdp__meta { display: grid; gap: 0.15rem; } .pdp__meta span + span { margin: 0; padding: 0; border: 0; } /* stacked: no divider */
+  .pdp__title { font-size: 1.35rem; }
+  .pdp__price { font-size: 1.5rem; margin-bottom: 0.6rem; }
+  .pdp__stock { margin-bottom: 1rem; }
+  .swatch { width: 2.1rem; height: 2.1rem; } /* bigger touch targets */
+  .swatches__list { gap: 0.6rem; }
+  .product-modal .pdp__actions { position: sticky; bottom: 0; z-index: 1; grid-template-columns: 1fr auto; margin: 0 -1.1rem; padding: 0.75rem 1.1rem calc(0.75rem + env(safe-area-inset-bottom)); background: var(--ivory); border-top: 1px solid var(--hairline); order: 1; } /* moved to the end so it stays pinned all the way down */
+  .product-modal .pdp__actions .btn { min-height: 2.9rem; padding-inline: 1rem; }
+  .product-modal .pdp__actions .btn:not(.btn--solid) { width: auto; }
+  .product-modal .pdp__panel:not([hidden]) { margin-bottom: 1.25rem; }
+}
+/* The sheet slides up from the bottom on phones. */
+@media (max-width: 34rem) and (prefers-reduced-motion: no-preference) {
+  .product-modal[open] .pdp__card { animation: sheet-up 0.45s var(--ease); }
+  @keyframes sheet-up { from { transform: translateY(100%); } }
 }
 
 .pairs { border-top: 1px solid var(--hairline); padding-top: clamp(3rem, 6vw, 5rem); }
@@ -445,17 +466,26 @@ html.hide-placeholders .ph-note { display: none; }
 .drawer__close { width: 2.75rem; height: 2.75rem; display: grid; place-items: center; font-size: 1.6rem; line-height: 1; }
 .drawer__body { flex: none; padding: 0.5rem 1.75rem; }
 .drawer__empty { padding-block: 3rem; color: var(--stone); } .drawer__empty p { max-width: 28ch; }
-.drawer-item { display: grid; grid-template-columns: 4.5rem 1fr auto; gap: 1rem; align-items: center; padding-block: 1.1rem; border-bottom: 1px solid var(--hairline); }
-.drawer-item .media { aspect-ratio: 4 / 5; }
-.drawer-item h3 { font-size: 1.25rem; } .drawer-item small { display: block; color: var(--stone); font-size: 0.78rem; margin-top: 0.2rem; }
+.drawer-item { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 1rem; align-items: start; padding-block: 1.1rem; border-bottom: 1px solid var(--hairline); }
+.drawer-item .media { aspect-ratio: 1; background: #fff; } .drawer-item .media img { object-fit: contain; } /* product photos are shot on white */
+.drawer-item__info { min-width: 0; }
+.drawer-item__top { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; }
+.drawer-item h3 { font-size: 1.05rem; font-weight: 500; line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.drawer-item__row { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; margin-top: 0.6rem; }
+.drawer-item__row .qty { margin: 0; } .drawer-item__row strong { font-size: 0.95rem; font-weight: 600; white-space: nowrap; }
+.drawer-item small { display: block; color: var(--stone); font-size: 0.78rem; margin-top: 0.2rem; }
 .qty { display: inline-flex; align-items: center; border: 1px solid var(--hairline); margin-top: 0.5rem; }
 .qty button { width: 2rem; height: 2rem; font-size: 1.1rem; } .qty button:hover { background: var(--parchment); } .qty output { min-width: 2.2rem; text-align: center; font-size: var(--fs-small); }
 .qty__input { width: 2.2rem; min-width: 2.2rem; height: 2rem; border: 0; background: transparent; text-align: center; font-size: var(--fs-small); font-family: inherit; color: inherit; padding: 0; -moz-appearance: textfield; }
 .qty__input::-webkit-outer-spin-button, .qty__input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 .qty__input:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; border-radius: 2px; }
-.drawer-item__remove { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone); padding: 0.5rem; } .drawer-item__remove:hover { color: var(--ink); }
-.drawer__foot { padding: 1.5rem 1.75rem 1.75rem; border-top: 1px solid var(--hairline); display: grid; gap: 0.85rem; }
-.drawer__foot p { margin: 0; font-size: var(--fs-small); color: var(--stone); }
+.drawer-item__remove { flex: none; width: 2rem; height: 2rem; margin: -0.35rem -0.4rem 0 0; display: grid; place-items: center; border-radius: 50%; font-size: 1.15rem; line-height: 1; color: var(--stone); transition: color 0.3s, background-color 0.3s; }
+.drawer-item__remove:hover { color: var(--ink); background: var(--hairline); }
+/* Dates and notes scroll with the list; the totals and checkout buttons stay pinned to the bottom of the drawer. */
+.drawer__extras { display: grid; gap: 0.85rem; padding: 1.25rem 1.75rem 1.5rem; } .drawer__extras:empty { display: none; }
+.drawer__extras p { margin: 0; font-size: var(--fs-small); color: var(--stone); }
+.drawer__foot { position: sticky; bottom: 0; z-index: 1; margin-top: auto; padding: 0.9rem 1.75rem 1.25rem; border-top: 1px solid var(--hairline); display: grid; gap: 0.25rem; }
+.drawer__btns { display: grid; grid-template-columns: 1fr auto; gap: 0.6rem; margin-top: 0.6rem; } .drawer__btns .btn { padding-inline: 1.25rem; }
 
 /* ---- 10. Footer (black) ---- */
 .site-footer { background: var(--charcoal); color: #fff; padding-block: clamp(3rem, 6vw, 5rem) 1.75rem; }
@@ -477,9 +507,8 @@ html.hide-placeholders .ph-note { display: none; }
 /* Cart, prices and quantity */
 .sum-row { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--hairline); font-size: 0.9rem; }
 .sum-row--muted { color: var(--stone); font-size: 0.85rem; } .sum-row--total { border-bottom: 0; font-size: 1.05rem; padding-top: 1rem; } .sum-row--total strong { font-size: 1.35rem; font-weight: 600; }
-.drawer-item__side { display: grid; justify-items: end; gap: 0.35rem; text-align: right; } .drawer-item__side strong { font-size: 0.95rem; font-weight: 600; }
 .drawer-item small, .enq-item small { display: block; font-size: 0.78rem; margin-top: 0.15rem; }
-.drawer__foot .sum-row { padding: 0.45rem 0; border-bottom: 0; }
+.drawer__foot .sum-row { padding: 0.2rem 0; border-bottom: 0; }
 .qty button:disabled { opacity: 0.35; cursor: not-allowed; }
 .card__price { font-weight: 600; color: var(--ink); font-size: 1rem; } .card__qty { line-height: 1.4; }
 .detail__price { font-size: 1.6rem; font-weight: 500; letter-spacing: -0.02em; margin: 0 0 1.5rem; } .detail__price span { font-size: 0.9rem; color: var(--stone); font-weight: 400; letter-spacing: 0; }
@@ -489,16 +518,21 @@ html.hide-placeholders .ph-note { display: none; }
 @media (min-width: 62rem) { .cart:has(.cart__summary) { grid-template-columns: 8fr 4fr; gap: clamp(3rem, 5vw, 6rem); align-items: start; } .cart__summary { position: sticky; top: calc(var(--header-h) + 2rem); } }
 .cart__head { display: none; }
 @media (min-width: 48rem) { .cart__head { display: grid; grid-template-columns: 1fr 7rem 8.5rem 7rem; gap: 1rem; padding-bottom: 0.9rem; border-bottom: 1px solid var(--charcoal); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); } .cart__head span:not(:first-child) { text-align: right; } .cart__head span:nth-child(3) { text-align: center; } }
-.cart-line { display: grid; grid-template-columns: 5.5rem 1fr; gap: 0.75rem 1rem; padding-block: 1.25rem; border-bottom: 1px solid var(--hairline); align-items: center; }
-.cart-line__media { aspect-ratio: 5 / 6; grid-row: span 2; }
-.cart-line__info h2 { font-size: 1.1rem; font-weight: 500; letter-spacing: -0.01em; margin: 0.2rem 0 0.4rem; } .cart-line__info h2 a:hover { color: var(--gold); }
+/* Phones: photo on the left; name, colour and remove, then the day rate, then quantity and line total on one row. */
+.cart-line { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr) auto; grid-template-areas: "media info info" "media price price" "media qty total"; gap: 0.35rem 1rem; padding-block: 1.25rem; border-bottom: 1px solid var(--hairline); align-items: center; }
+.cart-line__media { grid-area: media; align-self: start; aspect-ratio: 1; background: #fff; } .cart-line__media img { object-fit: contain; } /* product photos are shot on white */
+.cart-line__info { grid-area: info; min-width: 0; } .cart-line__price { grid-area: price; } .cart-line .qty { grid-area: qty; } .cart-line__total { grid-area: total; text-align: right; }
+.cart-line__info h2 { font-size: 1.05rem; font-weight: 500; letter-spacing: -0.01em; margin: 0.35rem 0 0.2rem; } .cart-line__info h2 a:hover { color: var(--gold); }
+.cart-line__info .line-opt { margin-right: 0.75rem; }
 .cart-line__remove { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); text-decoration: underline; text-underline-offset: 0.3em; padding: 0.35rem 0; } .cart-line__remove:hover { color: var(--gold); }
-.cart-line .qty { justify-self: start; margin: 0; } .cart-line__price, .cart-line__total { font-size: 0.9rem; }
-.cart-line__total small { display: block; color: var(--stone); font-size: 0.75rem; }
-.cart-line__price::before, .cart-line__total::before { content: attr(data-label) " "; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); display: block; }
+.cart-line .qty { justify-self: start; margin: 0.35rem 0 0; } .cart-line__price, .cart-line__total { font-size: 0.9rem; }
+.cart-line__price { color: var(--stone); } .cart-line__price::after { content: " per day"; }
+.cart-line__total small { display: none; }
 @media (min-width: 48rem) {
-  .cart-line { grid-template-columns: 5.5rem 1fr 7rem 8.5rem 7rem; } .cart-line__media { grid-row: auto; }
-  .cart-line .qty { justify-self: center; } .cart-line__price, .cart-line__total { text-align: right; } .cart-line__price::before, .cart-line__total::before { display: none; }
+  .cart-line { grid-template-columns: 5.5rem 1fr 7rem 8.5rem 7rem; grid-template-areas: "media info price qty total"; gap: 0.75rem 1rem; }
+  .cart-line__media { align-self: center; } .cart-line__info h2 { margin-top: 0.2rem; }
+  .cart-line .qty { justify-self: center; margin: 0; } .cart-line__price { text-align: right; color: inherit; } .cart-line__price::after { content: none; }
+  .cart-line__total small { display: block; color: var(--stone); font-size: 0.75rem; }
 }
 .cart__foot { display: flex; justify-content: space-between; padding-top: 1.25rem; }
 .cart__summary { border: 1px solid var(--hairline); padding: 1.5rem; } .cart__checkout { width: 100%; margin: 1.25rem 0 1rem; } .cart__fine { font-size: 0.8rem; margin: 0.75rem 0 0; }
@@ -613,7 +647,7 @@ body.menu-open .site-header { background: var(--glass); -webkit-backdrop-filter:
 .drawer .qty { background: var(--glass-fill); border-color: var(--glass-line); border-radius: 999px; overflow: hidden; }
 .drawer .media { border-radius: 12px; }
 .drawer__head { background: var(--glass); -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%); border-top-left-radius: 26px; border-top-right-radius: 26px; }
-.drawer__foot { background: var(--glass-fill-soft); }
+.drawer__foot { background: color-mix(in srgb, var(--ivory) 94%, transparent); -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%); border-bottom-left-radius: 26px; border-bottom-right-radius: 26px; } /* pinned over the scrolling list, like the head */
 .drawer .dates .field input { background: var(--glass-fill-input); border: 1px solid var(--glass-line); border-radius: 12px; padding: 0.55rem 0.7rem; }
 /* Cart page and enquiry panels */
 .cart__summary, .enq__panel { background: var(--glass); border: 1px solid var(--glass-edge); border-radius: 22px; box-shadow: var(--glass-shadow); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); }
@@ -621,9 +655,15 @@ body.menu-open .site-header { background: var(--glass); -webkit-backdrop-filter:
 .cart__summary .qty, .enq__panel .qty { background: var(--glass-fill); border-radius: 999px; overflow: hidden; }
 .cart__summary .sum-row, .enq__panel .sum-row { border-bottom-color: var(--glass-line); }
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .site-header.is-solid, .menu, .drawer, .drawer__head, .cart__summary, .enq__panel { background: var(--ivory); }
+  .site-header.is-solid, .menu, .drawer, .drawer__head, .drawer__foot, .cart__summary, .enq__panel { background: var(--ivory); }
 }
-@media (max-width: 40rem) { .drawer { inset: 8px 8px 8px auto; width: calc(100vw - 16px); height: calc(100dvh - 16px); border-radius: 22px; } }
+@media (max-width: 40rem) {
+  .drawer { inset: 8px 8px 8px auto; width: calc(100vw - 16px); height: calc(100dvh - 16px); border-radius: 22px; }
+  .drawer__head { padding: 1.1rem 1.25rem; } .drawer__head h2 { font-size: 1.6rem; }
+  .drawer__body { padding-inline: 1.25rem; } .drawer__extras { padding-inline: 1.25rem; }
+  .drawer__foot { padding: 0.75rem 1.25rem calc(1rem + env(safe-area-inset-bottom)); border-bottom-left-radius: 22px; border-bottom-right-radius: 22px; }
+  .drawer__btns .btn { padding-inline: 0.9rem; letter-spacing: 0.05em; }
+}
 
 /* ---- Screen-fit sections ----
    Every main section is at least one screen tall (below the fixed header), its content centred, and the page
