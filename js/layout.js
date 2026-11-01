@@ -1,5 +1,5 @@
 // Site chrome: header, menu, footer, enquiry drawer, product modal, WhatsApp button. Injected so it lives in one place.
-import { loadSite, loadInventory, esc, picture, loadImages, reveal, stocked, byCategory } from './util.js';
+import { loadSite, loadInventory, esc, picture, loadImages, reveal, stocked, byCategory, optionImage } from './util.js';
 import { enquiry, summary, totals, money, daysLabel } from './enquiry.js';
 import { datesMarkup, bindDates } from './dates.js';
 import { clearMarkup, bindClear } from './clear.js';
@@ -115,7 +115,7 @@ export async function initLayout() {
       return;
     }
     body.innerHTML = t.lines.map(({ item: it, key, option, qty, unit, line }) => `<div class="drawer-item" data-key="${esc(key)}">
-        <a class="media" href="item.html?i=${esc(it.slug)}">${picture(it.image, it.alt, dims[it.image], { sizes: '72px' })}</a>
+        <a class="media" href="item.html?i=${esc(it.slug)}">${picture(optionImage(it, option), it.alt, dims[optionImage(it, option)], { sizes: '72px' })}</a>
         <div><h3>${esc(it.name)}</h3>${option ? `<span class="line-opt">${esc(option)}</span>` : ''}<small>${money(unit)} per day</small><div class="qty" role="group" aria-label="Quantity for ${esc(it.name)}"><button type="button" data-dec aria-label="Decrease"${qty <= 1 ? ' disabled' : ''}>−</button><input class="qty__input" type="number" inputmode="numeric" pattern="[0-9]*" min="1" max="${enquiry.max(it.slug)}" step="1" data-qty aria-label="Quantity for ${esc(it.name)}" value="${qty}"><button type="button" data-inc aria-label="Increase"${qty >= enquiry.max(it.slug) ? ' disabled' : ''}>+</button></div></div>
         <div class="drawer-item__side"><strong>${money(line)}</strong><button class="drawer-item__remove" type="button" data-remove aria-label="Remove ${esc(it.name)}">Remove</button></div></div>`).join('');
     foot.innerHTML = `${datesMarkup('dr')}

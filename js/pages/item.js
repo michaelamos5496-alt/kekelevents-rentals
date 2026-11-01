@@ -1,4 +1,4 @@
-import { esc, picture, byCategory, reveal } from '../util.js';
+import { esc, picture, byCategory, reveal, optionImage } from '../util.js';
 import { enquiry, money, daysLabel, lineKey } from '../enquiry.js';
 import { card, bindAdd } from './shared.js';
 
@@ -38,15 +38,24 @@ export function bindCard(root, it, dims) {
   const shots = [it.image, ...(it.gallery || []).filter((g) => g !== it.image)];
 
   // Switch the large photograph by rewriting the existing <picture> in place.
+  const main = root.querySelector('.pdp__hero');
+  let shown = shots[0];
+  const show = (id, alt) => {
+    if (id === shown) return;
+    shown = id;
+    const tmp = document.createElement('div');
+    tmp.innerHTML = picture(id, alt, dims[id], { eager: true, sizes: '(min-width: 55rem) 24vw, 70vw' });
+    main.querySelector('picture').replaceWith(tmp.firstElementChild);
+    root.querySelectorAll('.pdp__thumb').forEach((b) => b.setAttribute('aria-current', b.dataset.shot === id));
+  };
   root.addEventListener('click', (e) => {
     const t = e.target.closest('[data-shot]'); if (!t) return;
-    const id = t.dataset.shot, n = shots.indexOf(id), main = root.querySelector('.pdp__hero');
-    const tmp = document.createElement('div');
-    tmp.innerHTML = picture(id, n ? `${it.alt}, detail view ${n}` : it.alt, dims[id], { eager: true, sizes: '(min-width: 55rem) 24vw, 70vw' });
-    const next = tmp.firstElementChild, cur = main.querySelector('picture');
-    cur.replaceWith(next);
-    root.querySelectorAll('.pdp__thumb').forEach((b) => b.setAttribute('aria-current', b === t));
+    const id = t.dataset.shot, n = shots.indexOf(id);
+    show(id, n ? `${it.alt}, detail view ${n}` : it.alt);
   });
+  // A chosen option with its own photograph (e.g. a tablecloth colour) takes over the large view.
+  // A colour without one goes back to the main photograph rather than leaving another colour on screen.
+  const showOption = (o) => { const id = optionImage(it, o); show(id, id === it.image ? it.alt : `${it.name} in ${o}`); };
 
   // Quantity and add-to-cart: shows the current cart quantity if the piece is already in it.
   // A piece with options (e.g. tablecloth colours) needs one chosen first; each choice is its own cart line.
@@ -69,7 +78,7 @@ export function bindCard(root, it, dims) {
   };
   root.addEventListener('click', (e) => {
     const b = e.target.closest('[data-opt]'); if (!b) return;
-    opt = b.dataset.opt; qty = enquiry.get(key())?.qty || qty; paintBuy();
+    opt = b.dataset.opt; qty = enquiry.get(key())?.qty || qty; paintBuy(); showOption(opt);
   });
   dec.addEventListener('click', () => { qty = Math.max(1, qty - 1); paintBuy(); });
   inc.addEventListener('click', () => { qty = Math.min(it.quantity, qty + 1); paintBuy(); });
@@ -77,6 +86,7 @@ export function bindCard(root, it, dims) {
   out.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); out.blur(); } });
   addBtn.addEventListener('click', () => { enquiry.add(it.slug, qty, opt); paintBuy(); });
   const unsubBuy = enquiry.subscribe(paintBuy); paintBuy();
+  if (opt) showOption(opt);
   const unsubAdd = bindAdd(root);
   return () => { unsubBuy(); unsubAdd(); };
 }

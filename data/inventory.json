@@ -1469,39 +1469,48 @@
     "choices": [
      {
       "name": "Red",
-      "hex": "#d4161c"
+      "hex": "#d4161c",
+      "image": "satin-tablecloth-red"
      },
      {
       "name": "Burgundy",
-      "hex": "#7d1530"
+      "hex": "#7d1530",
+      "image": "satin-tablecloth-burgundy"
      },
      {
       "name": "Sage Green",
-      "hex": "#76854a"
+      "hex": "#76854a",
+      "image": "satin-tablecloth-sage-green"
      },
      {
       "name": "Navy Blue",
-      "hex": "#1d2556"
+      "hex": "#1d2556",
+      "image": "satin-tablecloth-navy-blue"
      },
      {
       "name": "Fuchsia Pink",
-      "hex": "#e8197b"
+      "hex": "#e8197b",
+      "image": "satin-tablecloth-fuchsia-pink"
      },
      {
       "name": "Blush Pink",
-      "hex": "#f2a2b4"
+      "hex": "#f2a2b4",
+      "image": "satin-tablecloth-blush-pink"
      },
      {
       "name": "Chocolate Brown",
-      "hex": "#5a2e22"
+      "hex": "#5a2e22",
+      "image": "satin-tablecloth-chocolate-brown"
      },
      {
       "name": "Ivory",
-      "hex": "#f6f1dc"
+      "hex": "#f6f1dc",
+      "image": "satin-tablecloth-ivory"
      },
      {
       "name": "Royal Blue",
-      "hex": "#1534c0"
+      "hex": "#1534c0",
+      "image": "satin-tablecloth-royal-blue"
      },
      {
       "name": "Silver Grey",

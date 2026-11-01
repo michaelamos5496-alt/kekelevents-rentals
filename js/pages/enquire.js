@@ -1,5 +1,5 @@
 // Enquiry page: the cart summary, the form, and delivery (form endpoint if configured, otherwise WhatsApp).
-import { esc, picture, reveal } from '../util.js';
+import { esc, picture, reveal, optionImage } from '../util.js';
 import { enquiry, summary, totals, money, daysLabel, periodLabel } from '../enquiry.js';
 import { whatsappUrl } from '../layout.js';
 
@@ -24,7 +24,7 @@ export default function ({ site, inv, dims }) {
       cartBox.innerHTML = '<p class="enq__empty">Nothing in your cart yet. <a href="collections.html">Browse the rentals</a> to add pieces, or simply tell us what you need below.</p>';
     } else {
       cartBox.innerHTML = t.lines.map(({ item: it, key, option, qty, unit, line }) => `<div class="enq-item" data-key="${esc(key)}">
-          <a class="media" href="item.html?i=${esc(it.slug)}" tabindex="-1" aria-hidden="true">${picture(it.image, '', dims[it.image], { sizes: '56px' })}</a>
+          <a class="media" href="item.html?i=${esc(it.slug)}" tabindex="-1" aria-hidden="true">${picture(optionImage(it, option), '', dims[optionImage(it, option)], { sizes: '56px' })}</a>
           <div><h3>${esc(it.name)}</h3>${option ? `<span class="line-opt">${esc(option)}</span>` : ''}<small class="muted">${money(unit)} per day</small><div class="qty" role="group" aria-label="Quantity for ${esc(it.name)}"><button type="button" data-dec aria-label="Decrease">−</button><output>${qty}</output><button type="button" data-inc aria-label="Increase"${qty >= enquiry.max(it.slug) ? ' disabled' : ''}>+</button></div></div>
           <div class="drawer-item__side"><strong>${money(line)}</strong><button class="drawer-item__remove" type="button" data-remove aria-label="Remove ${esc(it.name)}">Remove</button></div></div>`).join('')
         + `<div class="sum-row"><span>Rental period</span><span class="sum-row__r">${esc(periodLabel())}</span></div>

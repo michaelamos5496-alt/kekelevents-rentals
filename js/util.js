@@ -38,5 +38,7 @@ export function reveal(root = document) {
 }
 
 export const byCategory = (inv, id) => inv.categories.find((c) => c.id === id);
+/** The photograph for a chosen option (e.g. a tablecloth colour), falling back to the piece's main photo. */
+export const optionImage = (it, option) => it.options?.choices.find((c) => c.name === option)?.image || it.image;
 /** Categories that currently have at least one piece; empty ones stay hidden until stock is added. */
 export const stocked = (inv) => inv.categories.filter((c) => inv.items.some((i) => i.category === c.id));

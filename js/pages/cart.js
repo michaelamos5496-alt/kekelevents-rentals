@@ -1,5 +1,5 @@
 // Cart page: line items with quantity steppers, rental days, and an order summary.
-import { esc, picture, byCategory, reveal } from '../util.js';
+import { esc, picture, byCategory, reveal, optionImage } from '../util.js';
 import { enquiry, totals, money, daysLabel, periodLabel } from '../enquiry.js';
 import { datesMarkup, bindDates } from '../dates.js';
 import { clearMarkup, bindClear } from '../clear.js';
@@ -18,7 +18,7 @@ export default function ({ site, inv, dims }) {
       <section class="cart__items" aria-label="Items in your cart">
         <div class="cart__head" aria-hidden="true"><span>Piece</span><span>Price per day</span><span>Quantity</span><span>Total</span></div>
         ${t.lines.map(({ item: it, key, option, qty, unit, line }) => `<article class="cart-line" data-key="${esc(key)}">
-          <a class="cart-line__media media" href="item.html?i=${esc(it.slug)}">${picture(it.image, it.alt, dims[it.image], { sizes: '110px' })}</a>
+          <a class="cart-line__media media" href="item.html?i=${esc(it.slug)}">${picture(optionImage(it, option), it.alt, dims[optionImage(it, option)], { sizes: '110px' })}</a>
           <div class="cart-line__info"><span class="card__cat">${esc(byCategory(inv, it.category).name)}</span><h2><a href="item.html?i=${esc(it.slug)}">${esc(it.name)}</a></h2>${option ? `<span class="line-opt">${esc(option)}</span>` : ''}<button class="cart-line__remove" type="button" data-remove aria-label="Remove ${esc(it.name)}">Remove</button></div>
           <div class="cart-line__price" data-label="Per day">${money(unit)}</div>
           <div class="qty" role="group" aria-label="Quantity for ${esc(it.name)}"><button type="button" data-dec aria-label="Decrease">−</button><input class="qty__input" type="number" inputmode="numeric" pattern="[0-9]*" min="1" max="${enquiry.max(it.slug)}" step="1" data-qty aria-label="Quantity for ${esc(it.name)}" value="${qty}"><button type="button" data-inc aria-label="Increase"${qty >= enquiry.max(it.slug) ? ' disabled' : ''}>+</button></div>
