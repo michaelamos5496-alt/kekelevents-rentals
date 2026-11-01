@@ -34,13 +34,14 @@ export async function initLayout() {
         <a class="logo" href="index.html" aria-label="${esc(site.name)}, home"><img class="logo__light" src="assets/logo.png" width="900" height="608" alt="Kekel Events &amp; Rentals"><img class="logo__dark" src="assets/logo-white.png" width="900" height="596" alt="Kekel Events &amp; Rentals"></a>
         <nav class="nav" aria-label="Primary">${navLinks}</nav>
         <div class="header-actions">
-          <a class="icon-btn" href="collections.html" aria-label="Browse rentals"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></a>
+          <button class="icon-btn" type="button" data-search-toggle aria-expanded="false" aria-controls="nav-search" aria-label="Search rentals"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></button>
           <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch to dark mode"><svg class="theme-toggle__sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.5M12 19v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M2.5 12H5M19 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg><svg class="theme-toggle__moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg></button>
           <button class="enquiry-link" type="button" data-open-enquiry aria-haspopup="dialog" aria-label="Your cart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg><span class="enquiry-link__count" data-enquiry-count>0</span></button>
           <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu"><span></span><span></span></button>
         </div>
       </div>
     </header>
+    <form class="nav-search" id="nav-search" action="collections.html" role="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><input name="q" type="search" placeholder="Search rentals: chairs, gold, satin…" aria-label="Search rentals" autocomplete="off" enterkeyhint="search" required><button class="link" type="submit">Search</button></form>
     <div class="menu" id="menu" role="dialog" aria-modal="false" aria-label="Menu">
       <nav aria-label="Mobile">${NAV.map(([h, l]) => `<a href="${h}"${page === h ? ' aria-current="page"' : ''}>${l}</a>`).join('')}</nav>
       <div class="menu__foot"><span class="label">${esc(site.city)}</span><a href="https://instagram.com/${esc(site.instagram)}" rel="noopener">@${esc(site.instagram)}</a></div>
@@ -98,6 +99,17 @@ export async function initLayout() {
   document.addEventListener('click', (e) => { if (menu.classList.contains('is-open') && !e.target.closest('#menu, .menu-toggle')) setMenu(false); }); // tap the dimmed page to close
   addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
   matchMedia('(min-width: 62rem)').addEventListener('change', (e) => e.matches && setMenu(false));
+
+  // Header search: on the Rentals page it jumps to the filter bar's own search; elsewhere it drops a panel that submits to Rentals (?q=).
+  const searchToggle = document.querySelector('[data-search-toggle]'), navSearch = document.getElementById('nav-search');
+  const setSearch = (open) => { searchToggle.setAttribute('aria-expanded', open); navSearch.classList.toggle('is-open', open); if (open) navSearch.q.focus(); };
+  searchToggle.addEventListener('click', () => {
+    const local = document.getElementById('search');
+    if (local) { local.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); local.focus({ preventScroll: true }); return; }
+    setMenu(false); setSearch(searchToggle.getAttribute('aria-expanded') !== 'true');
+  });
+  document.addEventListener('click', (e) => { if (navSearch.classList.contains('is-open') && !e.target.closest('#nav-search, [data-search-toggle]')) setSearch(false); });
+  addEventListener('keydown', (e) => { if (e.key === 'Escape' && navSearch.classList.contains('is-open')) { setSearch(false); searchToggle.focus(); } });
 
   // Enquiry drawer
   const drawer = document.getElementById('drawer'), body = document.getElementById('drawer-body'), foot = document.getElementById('drawer-foot');
