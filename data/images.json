@@ -1132,6 +1132,41 @@
   "h": 1200,
   "jpgOnly": true
  },
+ "satin-tablecloth-silver-grey": {
+  "w": 960,
+  "h": 1200,
+  "jpgOnly": true
+ },
+ "satin-tablecloth-champagne": {
+  "w": 960,
+  "h": 1200,
+  "jpgOnly": true
+ },
+ "satin-tablecloth-purple": {
+  "w": 960,
+  "h": 1200,
+  "jpgOnly": true
+ },
+ "satin-tablecloth-orange": {
+  "w": 960,
+  "h": 1200,
+  "jpgOnly": true
+ },
+ "satin-tablecloth-lime-green": {
+  "w": 960,
+  "h": 1200,
+  "jpgOnly": true
+ },
+ "satin-tablecloth-white": {
+  "w": 960,
+  "h": 1200,
+  "jpgOnly": true
+ },
+ "satin-tablecloth-turquoise": {
+  "w": 960,
+  "h": 1200,
+  "jpgOnly": true
+ },
  "champagne-flute": {
   "w": 1600,
   "h": 2000,

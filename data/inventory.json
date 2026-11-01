@@ -1514,31 +1514,38 @@
      },
      {
       "name": "Silver Grey",
-      "hex": "#b5b5bb"
+      "hex": "#b5b5bb",
+      "image": "satin-tablecloth-silver-grey"
      },
      {
       "name": "Champagne",
-      "hex": "#f1dcc0"
+      "hex": "#f1dcc0",
+      "image": "satin-tablecloth-champagne"
      },
      {
       "name": "Purple",
-      "hex": "#7a1fb8"
+      "hex": "#7a1fb8",
+      "image": "satin-tablecloth-purple"
      },
      {
       "name": "Orange",
-      "hex": "#f6873a"
+      "hex": "#f6873a",
+      "image": "satin-tablecloth-orange"
      },
      {
       "name": "Lime Green",
-      "hex": "#a4d42c"
+      "hex": "#a4d42c",
+      "image": "satin-tablecloth-lime-green"
      },
      {
       "name": "White",
-      "hex": "#ffffff"
+      "hex": "#ffffff",
+      "image": "satin-tablecloth-white"
      },
      {
       "name": "Turquoise",
-      "hex": "#16b5ad"
+      "hex": "#16b5ad",
+      "image": "satin-tablecloth-turquoise"
      }
     ]
    },
