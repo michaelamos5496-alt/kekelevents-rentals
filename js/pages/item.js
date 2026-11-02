@@ -1,4 +1,4 @@
-import { esc, picture, byCategory, reveal, optionImage } from '../util.js';
+import { esc, picture, byCategory, reveal, optionImage, setPageMeta } from '../util.js';
 import { enquiry, money, daysLabel, lineKey } from '../enquiry.js';
 import { card, bindAdd } from './shared.js';
 
@@ -177,13 +177,12 @@ export default function ({ inv, dims }) {
   const root = document.getElementById('item'), slug = new URLSearchParams(location.search).get('i');
   const it = inv.items.find((x) => x.slug === slug);
   if (!it) {
-    document.title = 'Piece not found · Kekel Rentals';
+    document.title = 'Piece not found · Kekel Event Rentals';
     root.innerHTML = '<div class="wrap state" style="padding-top:12rem"><h1 class="lede">We could not find that piece.</h1><p>It may have been renamed or retired from the collection.</p><a class="btn" href="collections.html">Back to collections</a></div>';
     return;
   }
   const cat = byCategory(inv, it.category);
-  document.title = `${it.name} · ${cat.name} · Kekel Rentals`;
-  document.querySelector('meta[name="description"]')?.setAttribute('content', `${it.name}: ${it.note}`);
+  setPageMeta({ title: `${it.name} Hire in Accra · Kekel Event Rentals`, description: `${it.name} for hire in Accra, Ghana: ${it.note}`, path: `/item.html?i=${it.slug}` });
   const pairs = inv.items.filter((x) => x.category !== it.category).map((x) => ({ x, s: x.mood.filter((m) => it.mood.includes(m)).length })).filter((p) => p.s).sort((a, b) => b.s - a.s).slice(0, 3).map((p) => p.x);
 
   root.innerHTML = `

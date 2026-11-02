@@ -40,6 +40,21 @@ export function reveal(root = document) {
 }
 
 export const byCategory = (inv, id) => inv.categories.find((c) => c.id === id);
+
+const SITE_URL = 'https://www.kekeleventrentals.com';
+/** Title, description and canonical URL for pages whose content comes from data (a product, a category), for search engines. */
+export function setPageMeta({ title, description, path }) {
+  document.title = title;
+  const set = (sel, attr, val) => document.querySelector(sel)?.setAttribute(attr, val);
+  set('meta[property="og:title"]', 'content', title);
+  if (description) { set('meta[name="description"]', 'content', description); set('meta[property="og:description"]', 'content', description); }
+  if (path) {
+    let link = document.querySelector('link[rel="canonical"]');
+    if (!link) { link = document.createElement('link'); link.rel = 'canonical'; document.head.append(link); }
+    link.href = SITE_URL + path;
+    set('meta[property="og:url"]', 'content', SITE_URL + path);
+  }
+}
 /** The photograph for a chosen option (e.g. a tablecloth colour), falling back to the piece's main photo. */
 export const optionImage = (it, option) => it.options?.choices.find((c) => c.name === option)?.image || it.image;
 /** Categories that currently have at least one piece; empty ones stay hidden until stock is added. */

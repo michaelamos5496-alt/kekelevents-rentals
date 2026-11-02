@@ -1,4 +1,4 @@
-import { esc, byCategory, reveal, stocked } from '../util.js';
+import { esc, byCategory, reveal, stocked, setPageMeta } from '../util.js';
 import { card, bindAdd } from './shared.js';
 
 /** Lower-case and strip accents so "decor" finds "décor". */
@@ -24,7 +24,8 @@ export default function ({ inv, dims }) {
     filters.querySelectorAll('.filter').forEach((b) => b.setAttribute('aria-pressed', b.dataset.cat === current));
     const cat = byCategory(inv, current);
     blurb.textContent = cat ? cat.blurb : 'Seating, tablescape, glassware, décor, lounge and lighting, available to hire for events of every scale.';
-    document.title = `${cat ? cat.name + ' · ' : ''}Rentals · Kekel Rentals`;
+    if (cat) setPageMeta({ title: `${cat.name} Hire in Accra · Event Rentals · Kekel`, description: `${cat.name} for hire in Accra, Ghana: ${cat.blurb}`, path: `/collections.html?c=${cat.id}` });
+    else setPageMeta({ title: 'Event Rentals Accra: Chairs, Tables & Décor Hire · Kekel', description: 'Browse 80+ event rental pieces in Accra: chairs, tables, tablecloths, glassware, décor, lounge and lighting. Add them to your cart and get a quote on WhatsApp.', path: '/collections.html' });
     count.textContent = `${items.length} ${items.length === 1 ? 'piece' : 'pieces'} ${query.trim() ? 'found' : 'to hire'}`;
     grid.innerHTML = items.length
       ? items.map((it, i) => card(it, byCategory(inv, it.category), dims, (i % 3) * 80)).join('')
