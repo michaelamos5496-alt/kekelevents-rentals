@@ -10,14 +10,14 @@
   --ivory: #FBFAF7;        /* page: warm paper white */
   --parchment: #F0EFED;    /* light grey tiles and panels */
   --hero: #EBEAE8;         /* hero ground */
-  --charcoal: #141414;     /* fixed dark ink: footer, always-dark surfaces. Does not flip with theme. */
-  --ink: var(--charcoal);  /* primary text/foreground: flips light<->dark with the theme */
+  --charcoal: #141414;     /* dark ink: footer and always-dark surfaces */
+  --ink: var(--charcoal);  /* primary text/foreground */
   --stone: #6B6965;        /* secondary text */
   --hairline: #E3E1DD;
   --gold: #4A72AA;         /* brand accent (blue, from the logo): kept the variable name "gold" to avoid touching every usage site-wide */
   --champagne: var(--gold);   /* accent: links, underlines, labels */
   --champagne-ink: var(--gold);
-  color-scheme: light dark;
+  color-scheme: light; /* white site only: no dark mode */
 
   --serif: "Manrope", "Helvetica Neue", Helvetica, Arial, sans-serif; /* reference look: one clean sans throughout */
   --sans: "Manrope", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -41,46 +41,6 @@
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --t-reveal: 900ms;
   --header-h: 5rem;
-}
-
-/* Dark theme: same tokens, flipped surfaces and ink. Gold and photography stay as they are.
-   Applies when the visitor picks "dark" (data-theme="dark"), or when they haven't chosen and
-   their system prefers dark (the @media block below, guarded so an explicit "light" choice wins). */
-:root[data-theme="dark"] {
-  --ivory: #17150F;
-  --parchment: #211F18;
-  --hero: #1C1A14;
-  --ink: #F2F0EA;
-  --stone: #A8A49C;
-  --hairline: #33312A;
-  --glass: rgb(20 20 20 / 0.55);
-  --glass-strong: rgb(20 20 20 / 0.7);
-  --glass-edge: rgb(255 255 255 / 0.12);
-  --glass-line: rgb(255 255 255 / 0.1);
-  --glass-shadow: 0 1px 0 rgb(255 255 255 / 0.06) inset, 0 24px 60px rgb(0 0 0 / 0.5);
-  --glass-fill: rgb(255 255 255 / 0.08);
-  --glass-fill-soft: rgb(255 255 255 / 0.04);
-  --glass-fill-input: rgb(255 255 255 / 0.08);
-  color-scheme: dark;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --ivory: #17150F;
-    --parchment: #211F18;
-    --hero: #1C1A14;
-    --ink: #F2F0EA;
-    --stone: #A8A49C;
-    --hairline: #33312A;
-    --glass: rgb(20 20 20 / 0.55);
-    --glass-strong: rgb(20 20 20 / 0.7);
-    --glass-edge: rgb(255 255 255 / 0.12);
-    --glass-line: rgb(255 255 255 / 0.1);
-    --glass-shadow: 0 1px 0 rgb(255 255 255 / 0.06) inset, 0 24px 60px rgb(0 0 0 / 0.5);
-    --glass-fill: rgb(255 255 255 / 0.08);
-    --glass-fill-soft: rgb(255 255 255 / 0.04);
-    --glass-fill-input: rgb(255 255 255 / 0.08);
-    color-scheme: dark;
-  }
 }
 
 /* ---- 2. Base ---- */
@@ -130,12 +90,6 @@ body[data-header="over"]:not(.menu-open) .site-header:not(.is-solid) .enquiry-li
 .wordmark__sub { margin-top: 0.3rem; font-size: 0.52rem; letter-spacing: 0.55em; text-transform: uppercase; font-weight: 500; opacity: 0.7; }
 .logo { display: inline-flex; align-items: center; } .logo img { height: 4rem; width: auto; }
 .logo .logo__dark { display: none; }
-:root[data-theme="dark"] .logo .logo__light { display: none; }
-:root[data-theme="dark"] .logo .logo__dark { display: block; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .logo .logo__light { display: none; }
-  :root:not([data-theme="light"]) .logo .logo__dark { display: block; }
-}
 .logo--footer img { height: 6.5rem; }
 .nav { display: none; align-items: center; gap: clamp(1.5rem, 3vw, 3rem); }
 .nav a { position: relative; font-size: 0.9rem; letter-spacing: 0; text-transform: none; font-weight: 400; padding-block: 0.5rem; }
@@ -151,13 +105,6 @@ body[data-header="over"]:not(.menu-open) .site-header:not(.is-solid) .enquiry-li
 .icon-btn { display: inline-grid; place-items: center; width: 2.75rem; height: 2.75rem; } .icon-btn svg, .enquiry-link svg { width: 1.3rem; height: 1.3rem; fill: none; stroke: currentColor; stroke-width: 1.5; }
 .enquiry-link__count { display: inline-grid; place-items: center; min-width: 1.2rem; height: 1.2rem; padding: 0 0.3rem; background: var(--gold); color: #fff; border-radius: 999px; font-size: 0.65rem; letter-spacing: 0; font-weight: 600; }
 .enquiry-link[data-count="0"] .enquiry-link__count { display: none; }
-.theme-toggle__moon { display: none; }
-:root[data-theme="dark"] .theme-toggle__sun { display: none; }
-:root[data-theme="dark"] .theme-toggle__moon { display: block; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .theme-toggle__sun { display: none; }
-  :root:not([data-theme="light"]) .theme-toggle__moon { display: block; }
-}
 .menu-toggle { display: inline-flex; flex-direction: column; justify-content: center; gap: 6px; width: 2.75rem; height: 2.75rem; padding: 0.7rem; }
 .menu-toggle span { display: block; height: 1px; background: currentColor; transition: transform 0.5s var(--ease), opacity 0.3s; }
 .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(3.5px) rotate(45deg); }
