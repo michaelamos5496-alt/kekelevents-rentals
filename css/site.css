@@ -340,6 +340,7 @@ html.hide-placeholders .ph-note { display: none; }
   .add { flex: none; width: 2.75rem; height: 2.75rem; padding: 0; justify-content: center; }
   .add__icon { display: block; }
   .add__label { display: none; }
+  .card__note { display: none; } /* lighter cards on phones; the description is in the product popup */
 }
 .state { grid-column: 1 / -1; padding-block: 5rem; text-align: center; }
 .state p { max-width: 36ch; margin: 1rem auto 1.75rem; color: var(--stone); }
@@ -722,6 +723,16 @@ main .about-wide { height: calc(100dvh - var(--header-h)); min-height: 18rem; }
   .footer__brand p { margin-top: 0.75rem; }
   .footer__col ul { gap: 0.4rem; margin-top: 0.75rem; }
   .footer__legal { padding-top: 1rem; }
+  /* Phones: a lighter footer. The category list and studio links repeat the menu, so only the logo, contact
+     details and the enquiry button remain, with Follow us and Enquire side by side. */
+  @media (max-width: 40rem) {
+    .footer__brand p, .footer__col:nth-of-type(2), .footer__col:nth-of-type(3), .footer__col:last-of-type li:first-child { display: none; }
+    .footer__top { grid-template-columns: auto 1fr; column-gap: 2rem; row-gap: 1.25rem; padding-bottom: 1.5rem; }
+    .footer__brand { grid-column: 1 / -1; }
+    .footer__col { grid-column: auto; }
+    .footer__col:last-of-type .btn { display: flex; width: 100%; }
+    .footer__legal { flex-direction: column; gap: 0.25rem; font-size: 0.7rem; }
+  }
   .principles, .steps { gap: 0.9rem; } .principles article, .steps li { padding-top: 0.7rem; }
   .principles h3, .steps h3 { margin: 0.35rem 0 0.25rem; font-size: 1.15rem; } .principles p, .steps p { font-size: 0.88rem; }
   .service { padding-block: 0.9rem; gap: 0.35rem; } .service ul { display: none; } .service p { margin-bottom: 0.5rem; font-size: 0.92rem; }
