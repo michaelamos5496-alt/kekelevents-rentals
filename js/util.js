@@ -24,7 +24,9 @@ export function picture(id, alt, dims, { sizes = '100vw', eager = false, cls = '
   const srcset = widths.map((x) => `assets/images/${id}-${x}.webp ${x}w`).join(', ');
   // No WebP variant has been generated for this image yet; serve the JPEG fallback directly.
   const webpSource = dims?.jpgOnly ? '' : `<source type="image/webp" srcset="${srcset}" sizes="${sizes}">`;
-  return `<picture>${webpSource}<img class="${cls}" src="assets/images/${id}-960.jpg" width="${w}" height="${h}" alt="${esc(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"></picture>`;
+  // JPEG-only images with a 480px copy let small slots (cards, thumbnails) skip the 960px file.
+  const jpgSet = dims?.jpg480 ? ` srcset="assets/images/${id}-480.jpg 480w, assets/images/${id}-960.jpg 960w" sizes="${sizes}"` : '';
+  return `<picture>${webpSource}<img class="${cls}" src="assets/images/${id}-960.jpg"${jpgSet} width="${w}" height="${h}" alt="${esc(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"></picture>`;
 }
 
 let observer;

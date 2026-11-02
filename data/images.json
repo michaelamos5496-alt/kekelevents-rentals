@@ -1,30 +1,30 @@
 {
- "mediterranean-golden-table": { "w": 1672, "h": 941, "jpgOnly": true },
- "golden-coastal-table": { "w": 1672, "h": 941, "jpgOnly": true },
- "sunlit-mediterranean-dining-room": { "w": 1671, "h": 941, "jpgOnly": true },
- "sunlit-gold-ivory-dining-room": { "w": 1670, "h": 941, "jpgOnly": true },
- "sunlit-marble-dining-elegance": { "w": 1670, "h": 941, "jpgOnly": true },
- "sunlit-oak-table-lounge": { "w": 1670, "h": 941, "jpgOnly": true },
- "chiavari-chair-sea": { "w": 1672, "h": 941, "jpgOnly": true },
- "chiavari-chair-sunlight": { "w": 1672, "h": 941, "jpgOnly": true },
- "mediterranean-cane-armchair": { "w": 1672, "h": 941, "jpgOnly": true },
- "french-wooden-chairs": { "w": 1672, "h": 941, "jpgOnly": true },
- "blush-velvet-armchairs": { "w": 1670, "h": 941, "jpgOnly": true },
- "cane-chairs-interior": { "w": 1672, "h": 941, "jpgOnly": true },
- "cane-bar-stools-interior": { "w": 1672, "h": 941, "jpgOnly": true },
- "walnut-lattice-chairs": { "w": 1671, "h": 941, "jpgOnly": true },
- "category-seating": { "w": 1448, "h": 1086, "jpgOnly": true },
- "category-tablescape": { "w": 1448, "h": 1086, "jpgOnly": true },
- "category-decor": { "w": 1448, "h": 1086, "jpgOnly": true },
+ "mediterranean-golden-table": { "w": 1672, "h": 941, "jpgOnly": true, "jpg480": true },
+ "golden-coastal-table": { "w": 1672, "h": 941, "jpgOnly": true, "jpg480": true },
+ "sunlit-mediterranean-dining-room": { "w": 1671, "h": 941, "jpgOnly": true, "jpg480": true },
+ "sunlit-gold-ivory-dining-room": { "w": 1670, "h": 941, "jpgOnly": true, "jpg480": true },
+ "sunlit-marble-dining-elegance": { "w": 1670, "h": 941, "jpgOnly": true, "jpg480": true },
+ "sunlit-oak-table-lounge": { "w": 1670, "h": 941, "jpgOnly": true, "jpg480": true },
+ "chiavari-chair-sea": { "w": 1672, "h": 941, "jpgOnly": true, "jpg480": true },
+ "chiavari-chair-sunlight": { "w": 1672, "h": 941, "jpgOnly": true, "jpg480": true },
+ "mediterranean-cane-armchair": { "w": 1672, "h": 941, "jpgOnly": true, "jpg480": true },
+ "french-wooden-chairs": { "w": 1672, "h": 941, "jpgOnly": true, "jpg480": true },
+ "blush-velvet-armchairs": { "w": 1670, "h": 941, "jpgOnly": true, "jpg480": true },
+ "cane-chairs-interior": { "w": 1672, "h": 941, "jpgOnly": true, "jpg480": true },
+ "cane-bar-stools-interior": { "w": 1672, "h": 941, "jpgOnly": true, "jpg480": true },
+ "walnut-lattice-chairs": { "w": 1671, "h": 941, "jpgOnly": true, "jpg480": true },
+ "category-seating": { "w": 1448, "h": 1086, "jpgOnly": true, "jpg480": true },
+ "category-tablescape": { "w": 1448, "h": 1086, "jpgOnly": true, "jpg480": true },
+ "category-decor": { "w": 1448, "h": 1086, "jpgOnly": true, "jpg480": true },
  "garden-reception-setup": {
   "w": 754,
   "h": 1280,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "candlelit-tablescape": {
   "w": 798,
   "h": 1280,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "1082024": {
   "w": 1800,
@@ -405,791 +405,791 @@
  "crystal-louis": {
   "w": 1199,
   "h": 1312,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "crystal-louis-detail1": {
   "w": 1199,
   "h": 1312,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "cane-cade": {
   "w": 1199,
   "h": 1312,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "cane-cade-detail1": {
   "w": 1281,
   "h": 1228,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "square-louis": {
   "w": 1199,
   "h": 1312,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "square-louis-detail1": {
   "w": 1199,
   "h": 1312,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "rustic-louis-couple": {
   "w": 1199,
   "h": 1312,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "rustic-louis-couple-detail1": {
   "w": 1199,
   "h": 1312,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "infinity-rustic": {
   "w": 1417,
   "h": 1771,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "infinity-rustic-detail1": {
   "w": 1435,
   "h": 1794,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "rustic-couple": {
   "w": 1545,
   "h": 1931,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "rustic-couple-detail1": {
   "w": 1533,
   "h": 1917,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "rustic-cocktail": {
   "w": 1452,
   "h": 1815,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "rustic-cocktail-detail1": {
   "w": 1401,
   "h": 1752,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "rustic-cocktail-table": {
   "w": 1315,
   "h": 1643,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "rustic-cocktail-table-detail1": {
   "w": 1217,
   "h": 1521,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "white-louis": {
   "w": 1362,
   "h": 1703,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "white-louis-detail1": {
   "w": 1372,
   "h": 1715,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "black-louis": {
   "w": 1390,
   "h": 1737,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "black-louis-detail1": {
   "w": 1382,
   "h": 1728,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "dark-cross-back": {
   "w": 1463,
   "h": 1828,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "dark-cross-back-detail1": {
   "w": 1442,
   "h": 1803,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "white-fingers": {
   "w": 1352,
   "h": 1690,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "white-fingers-detail1": {
   "w": 1368,
   "h": 1709,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "ivory-scallop": {
   "w": 1298,
   "h": 1622,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "ivory-scallop-detail1": {
   "w": 1259,
   "h": 1574,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "rhonda-blush": {
   "w": 1333,
   "h": 1666,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "rhonda-blush-detail1": {
   "w": 1350,
   "h": 1687,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "rhonda-white": {
   "w": 1377,
   "h": 1721,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "rhonda-white-detail1": {
   "w": 1315,
   "h": 1643,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "rhonda-black": {
   "w": 1326,
   "h": 1658,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "rhonda-black-detail1": {
   "w": 1359,
   "h": 1699,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "rhonda-bw": {
   "w": 1336,
   "h": 1670,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "rhonda-bw-detail1": {
   "w": 1393,
   "h": 1741,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "rhonda-bw-detail2": {
   "w": 1258,
   "h": 1572,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "ring-back": {
   "w": 1376,
   "h": 1720,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "ring-back-detail1": {
   "w": 1325,
   "h": 1657,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "skyline-dining": {
   "w": 1356,
   "h": 1695,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "skyline-dining-detail1": {
   "w": 1335,
   "h": 1668,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "skyline-dining-detail2": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "silver-t": {
   "w": 1297,
   "h": 1621,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "silver-t-detail1": {
   "w": 1356,
   "h": 1695,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-crossback": {
   "w": 1470,
   "h": 1837,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-crossback-detail1": {
   "w": 1482,
   "h": 1852,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "serpentine-table": {
   "w": 1934,
   "h": 2417,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "serpentine-table-detail1": {
   "w": 973,
   "h": 1216,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "ribbed-white-table": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "ribbed-white-table-detail1": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-s-table": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-s-table-detail1": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-chameleon-chair": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-chameleon-chair-detail1": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "resin-white-round-back": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "resin-white-round-back-detail1": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-white-couple-chair": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-white-couple-chair-detail1": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "lined-gold-round-table": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "lined-gold-round-table-detail1": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "silver-o-back": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "silver-o-back-detail1": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "cross-leg-wooden-table": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "cross-leg-wooden-table-detail1": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "wooden-table": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "wooden-table-detail1": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "vogue-crystal-chair": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "vogue-crystal-chair-detail1": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "silver-couple-chair": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "silver-couple-chair-detail1": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-steel-bar": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-steel-bar-detail1": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "candlestick-set": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "candlestick-set-detail1": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "silver-glass-table": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "candlestick-big": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "candlestick-big-detail1": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "candelabra": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "candelabra-detail1": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "black-gold-underplate": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "black-gold-underplate-detail1": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-rim-underplate": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-rim-underplate-detail1": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-rim-dinner-plate": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-rim-dinner-plate-detail1": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "stanchion-rope-set": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "stanchion-rope-set-detail1": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "stanchion-rope-set-detail2": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "foldable-cocktail-table": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "foldable-cocktail-table-detail1": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "rectangular-trestle-table": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "rectangular-trestle-table-detail1": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-royal-cutlery": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-royal-cutlery-detail1": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "rustic-cutlery": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "rustic-cutlery-detail1": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "black-rim-underplate": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "black-rim-underplate-detail1": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "bubble-leg-gold-table": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "bubble-leg-gold-table-detail1": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-white-throne-chair": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-white-throne-chair-detail1": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-couple-table": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-couple-table-detail1": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "crystal-cake-table": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "serpentine-gold-crystal-table": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "serpentine-gold-crystal-table-detail1": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "silver-cross-leg-cake-table": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "black-white-parasol": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "green-white-parasol": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "black-cocktail-table": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "black-cocktail-table-detail1": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "cocktail-chair": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "cocktail-chair-detail1": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "ivory-parasol": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "ivory-parasol-detail1": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "rattan-placemat": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-lines-cake-table": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-lines-cake-table-detail1": {
   "w": 2000,
   "h": 2500,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-lamp": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-lamp-detail1": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "crystal-underplate": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "brown-woven-underplate": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "rustic-oval-couple-chair": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "rustic-oval-couple-chair-detail1": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "crystal-glass-table": {
   "w": 1901,
   "h": 2376,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "crystal-glass-table-detail1": {
   "w": 1896,
   "h": 2369,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-edior": {
   "w": 1519,
   "h": 1898,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-edior-detail1": {
   "w": 1562,
   "h": 1952,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-o-back": {
   "w": 1545,
   "h": 1931,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "gold-o-back-detail1": {
   "w": 1550,
   "h": 1938,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "rattan-vintage-lamp": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "rattan-vintage-lamp-detail1": {
   "w": 1024,
   "h": 1536,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "round-wooden-table": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "centerpiece-acrylic-stand": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "round-glass-dinner-table": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "black-glass-table": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "satin-tablecloth": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "satin-tablecloth-detail1": {
   "w": 1536,
   "h": 1024,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "satin-tablecloth-red": {
   "w": 960,
   "h": 1200,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "satin-tablecloth-burgundy": {
   "w": 960,
   "h": 1200,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "satin-tablecloth-sage-green": {
   "w": 960,
   "h": 1200,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "satin-tablecloth-navy-blue": {
   "w": 960,
   "h": 1200,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "satin-tablecloth-fuchsia-pink": {
   "w": 960,
   "h": 1200,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "satin-tablecloth-blush-pink": {
   "w": 960,
   "h": 1200,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "satin-tablecloth-chocolate-brown": {
   "w": 960,
   "h": 1200,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "satin-tablecloth-ivory": {
   "w": 960,
   "h": 1200,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "satin-tablecloth-royal-blue": {
   "w": 960,
   "h": 1200,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "satin-tablecloth-silver-grey": {
   "w": 960,
   "h": 1200,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "satin-tablecloth-champagne": {
   "w": 960,
   "h": 1200,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "satin-tablecloth-purple": {
   "w": 960,
   "h": 1200,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "satin-tablecloth-orange": {
   "w": 960,
   "h": 1200,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "satin-tablecloth-lime-green": {
   "w": 960,
   "h": 1200,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "satin-tablecloth-white": {
   "w": 960,
   "h": 1200,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "satin-tablecloth-turquoise": {
   "w": 960,
   "h": 1200,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "champagne-flute": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "wine-glass": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "black-champagne-flute": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "black-champagne-flute-detail1": {
   "w": 1331,
   "h": 1181,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  },
  "black-wine-glass": {
   "w": 1600,
   "h": 2000,
-  "jpgOnly": true
+  "jpgOnly": true, "jpg480": true
  }
 }
