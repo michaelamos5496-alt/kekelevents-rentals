@@ -328,8 +328,7 @@ html.hide-placeholders .ph-note { display: none; }
 .pdp__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 0.5rem; }
 .pdp__title { font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem); font-weight: 300; line-height: 1.15; letter-spacing: 0.04em; text-transform: uppercase; }
 .pdp__badge { flex: none; margin-top: 0.3rem; padding: 0.3rem 0.65rem; background: var(--gold); color: #fff; font-size: 0.68rem; letter-spacing: 0.06em; }
-.pdp__meta { display: flex; flex-wrap: wrap; font-size: var(--fs-small); color: var(--stone); margin-bottom: 1rem; }
-.pdp__meta span + span { margin-left: 0.75rem; padding-left: 0.75rem; border-left: 1px solid var(--hairline); }
+.pdp__meta { display: grid; gap: 0.15rem; font-size: var(--fs-small); color: var(--stone); margin-bottom: 1rem; } /* material, then size: stacked, so a long material never strands a divider */
 .pdp__price { font-size: 1.85rem; font-weight: 300; margin-bottom: 0.75rem; }
 .pdp__price span { margin-left: 0.5rem; font-size: 0.78rem; color: var(--stone); }
 .pdp__stock { align-self: flex-start; display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.3rem 0.65rem; background: var(--parchment); font-size: 0.78rem; color: var(--stone); margin-bottom: 1.4rem; }
@@ -385,6 +384,8 @@ html.hide-placeholders .ph-note { display: none; }
 .product-modal .pdp__head { padding-right: 3.25rem; } /* clear of the close button */
 .product-modal__close { position: absolute; top: 1rem; right: 1rem; width: 2.5rem; height: 2.5rem; display: grid; place-items: center; font-size: 1.4rem; line-height: 1; background: var(--ivory); color: var(--ink); border: 1px solid var(--hairline); border-radius: 50%; z-index: 2; }
 #product-modal-body { display: contents; }
+/* Popup contents are always visible, whatever an older cached script does with the scroll-reveal fade. */
+.product-modal [data-reveal] { opacity: 1 !important; transform: none !important; visibility: visible !important; }
 .product-modal .pdp__card:focus-visible { outline: none; } /* the dialog focuses the scrollable card on open; its controls keep their own rings */
 /* Phones: the popup becomes a bottom sheet. The photo is shorter so the name and price show straight away,
    and Add to cart / View cart stay pinned to the bottom of the sheet while the rest scrolls. */
@@ -397,7 +398,6 @@ html.hide-placeholders .ph-note { display: none; }
   .product-modal .product-modal__close { top: 0.75rem; right: 0.75rem; }
   .product-modal .pdp__head { padding-right: 0; }
   .pdp__badge { display: none; }
-  .pdp__meta { display: grid; gap: 0.15rem; } .pdp__meta span + span { margin: 0; padding: 0; border: 0; } /* stacked: no divider */
   .pdp__title { font-size: 1.35rem; }
   .pdp__price { font-size: 1.5rem; margin-bottom: 0.6rem; }
   .pdp__stock { margin-bottom: 1rem; }
