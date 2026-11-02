@@ -16,8 +16,21 @@
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('kekel.theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
-<link rel="preload" href="assets/fonts/CormorantGaramond-normal-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/Manrope-normal-300-600.woff2" as="font" type="font/woff2" crossorigin>
+<!-- Fetch every script and data file at once instead of one import after another. -->
+<link rel="modulepreload" href="js/site.js">
+<link rel="modulepreload" href="js/layout.js">
+<link rel="modulepreload" href="js/util.js">
+<link rel="modulepreload" href="js/motion.js">
+<link rel="modulepreload" href="js/enquiry.js">
+<link rel="modulepreload" href="js/dates.js">
+<link rel="modulepreload" href="js/clear.js">
+<link rel="modulepreload" href="js/pages/item.js">
+<link rel="modulepreload" href="js/pages/shared.js">
+<link rel="modulepreload" href="js/pages/enquire.js">
+<link rel="preload" href="data/site.json" as="fetch" crossorigin>
+<link rel="preload" href="data/inventory.json" as="fetch" crossorigin>
+<link rel="preload" href="data/images.json" as="fetch" crossorigin>
 <link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/site.css">
 </head>
