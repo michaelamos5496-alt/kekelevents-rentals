@@ -21,7 +21,7 @@ Drop a JPEG in `assets/images/raw/<id>.jpg`, run `python3 scripts/make-images.py
 - Rates: every `price` in `data/inventory.json` is a PLACEHOLDER daily rate in GH₵ per piece. Replace them, then set `cart.ratesPlaceholder` to false in `data/site.json` to hide the tags. Delivery is not priced; the cart says it is calculated in the quote.
 - Enquiry delivery: `data/site.json` → `enquiry.endpoint` (a form service URL that accepts a JSON POST, e.g. a Formspree form). While empty, submitting opens WhatsApp with the full enquiry pre-filled. Budget ranges and event types are in the same block.
 - WhatsApp number: `data/site.json` → `whatsapp.number` (e.g. 233XXXXXXXXX). Empty for now.
-- Domain: `kekelrentals.example` is used in meta tags, `sitemap.xml`, `robots.txt`. Replace before launch.
+- Domain: `https://www.kekeleventrentals.com` (the bare domain redirects to www) is used in meta tags, `sitemap.xml`, `robots.txt`. Regenerate `sitemap.xml` when products are added.
 - No address or phone is published. Set `showPlaceholderTags` to false when real content is in.
 
 ## Image credits
