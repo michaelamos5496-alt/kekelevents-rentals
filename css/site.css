@@ -143,6 +143,10 @@ body[data-header="over"]:not(.menu-open) .site-header:not(.is-solid) .enquiry-li
 .nav a:hover::after, .nav a[aria-current="page"]::after { transform: scaleX(1); }
 .nav a::after { background: var(--gold); }
 .header-actions { display: flex; align-items: center; gap: 1.25rem; }
+/* The logo never gives up width to the icons beside it (it was being squashed on phones). */
+.site-header .logo { flex: none; } .site-header .logo img { flex: none; }
+@media (max-width: 40rem) { .site-header .logo img { height: 3.25rem; } .header-actions { gap: 0.5rem; } }
+@media (max-width: 22.5rem) { .site-header .logo img { height: 2.75rem; } .header-actions { gap: 0.15rem; } .site-header__bar { gap: 0.75rem; } } /* 320px phones */
 .enquiry-link { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; min-width: 2.75rem; min-height: 2.75rem; padding: 0.5rem 0.7rem; }
 .icon-btn { display: inline-grid; place-items: center; width: 2.75rem; height: 2.75rem; } .icon-btn svg, .enquiry-link svg { width: 1.3rem; height: 1.3rem; fill: none; stroke: currentColor; stroke-width: 1.5; }
 .enquiry-link__count { display: inline-grid; place-items: center; min-width: 1.2rem; height: 1.2rem; padding: 0 0.3rem; background: var(--gold); color: #fff; border-radius: 999px; font-size: 0.65rem; letter-spacing: 0; font-weight: 600; }
@@ -200,7 +204,7 @@ body.menu-open .site-header { color: var(--ink); }
 .media { position: relative; overflow: hidden; background: var(--parchment); }
 .media picture, .media img { width: 100%; height: 100%; }
 .media img { object-fit: cover; transition: transform 1.2s var(--ease); }
-a:hover > .media img, .media:hover img, .card:hover .media img { transform: scale(1.03); }
+@media (hover: hover) { a:hover > .media img, .media:hover img, .card:hover .media img { transform: scale(1.03); } } /* on touch, :hover sticks after a tap */
 .r-45 { aspect-ratio: 4 / 5; } .r-34 { aspect-ratio: 3 / 4; } .r-11 { aspect-ratio: 1; } .r-32 { aspect-ratio: 3 / 2; }
 
 /* Placeholder marking: every placeholder image carries a small tag. Switch off with "showPlaceholderTags": false in data/site.json. */
@@ -236,7 +240,14 @@ html.hide-placeholders .ph-note { display: none; }
 .categories > .wrap > h2 { font-size: var(--fs-h2); }
 .categories__grid { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--pad); margin-inline: calc(var(--pad) * -1); padding-inline: var(--pad); scrollbar-width: none; overscroll-behavior-x: contain; text-align: left; }
 .categories__grid::-webkit-scrollbar { display: none; }
-.cat-card { position: relative; display: block; flex: 0 0 100%; scroll-snap-align: start; overflow: hidden; border-radius: 10px; }
+.cat-card { position: relative; display: block; flex: 0 0 100%; scroll-snap-align: start; scroll-snap-stop: always; overflow: hidden; border-radius: 10px; }
+/* Phones: the category cards only slide sideways, one per swipe; no rise, zoom or image dragging. */
+@media (max-width: 39.99rem) {
+  .categories__grid { overscroll-behavior: contain; }
+  .cat-card, .cat-card * { -webkit-user-drag: none; user-select: none; -webkit-touch-callout: none; }
+  .js .categories__grid .cat-card[data-reveal] { opacity: 1 !important; transform: none !important; }
+  .cat-card picture, .cat-card img { transform: none !important; }
+}
 .cat-card .media { aspect-ratio: 4 / 3; background: none; }
 @media (min-width: 40rem) { .categories__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem var(--gutter); overflow: visible; margin-inline: 0; padding-inline: 0; scroll-snap-type: none; } .cat-card { flex: none; } }
 
@@ -667,6 +678,8 @@ body.menu-open .site-header { background: var(--glass); -webkit-backdrop-filter:
   .site-header.is-solid, .menu, .drawer, .drawer__head, .drawer__foot, .cart__summary, .enq__panel { background: var(--ivory); }
 }
 @media (max-width: 40rem) {
+  /* The sticky header stays solid on phones: re-blurring the page behind it on every scroll frame causes lag. */
+  .site-header.is-solid, body.menu-open .site-header { background: var(--ivory); -webkit-backdrop-filter: none; backdrop-filter: none; }
   .drawer { inset: 8px 8px 8px auto; width: calc(100vw - 16px); height: calc(100dvh - 16px); border-radius: 22px; }
   .drawer__head { padding: 1.1rem 1.25rem; } .drawer__head h2 { font-size: 1.6rem; }
   .drawer__body { padding-inline: 1.25rem; } .drawer__extras { padding-inline: 1.25rem; }
@@ -677,7 +690,7 @@ body.menu-open .site-header { background: var(--glass); -webkit-backdrop-filter:
 /* ---- Screen-fit sections ----
    Every main section is at least one screen tall (below the fixed header), its content centred, and the page
    snaps gently from section to section. "proximity" keeps snapping soft so tall sections never trap the visitor. */
-html { scroll-snap-type: y proximity; scroll-padding-top: var(--header-h); }
+html { scroll-padding-top: var(--header-h); } /* no page-level snapping: on phones it made scrolling jump */
 main section.section, main section.about, main section.about-intro, main .about-wide {
   min-height: calc(100svh - var(--header-h)); min-height: calc(100dvh - var(--header-h));
   scroll-snap-align: start;
@@ -697,7 +710,6 @@ main section.about-intro { padding-block: 2rem; }
 main .about-wide { height: calc(100dvh - var(--header-h)); min-height: 18rem; }
 .hero { scroll-snap-align: start; scroll-margin-top: 0; min-height: 100dvh; }
 .site-footer { scroll-snap-align: end; }
-@media (prefers-reduced-motion: reduce) { html { scroll-snap-type: none; } }
 
 /* Phones and small tablets: compress each section so it fits inside one screen (below the header) */
 .recent-dots { display: none; }
@@ -759,7 +771,7 @@ main .about-wide { height: calc(100dvh - var(--header-h)); min-height: 18rem; }
 .gsap [data-reveal] { transition: none; }
 .hero__statement .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.1em; margin-bottom: -0.1em; }
 .hero__statement .w > span { display: inline-block; will-change: transform; }
-.media picture { display: block; will-change: transform; }
+.media picture { display: block; } /* no will-change here: a layer per photo made scrolling stutter on phones */
 /* Soft fade-and-rise on scroll. Only active when JS runs (html.js), so content is never hidden without it. */
 .js [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity var(--t-reveal) var(--ease), transform var(--t-reveal) var(--ease); transition-delay: var(--d, 0ms); }
 .js [data-reveal].is-in { opacity: 1; transform: none; }

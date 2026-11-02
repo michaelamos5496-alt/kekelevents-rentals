@@ -170,9 +170,11 @@ export async function initLayout() {
     if (drawer.open) drawer.close(); // only one popup at a time
     productUnsub?.();
     productBody.innerHTML = buildCard(it, byCategory(inv, it.category), dims);
+    // No scroll-triggered reveal inside the popup: its content never scrolls the page, so on phones (a bottom sheet,
+    // content low on screen) the fade-in never fired and the popup looked empty. The popup's own entrance is enough.
+    productBody.querySelectorAll('[data-reveal]').forEach((el) => el.removeAttribute('data-reveal'));
     productUnsub = bindCard(productBody, it, dims);
     productModal.showModal();
-    reveal(productBody);
   }
 
   let opener;

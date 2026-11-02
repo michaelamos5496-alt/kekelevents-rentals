@@ -39,6 +39,6 @@ export default async function ({ site, inv, dims }) {
 
   reveal();
   heroIntro();
-  settleImages('.cat-card .media');
+  if (matchMedia('(min-width: 40rem)').matches) settleImages('.cat-card .media'); // on phones the cards are a plain slider
   parallax('.about__figure .media', 6);
 }
