@@ -333,6 +333,14 @@ html.hide-placeholders .ph-note { display: none; }
 .card__qty { font-size: var(--fs-small); color: var(--stone); }
 .add { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.55rem 1.1rem; font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; border: 1px solid var(--gold); border-radius: 999px; color: var(--gold); background: transparent; transition: background-color 0.4s var(--ease), color 0.4s var(--ease), border-color 0.4s var(--ease); }
 .add:hover { background: var(--gold); color: #fff; } .add[aria-pressed="true"] { background: var(--gold); color: #fff; border-color: var(--gold); }
+.add__icon { display: none; width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.add__tick, .add[aria-pressed="true"] .add__plus { display: none; } .add[aria-pressed="true"] .add__tick { display: inline; }
+/* Phones: the add button is a round bag icon (plus / tick) instead of words. */
+@media (max-width: 40rem) {
+  .add { flex: none; width: 2.75rem; height: 2.75rem; padding: 0; justify-content: center; }
+  .add__icon { display: block; }
+  .add__label { display: none; }
+}
 .state { grid-column: 1 / -1; padding-block: 5rem; text-align: center; }
 .state p { max-width: 36ch; margin: 1rem auto 1.75rem; color: var(--stone); }
 .skeleton { background: var(--parchment); animation: pulse 1.8s ease-in-out infinite; }
