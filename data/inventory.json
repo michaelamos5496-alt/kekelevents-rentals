@@ -1637,6 +1637,74 @@
     "modern"
    ],
    "price": 6
+  },
+  {
+   "slug": "gold-rim-wine-glass",
+   "name": "Gold Rim Crystal Wine Glass",
+   "category": "glassware",
+   "note": "A clear crystal wine glass with a flared bowl, a double gold band at the rim and a sculpted stem, for elegant wedding and dinner tables.",
+   "quantity": 100,
+   "material": "Crystal glass, gold rim",
+   "dimensions": "On request",
+   "image": "gold-rim-wine-glass",
+   "alt": "A clear crystal wine glass with a flared bowl and a double gold rim, on white",
+   "gallery": [],
+   "mood": [
+    "elegant",
+    "glam"
+   ],
+   "price": 8
+  },
+  {
+   "slug": "gold-rim-champagne-flute",
+   "name": "Gold Rim Crystal Champagne Flute",
+   "category": "glassware",
+   "note": "A tall crystal champagne flute with a flared bowl, a double gold band at the rim and a sculpted stem, for toasts at weddings and celebrations.",
+   "quantity": 100,
+   "material": "Crystal glass, gold rim",
+   "dimensions": "On request",
+   "image": "gold-rim-champagne-flute",
+   "alt": "A tall clear crystal champagne flute with a double gold rim, on white",
+   "gallery": [],
+   "mood": [
+    "elegant",
+    "glam"
+   ],
+   "price": 8
+  },
+  {
+   "slug": "ribbed-wine-glass",
+   "name": "Ribbed Crystal Wine Glass",
+   "category": "glassware",
+   "note": "A clear crystal wine glass with fine vertical ribs around a tall, straight-sided bowl and a slim stem, for modern, elegant tables.",
+   "quantity": 100,
+   "material": "Crystal glass, ribbed",
+   "dimensions": "On request",
+   "image": "ribbed-wine-glass",
+   "alt": "A clear ribbed crystal wine glass with a tall bowl and slim stem, on white",
+   "gallery": [],
+   "mood": [
+    "elegant",
+    "modern"
+   ],
+   "price": 8
+  },
+  {
+   "slug": "ribbed-water-glass",
+   "name": "Ribbed Crystal Water Glass",
+   "category": "glassware",
+   "note": "A clear crystal water goblet with fine vertical ribs around a tall, straight-sided bowl on a short stem, a match for the ribbed wine glass.",
+   "quantity": 100,
+   "material": "Crystal glass, ribbed",
+   "dimensions": "On request",
+   "image": "ribbed-water-glass",
+   "alt": "A clear ribbed crystal water goblet with a tall bowl on a short stem, on white",
+   "gallery": [],
+   "mood": [
+    "elegant",
+    "modern"
+   ],
+   "price": 8
   }
  ]
 }

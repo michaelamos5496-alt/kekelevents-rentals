@@ -1191,5 +1191,25 @@
   "w": 1600,
   "h": 2000,
   "jpgOnly": true, "jpg480": true
+ },
+ "gold-rim-wine-glass": {
+  "w": 960,
+  "h": 1200,
+  "jpgOnly": true, "jpg480": true
+ },
+ "gold-rim-champagne-flute": {
+  "w": 960,
+  "h": 1200,
+  "jpgOnly": true, "jpg480": true
+ },
+ "ribbed-wine-glass": {
+  "w": 960,
+  "h": 1200,
+  "jpgOnly": true, "jpg480": true
+ },
+ "ribbed-water-glass": {
+  "w": 960,
+  "h": 1200,
+  "jpgOnly": true, "jpg480": true
  }
 }
